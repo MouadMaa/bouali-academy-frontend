@@ -1,13 +1,15 @@
-import type { NextPage } from 'next'
+import { NextPage } from 'next'
 import { Fragment } from 'react'
-import Category from '../components/home/category'
-import Hero from '../components/home/hero'
+import CategorySection from '../components/home/category-section'
+import CoursesSection from '../components/home/courses-section'
+import HeroSection from '../components/home/hero-section'
 
 const Home: NextPage = () => {
   return (
     <Fragment>
-      <Hero />
-      <Category />
+      <HeroSection />
+      <CategorySection />
+      <CoursesSection />
     </Fragment>
   )
 }
