@@ -29,8 +29,10 @@ const Hero: FC = () => {
                   </span>
                   Tutorial From Top Instructor.
                 </h3>
-                <p>Meet university,and cultural institutions, who'll share their experience.</p>
-                <Link href='/course-grid'>
+                <p>
+                  Meet university,and cultural institutions, who&apos;ll share their experience.
+                </p>
+                <Link href='/courses'>
                   <a className='e-btn'>view all course</a>
                 </Link>
               </div>
