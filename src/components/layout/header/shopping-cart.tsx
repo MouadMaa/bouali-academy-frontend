@@ -43,7 +43,7 @@ const ShoppingCart: FC<ShoppingCartProps> = (props) => {
                 <li>
                   <div className='cartmini__thumb'>
                     <a href='#'>
-                      <img src='/img/course/sm/cart-1.jpg' alt='img not found' />
+                      <img src='/img/course/cart/cart-1.jpg' alt='img not found' />
                     </a>
                   </div>
                   <div className='cartmini__content'>

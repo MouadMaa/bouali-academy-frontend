@@ -9,7 +9,7 @@ const Layout: FC<PropsWithChildren> = (props) => {
     <Fragment>
       <HtmlHead />
       <Header />
-      {children}
+      <main>{children}</main>
     </Fragment>
   )
 }
