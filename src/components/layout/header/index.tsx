@@ -107,6 +107,11 @@ const Header: FC = () => {
                           <a>Contact</a>
                         </Link>
                       </li>
+                      <li>
+                        <Link href='/about'>
+                          <a>About</a>
+                        </Link>
+                      </li>
                     </ul>
                   </nav>
                 </div>

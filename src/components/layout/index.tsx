@@ -1,6 +1,7 @@
 import { FC, Fragment, PropsWithChildren } from 'react'
 import Head from 'next/head'
 import Header from './header'
+import Footer from './footer'
 
 const Layout: FC<PropsWithChildren> = (props) => {
   const { children } = props
@@ -10,6 +11,7 @@ const Layout: FC<PropsWithChildren> = (props) => {
       <HtmlHead />
       <Header />
       <main>{children}</main>
+      <Footer />
     </Fragment>
   )
 }

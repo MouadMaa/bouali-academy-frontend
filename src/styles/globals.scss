@@ -4,3 +4,23 @@
 // Assets
 @import '~bootstrap/scss/bootstrap';
 @import '../../public/scss/main.scss';
+
+.footer__social ul li a.youtube {
+  background: #ff0000;
+  border-color: #ff0000;
+
+  &:hover {
+    background: transparent;
+    color: #ff0000;
+  }
+}
+
+.footer__social ul li a.instagram {
+  background: #bc2a8d;
+  border-color: #bc2a8d;
+
+  &:hover {
+    background: transparent;
+    color: #bc2a8d;
+  }
+}
