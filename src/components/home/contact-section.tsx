@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 const ContactSection: FC = () => {
   return (
-    <section className='contact__area pt-115 pb-120'>
+    <section className='contact__area pt-115 pb-150'>
       <div className='container'>
         <div className='row'>
           <div className='col-xxl-7 col-xl-7 col-lg-6'>

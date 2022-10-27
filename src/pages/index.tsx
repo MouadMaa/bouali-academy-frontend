@@ -6,6 +6,8 @@ import ContactSection from '../components/home/contact-section'
 import CoursesSection from '../components/home/courses-section'
 import CtaSection from '../components/home/cta-section'
 import HeroSection from '../components/home/hero-section'
+import PricingSection from '../components/home/pricing-section'
+import TestimonialSection from '../components/home/testimonial-section'
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +16,8 @@ const Home: NextPage = () => {
       <AboutSection />
       <CategorySection />
       <CoursesSection />
+      <TestimonialSection />
+      <PricingSection />
       <ContactSection />
       <CtaSection />
     </Fragment>
