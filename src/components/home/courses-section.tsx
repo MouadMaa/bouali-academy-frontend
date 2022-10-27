@@ -10,7 +10,7 @@ const Tabs = dynamic(
 ) // disable ssr
 
 const CoursesSection: FC = () => (
-  <section className='course__area pt-115 pb-120 grey-bg'>
+  <section className='course__area pt-115 pb-90 grey-bg'>
     <Tabs id='react-tabs-276'>
       <div className='container'>
         <div className='row align-items-end'>
@@ -1395,6 +1395,17 @@ const CoursesSection: FC = () => (
         </TabPanel>
       </div>
     </Tabs>
+    <div id='category__more'>
+      <div className='category__more float-md-end fix'>
+        <Link href='/course-grid'>
+          <a className='link-btn'>
+            View all Category
+            <i className='fas fa-arrow-right'></i>
+            <i className='fas fa-arrow-right'></i>
+          </a>
+        </Link>
+      </div>
+    </div>
   </section>
 )
 
