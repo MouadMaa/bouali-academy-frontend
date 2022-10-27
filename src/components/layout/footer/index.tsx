@@ -29,7 +29,7 @@ const Footer: FC = () => {
                     <div className='footer__social'>
                       <ul>
                         <li>
-                          <a href='#' className='youtube'>
+                          <a href='#' className='pin'>
                             <i className='fab fa-youtube'></i>
                           </a>
                         </li>
@@ -44,7 +44,7 @@ const Footer: FC = () => {
                           </a>
                         </li>
                         <li>
-                          <a href='#' className='instagram'>
+                          <a href='#' className='ins'>
                             <i className='fab fa-instagram'></i>
                           </a>
                         </li>
