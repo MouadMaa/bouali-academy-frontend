@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { AppProps } from 'next/app'
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 
 import '../styles/globals.scss'
 

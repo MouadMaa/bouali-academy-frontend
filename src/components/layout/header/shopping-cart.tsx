@@ -48,7 +48,7 @@ const ShoppingCart: FC<ShoppingCartProps> = (props) => {
                   </div>
                   <div className='cartmini__content'>
                     <h5>
-                      <a href='#'>Strategy law and organization Foundation </a>
+                      <a href='#'>Strategy law and organization Foundation</a>
                     </h5>
                     <div className='product-quantity mt-10 mb-10'>
                       <span className='cart-minus' onClick={decrease}>
@@ -75,15 +75,11 @@ const ShoppingCart: FC<ShoppingCartProps> = (props) => {
                 <span>$113.00</span>
               </div>
               <div className='cartmini__checkout-btn'>
-                <Link href='/checkout'>
-                  <a className='e-btn w-100 mb-10'>
-                    <span></span> checkout
-                  </a>
+                <Link href='/checkout' className='e-btn w-100 mb-10'>
+                  <span></span> checkout
                 </Link>
-                <Link href='/cart'>
-                  <a className='e-btn e-btn-border w-100'>
-                    <span></span> view cart
-                  </a>
+                <Link href='/cart' className='e-btn e-btn-border w-100'>
+                  <span></span> view cart
                 </Link>
               </div>
             </div>

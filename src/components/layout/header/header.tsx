@@ -29,48 +29,34 @@ const Header: FC = () => {
               <div className='header__left d-flex'>
                 <div className='logo'>
                   <Link href='/'>
-                    <a>
-                      <img src='/img/logo/logo.png' alt='logo' />
-                    </a>
+                    <img src='/img/logo/logo.png' alt='logo' />
                   </Link>
                 </div>
                 <div className='header__category d-none d-lg-block'>
                   <nav>
                     <ul>
                       <li>
-                        <Link href='/courses'>
-                          <a className='cat-menu d-flex align-items-center'>
-                            <div className='cat-dot-icon d-inline-block'>
-                              <CategorySvg />
-                            </div>
-                            <span>Category</span>
-                          </a>
+                        <Link href='/courses' className='cat-menu d-flex align-items-center'>
+                          <div className='cat-dot-icon d-inline-block'>
+                            <CategorySvg />
+                          </div>
+                          <span>Category</span>
                         </Link>
                         <ul className='cat-submenu'>
                           <li>
-                            <Link href='/courses'>
-                              <a>English Learning</a>
-                            </Link>
+                            <Link href='/courses'>English Learning</Link>
                           </li>
                           <li>
-                            <Link href='/courses'>
-                              <a>Web Development</a>
-                            </Link>
+                            <Link href='/courses'>Web Development</Link>
                           </li>
                           <li>
-                            <Link href='/courses'>
-                              <a>Logo Design</a>
-                            </Link>
+                            <Link href='/courses'>Logo Design</Link>
                           </li>
                           <li>
-                            <Link href='/courses'>
-                              <a>Motion Graphics</a>
-                            </Link>
+                            <Link href='/courses'>Motion Graphics</Link>
                           </li>
                           <li>
-                            <Link href='/courses'>
-                              <a>Video Edition</a>
-                            </Link>
+                            <Link href='/courses'>Video Edition</Link>
                           </li>
                         </ul>
                       </li>
@@ -85,29 +71,19 @@ const Header: FC = () => {
                   <nav id='mobile-menu'>
                     <ul>
                       <li>
-                        <Link href='/'>
-                          <a>Home</a>
-                        </Link>
+                        <Link href='/'>Home</Link>
                       </li>
                       <li>
-                        <Link href='/courses'>
-                          <a>Courses</a>
-                        </Link>
+                        <Link href='/courses'>Courses</Link>
                       </li>
                       <li>
-                        <Link href='/blogs'>
-                          <a>Blogs</a>
-                        </Link>
+                        <Link href='/blogs'>Blogs</Link>
                       </li>
                       <li>
-                        <Link href='/contact'>
-                          <a>Contact</a>
-                        </Link>
+                        <Link href='/contact'>Contact</Link>
                       </li>
                       <li>
-                        <Link href='/about'>
-                          <a>About</a>
-                        </Link>
+                        <Link href='/about'>About</Link>
                       </li>
                     </ul>
                   </nav>
@@ -161,8 +137,8 @@ const Header: FC = () => {
                   </span>
                 </div>
                 <div className='header__btn ml-20 d-none d-sm-block'>
-                  <Link href='/contact'>
-                    <a className='e-btn'>Try for free</a>
+                  <Link href='/contact' className='e-btn'>
+                    Try for free
                   </Link>
                 </div>
                 <div className='sidebar__menu d-xl-none'>

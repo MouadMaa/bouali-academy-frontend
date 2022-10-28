@@ -47,8 +47,8 @@ const PricingSection: FC = () => {
                         </li>
                       </ul>
                     </div>
-                    <Link href='/contact'>
-                      <a className='e-btn e-btn-4'>Get Started</a>
+                    <Link href='/contact' className='e-btn e-btn-4'>
+                      Get Started
                     </Link>
                   </div>
                 </div>
@@ -82,8 +82,8 @@ const PricingSection: FC = () => {
                         </li>
                       </ul>
                     </div>
-                    <Link href='/contact'>
-                      <a className='e-btn e-btn-border'>Get Started</a>
+                    <Link href='/contact' className='e-btn e-btn-border'>
+                      Get Started
                     </Link>
                   </div>
                 </div>

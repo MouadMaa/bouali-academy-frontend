@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import FooterBottom from './footer-bottom'
 
 const Footer: FC = () => {
   return (
@@ -14,9 +13,7 @@ const Footer: FC = () => {
                   <div className='footer__widget-head mb-22'>
                     <div className='footer__logo'>
                       <Link href='/'>
-                        <a>
-                          <img src='/img/logo/logo-2.png' alt='img not found' />
-                        </a>
+                        <img src='/img/logo/logo-2.png' alt='img not found' />
                       </Link>
                     </div>
                   </div>
@@ -62,29 +59,19 @@ const Footer: FC = () => {
                     <div className='footer__link'>
                       <ul>
                         <li>
-                          <Link href='/courses'>
-                            <a>English Learning</a>
-                          </Link>
+                          <Link href='/courses'>English Learning</Link>
                         </li>
                         <li>
-                          <Link href='/courses'>
-                            <a>Web Development</a>
-                          </Link>
+                          <Link href='/courses'>Web Development</Link>
                         </li>
                         <li>
-                          <Link href='/courses'>
-                            <a>Logo Design</a>
-                          </Link>
+                          <Link href='/courses'>Logo Design</Link>
                         </li>
                         <li>
-                          <Link href='/courses'>
-                            <a>Motion Graphics</a>
-                          </Link>
+                          <Link href='/courses'>Motion Graphics</Link>
                         </li>
                         <li>
-                          <Link href='/courses'>
-                            <a>Video Edition</a>
-                          </Link>
+                          <Link href='/courses'>Video Edition</Link>
                         </li>
                       </ul>
                     </div>
@@ -100,29 +87,19 @@ const Footer: FC = () => {
                     <div className='footer__link'>
                       <ul>
                         <li>
-                          <Link href='/'>
-                            <a>Home</a>
-                          </Link>
+                          <Link href='/'>Home</Link>
                         </li>
                         <li>
-                          <Link href='/courses'>
-                            <a>Courses</a>
-                          </Link>
+                          <Link href='/courses'>Courses</Link>
                         </li>
                         <li>
-                          <Link href='/blogs'>
-                            <a>Blogs</a>
-                          </Link>
+                          <Link href='/blogs'>Blogs</Link>
                         </li>
                         <li>
-                          <Link href='/contact'>
-                            <a>Contact</a>
-                          </Link>
+                          <Link href='/contact'>Contact</Link>
                         </li>
                         <li>
-                          <Link href='/about'>
-                            <a>About</a>
-                          </Link>
+                          <Link href='/about'>About</Link>
                         </li>
                       </ul>
                     </div>
@@ -160,9 +137,7 @@ const Footer: FC = () => {
                 <div className='footer__copyright text-center'>
                   <p>
                     © 2022 Bouali Academy, All Rights Reserved. Design By{' '}
-                    <Link href='/'>
-                      <a>Mouad Maaroufi</a>
-                    </Link>
+                    <Link href='/'>Mouad Maaroufi</Link>
                   </p>
                 </div>
               </div>

@@ -22,12 +22,10 @@ const AboutSection: FC = () => {
               </div> */}
               {/* <div className='about__student ml-270 mt--80'>
                 <Link href='/course-details'>
-                  <a>
                     <img src='/img/about/student-1.jpg' alt='img not found' />
                     <img src='/img/about/student-1.jpg' alt='img not found' />
                     <img src='/img/about/student-1.jpg' alt='img not found' />
                     <img src='/img/about/student-1.jpg' alt='img not found' />
-                  </a>
                 </Link>
                 <p>
                   Join over <span>4,000+</span> students
@@ -63,8 +61,8 @@ const AboutSection: FC = () => {
                   </li>
                 </ul>
               </div>
-              <Link href='/contact'>
-                <a className='e-btn e-btn-border'>Apply now</a>
+              <Link href='/contact' className='e-btn e-btn-border'>
+                Apply now
               </Link>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 
-const Hero: FC = () => {
+const HeroSection: FC = () => {
   return (
     <section className='hero__area hero__height d-flex align-items-center grey-bg-2 p-relative'>
       <div className='hero__shape'>
@@ -32,8 +32,8 @@ const Hero: FC = () => {
                 <p>
                   Meet university,and cultural institutions, who&apos;ll share their experience.
                 </p>
-                <Link href='/courses'>
-                  <a className='e-btn'>view all course</a>
+                <Link href='/courses' className='e-btn'>
+                  view all course
                 </Link>
               </div>
             </div>
@@ -75,4 +75,4 @@ const Hero: FC = () => {
   )
 }
 
-export default Hero
+export default HeroSection

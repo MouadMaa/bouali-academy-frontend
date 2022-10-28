@@ -17,8 +17,8 @@ const CtaSection: FC = () => {
             </div>
             <div className='col-xxl-5 col-xl-5 col-lg-4 col-md-4'>
               <div className='cta__more d-md-flex justify-content-end p-relative z-index-1'>
-                <Link href='/contact'>
-                  <a className='e-btn e-btn-white'>Get Started</a>
+                <Link href='/contact' className='e-btn e-btn-white'>
+                  Get Started
                 </Link>
               </div>
             </div>

@@ -27,37 +27,25 @@ const BurgerMenus: FC<BurgerMenusProps> = (props) => {
         <div className='sidebar__content'>
           <div className='logo mb-40'>
             <Link href='/'>
-              <a>
-                <img src='/img/logo/logo.png' alt='logo' />
-              </a>
+              <img src='/img/logo/logo.png' alt='logo' />
             </Link>
           </div>
           <div className='mm-menu'>
             <ul>
               <li>
-                <Link href='/'>
-                  <a>Home</a>
-                </Link>
+                <Link href='/'>Home</Link>
               </li>
               <li>
-                <Link href='/courses'>
-                  <a>Courses</a>
-                </Link>
+                <Link href='/courses'>Courses</Link>
               </li>
               <li>
-                <Link href='/blogs'>
-                  <a>Blogs</a>
-                </Link>
+                <Link href='/blogs'>Blogs</Link>
               </li>
               <li>
-                <Link href='/contact'>
-                  <a>Contact</a>
-                </Link>
+                <Link href='/contact'>Contact</Link>
               </li>
               <li>
-                <Link href='/about'>
-                  <a>About</a>
-                </Link>
+                <Link href='/about'>About</Link>
               </li>
             </ul>
           </div>
