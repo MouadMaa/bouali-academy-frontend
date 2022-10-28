@@ -20,7 +20,7 @@ const Category: FC = () => {
           </div>
           <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-4'>
             <div className='category__more mb-50 float-md-end fix'>
-              <Link href='/course-grid' className='link-btn'>
+              <Link href='/courses' className='link-btn'>
                 View all Category
                 <i className='fas fa-arrow-right'></i>
                 <i className='fas fa-arrow-right'></i>
@@ -51,7 +51,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Data Science</Link>
+                  <Link href='/courses'>Data Science</Link>
                 </h4>
                 <p>Data is Everything</p>
               </div>
@@ -79,7 +79,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Business</Link>
+                  <Link href='/courses'>Business</Link>
                 </h4>
                 <p>Improve your business</p>
               </div>
@@ -107,7 +107,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Art & Design</Link>
+                  <Link href='/courses'>Art & Design</Link>
                 </h4>
                 <p>Fun & Challenging</p>
               </div>
@@ -135,7 +135,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Lifestyle</Link>
+                  <Link href='/courses'>Lifestyle</Link>
                 </h4>
                 <p>New Skills, New You</p>
               </div>
@@ -163,7 +163,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Marketing</Link>
+                  <Link href='/courses'>Marketing</Link>
                 </h4>
                 <p>Improve your business</p>
               </div>
@@ -187,7 +187,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Finance</Link>
+                  <Link href='/courses'>Finance</Link>
                 </h4>
                 <p>Fun & Challenging</p>
               </div>
@@ -219,7 +219,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Health & Fitness</Link>
+                  <Link href='/courses'>Health & Fitness</Link>
                 </h4>
                 <p>Invest to Your Body</p>
               </div>
@@ -253,7 +253,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Music</Link>
+                  <Link href='/courses'>Music</Link>
                 </h4>
                 <p>Major or Minor</p>
               </div>
@@ -281,7 +281,7 @@ const Category: FC = () => {
               </div>
               <div className='category__content'>
                 <h4 className='category__title'>
-                  <Link href='/course-details'>Academics</Link>
+                  <Link href='/courses'>Academics</Link>
                 </h4>
                 <p>High Education Level</p>
               </div>

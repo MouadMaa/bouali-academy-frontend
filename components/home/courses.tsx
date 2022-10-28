@@ -60,11 +60,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details'>Art & Design</Link>
+                    <Link href='/courses'>Art & Design</Link>
                   </div>
                 </div>
                 <div className='course__content'>
@@ -81,16 +81,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      Become a product Manager learn the skills & job.
-                    </Link>
+                    <Link href='/courses'>Become a product Manager learn the skills & job.</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Jim Séchen</Link>
+                      <Link href='/'>Jim Séchen</Link>
                     </h6>
                   </div>
                 </div>
@@ -99,7 +97,7 @@ const CoursesSection: FC = () => (
                     <span>Free</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -111,11 +109,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='sky-blue'>
+                    <Link href='/courses' className='sky-blue'>
                       Art & Design
                     </Link>
                   </div>
@@ -134,14 +132,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Fundamentals of music theory Learn new</Link>
+                    <Link href='/courses'>Fundamentals of music theory Learn new</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Barry Tone</Link>
+                      <Link href='/'>Barry Tone</Link>
                     </h6>
                   </div>
                 </div>
@@ -151,7 +149,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -163,11 +161,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='green'>
+                    <Link href='/courses' className='green'>
                       Development
                     </Link>
                   </div>
@@ -186,14 +184,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Strategy law and organization Foundation</Link>
+                    <Link href='/courses'>Strategy law and organization Foundation</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Elon Gated</Link>
+                      <Link href='/'>Elon Gated</Link>
                     </h6>
                   </div>
                 </div>
@@ -203,7 +201,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -215,11 +213,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='blue'>
+                    <Link href='/courses' className='blue'>
                       Marketing
                     </Link>
                   </div>
@@ -238,16 +236,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      The business Intelligence analyst Course 2022
-                    </Link>
+                    <Link href='/courses'>The business Intelligence analyst Course 2022</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Eleanor Fant</Link>
+                      <Link href='/'>Eleanor Fant</Link>
                     </h6>
                   </div>
                 </div>
@@ -257,7 +253,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -269,11 +265,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='orange'>
+                    <Link href='/courses' className='orange'>
                       Audio & Music
                     </Link>
                   </div>
@@ -292,14 +288,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Build your media and Public presence</Link>
+                    <Link href='/courses'>Build your media and Public presence</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Pelican Steve</Link>
+                      <Link href='/'>Pelican Steve</Link>
                     </h6>
                   </div>
                 </div>
@@ -309,7 +305,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -321,11 +317,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='pink'>
+                    <Link href='/courses' className='pink'>
                       UX Design
                     </Link>
                   </div>
@@ -344,14 +340,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Creative writing through Storytelling</Link>
+                    <Link href='/courses'>Creative writing through Storytelling</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Shahnewaz Sakil</Link>
+                      <Link href='/'>Shahnewaz Sakil</Link>
                     </h6>
                   </div>
                 </div>
@@ -361,7 +357,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$72.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -377,11 +373,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='sky-blue'>
+                    <Link href='/courses' className='sky-blue'>
                       Art & Design
                     </Link>
                   </div>
@@ -400,14 +396,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Fundamentals of music theory Learn new</Link>
+                    <Link href='/courses'>Fundamentals of music theory Learn new</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Barry Tone</Link>
+                      <Link href='/'>Barry Tone</Link>
                     </h6>
                   </div>
                 </div>
@@ -417,7 +413,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -429,11 +425,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='green'>
+                    <Link href='/courses' className='green'>
                       Development
                     </Link>
                   </div>
@@ -452,14 +448,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Strategy law and organization Foundation</Link>
+                    <Link href='/courses'>Strategy law and organization Foundation</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Elon Gated</Link>
+                      <Link href='/'>Elon Gated</Link>
                     </h6>
                   </div>
                 </div>
@@ -469,7 +465,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -481,11 +477,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='blue'>
+                    <Link href='/courses' className='blue'>
                       Marketing
                     </Link>
                   </div>
@@ -504,16 +500,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      The business Intelligence analyst Course 2022
-                    </Link>
+                    <Link href='/courses'>The business Intelligence analyst Course 2022</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Eleanor Fant</Link>
+                      <Link href='/'>Eleanor Fant</Link>
                     </h6>
                   </div>
                 </div>
@@ -523,7 +517,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -535,11 +529,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='orange'>
+                    <Link href='/courses' className='orange'>
                       Audio & Music
                     </Link>
                   </div>
@@ -558,14 +552,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Build your media and Public presence</Link>
+                    <Link href='/courses'>Build your media and Public presence</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Steve Smith</Link>
+                      <Link href='/'>Steve Smith</Link>
                     </h6>
                   </div>
                 </div>
@@ -575,7 +569,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -591,11 +585,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='sky-blue'>
+                    <Link href='/courses' className='sky-blue'>
                       Art & Design
                     </Link>
                   </div>
@@ -614,14 +608,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Fundamentals of music theory Learn new</Link>
+                    <Link href='/courses'>Fundamentals of music theory Learn new</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Andrew Nihal</Link>
+                      <Link href='/'>Andrew Nihal</Link>
                     </h6>
                   </div>
                 </div>
@@ -631,7 +625,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -643,11 +637,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='green'>
+                    <Link href='/courses' className='green'>
                       Development
                     </Link>
                   </div>
@@ -666,14 +660,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Strategy law and organization Foundation</Link>
+                    <Link href='/courses'>Strategy law and organization Foundation</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Jhon Saif</Link>
+                      <Link href='/'>Jhon Saif</Link>
                     </h6>
                   </div>
                 </div>
@@ -683,7 +677,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -695,11 +689,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='blue'>
+                    <Link href='/courses' className='blue'>
                       Marketing
                     </Link>
                   </div>
@@ -718,16 +712,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      The business Intelligence analyst Course 2022
-                    </Link>
+                    <Link href='/courses'>The business Intelligence analyst Course 2022</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Kevin Peter</Link>
+                      <Link href='/'>Kevin Peter</Link>
                     </h6>
                   </div>
                 </div>
@@ -737,7 +729,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -749,11 +741,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='orange'>
+                    <Link href='/courses' className='orange'>
                       Audio & Music
                     </Link>
                   </div>
@@ -772,14 +764,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Build your media and Public presence</Link>
+                    <Link href='/courses'>Build your media and Public presence</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Peter Parker</Link>
+                      <Link href='/'>Peter Parker</Link>
                     </h6>
                   </div>
                 </div>
@@ -789,7 +781,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -801,11 +793,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='pink'>
+                    <Link href='/courses' className='pink'>
                       UX Design
                     </Link>
                   </div>
@@ -824,14 +816,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Creative writing through Storytelling</Link>
+                    <Link href='/courses'>Creative writing through Storytelling</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Steve Long</Link>
+                      <Link href='/'>Steve Long</Link>
                     </h6>
                   </div>
                 </div>
@@ -841,7 +833,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$72.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -857,11 +849,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details'>Art & Design</Link>
+                    <Link href='/courses'>Art & Design</Link>
                   </div>
                 </div>
                 <div className='course__content'>
@@ -878,16 +870,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      Become a product Manager learn the skills & job.
-                    </Link>
+                    <Link href='/courses'>Become a product Manager learn the skills & job.</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Peterson</Link>
+                      <Link href='/'>Peterson</Link>
                     </h6>
                   </div>
                 </div>
@@ -896,7 +886,7 @@ const CoursesSection: FC = () => (
                     <span>Free</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -908,11 +898,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='sky-blue'>
+                    <Link href='/courses' className='sky-blue'>
                       Art & Design
                     </Link>
                   </div>
@@ -931,14 +921,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Fundamentals of music theory Learn new</Link>
+                    <Link href='/courses'>Fundamentals of music theory Learn new</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Willamson</Link>
+                      <Link href='/'>Willamson</Link>
                     </h6>
                   </div>
                 </div>
@@ -948,7 +938,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -960,11 +950,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='green'>
+                    <Link href='/courses' className='green'>
                       Development
                     </Link>
                   </div>
@@ -983,14 +973,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Strategy law and organization Foundation</Link>
+                    <Link href='/courses'>Strategy law and organization Foundation</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Martin</Link>
+                      <Link href='/'>Martin</Link>
                     </h6>
                   </div>
                 </div>
@@ -1000,7 +990,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -1016,11 +1006,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='sky-blue'>
+                    <Link href='/courses' className='sky-blue'>
                       Art & Design
                     </Link>
                   </div>
@@ -1039,14 +1029,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Fundamentals of music theory Learn new</Link>
+                    <Link href='/courses'>Fundamentals of music theory Learn new</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Jhon Doe</Link>
+                      <Link href='/'>Jhon Doe</Link>
                     </h6>
                   </div>
                 </div>
@@ -1056,7 +1046,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -1068,11 +1058,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='green'>
+                    <Link href='/courses' className='green'>
                       Development
                     </Link>
                   </div>
@@ -1091,14 +1081,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Strategy law and organization Foundation</Link>
+                    <Link href='/courses'>Strategy law and organization Foundation</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Spider</Link>
+                      <Link href='/'>Spider</Link>
                     </h6>
                   </div>
                 </div>
@@ -1108,7 +1098,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$68.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -1120,11 +1110,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='blue'>
+                    <Link href='/courses' className='blue'>
                       Marketing
                     </Link>
                   </div>
@@ -1143,16 +1133,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>
-                      The business Intelligence analyst Course 2022
-                    </Link>
+                    <Link href='/courses'>The business Intelligence analyst Course 2022</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Ross Taylor</Link>
+                      <Link href='/'>Ross Taylor</Link>
                     </h6>
                   </div>
                 </div>
@@ -1162,7 +1150,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -1174,11 +1162,11 @@ const CoursesSection: FC = () => (
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               <div className='course__item white-bg mb-30 fix'>
                 <div className='course__thumb w-img p-relative fix'>
-                  <Link href='/course-details'>
+                  <Link href='/courses'>
                     <img src='/img/course/course-1.jpg' alt='img not found' />
                   </Link>
                   <div className='course__tag'>
-                    <Link href='/course-details' className='orange'>
+                    <Link href='/courses' className='orange'>
                       Audio & Music
                     </Link>
                   </div>
@@ -1197,14 +1185,14 @@ const CoursesSection: FC = () => (
                     </div>
                   </div>
                   <h3 className='course__title'>
-                    <Link href='/course-details'>Build your media and Public presence</Link>
+                    <Link href='/courses'>Build your media and Public presence</Link>
                   </h3>
                   <div className='course__teacher d-flex align-items-center'>
                     <div className='course__teacher-thumb mr-15'>
                       <img src='/img/course/teacher/teacher-1.jpg' alt='img not found' />
                     </div>
                     <h6>
-                      <Link href='/instructor-details'>Mitchel Stark</Link>
+                      <Link href='/'>Mitchel Stark</Link>
                     </h6>
                   </div>
                 </div>
@@ -1214,7 +1202,7 @@ const CoursesSection: FC = () => (
                     <span className='old-price'>$97.00</span>
                   </div>
                   <div className='course__btn'>
-                    <Link href='/course-details' className='link-btn'>
+                    <Link href='/courses' className='link-btn'>
                       Know Details
                       <i className='fas fa-arrow-right'></i>
                       <i className='fas fa-arrow-right'></i>
@@ -1229,7 +1217,7 @@ const CoursesSection: FC = () => (
     </Tabs>
     <div id='category__more'>
       <div className='category__more float-md-end fix'>
-        <Link href='/course-grid' className='link-btn'>
+        <Link href='/courses' className='link-btn'>
           View all Courses
           <i className='fas fa-arrow-right'></i>
           <i className='fas fa-arrow-right'></i>

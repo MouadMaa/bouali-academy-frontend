@@ -21,7 +21,7 @@ const AboutSection: FC = () => {
                 <img src='/img/about/about-banner.jpg' alt='img not found' />
               </div> */}
               {/* <div className='about__student ml-270 mt--80'>
-                <Link href='/course-details'>
+                <Link href='/courses'>
                     <img src='/img/about/student-1.jpg' alt='img not found' />
                     <img src='/img/about/student-1.jpg' alt='img not found' />
                     <img src='/img/about/student-1.jpg' alt='img not found' />
