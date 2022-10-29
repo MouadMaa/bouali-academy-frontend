@@ -1,5 +1,3 @@
-'use client'
-
 import { NextPage } from 'next'
 import { Fragment } from 'react'
 import AboutSection from '../components/home/about'

@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
 import BurgerMenus from './burger-menus'
