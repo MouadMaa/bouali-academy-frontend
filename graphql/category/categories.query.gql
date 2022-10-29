@@ -3,7 +3,7 @@ query Categories {
     data {
       id
       attributes {
-        ...Category
+        name
       }
     }
   }

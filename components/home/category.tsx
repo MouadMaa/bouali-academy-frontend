@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
+import { useCategoriesQuery } from '../../graphql/generated/schema'
 
 const Category: FC = () => {
+  const { data } = useCategoriesQuery()
+  console.log(data)
   return (
     <section className='category__area pt-120 pb-70'>
       <div className='container'>

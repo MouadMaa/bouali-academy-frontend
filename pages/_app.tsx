@@ -1,16 +1,20 @@
 import { FC } from 'react'
 import { AppProps } from 'next/app'
 import Layout from '../components/layout/layout'
+import { useApollo } from '../lib/apolloClient'
 
 import '../styles/globals.scss'
+import { ApolloProvider } from '@apollo/client'
 
-const MyApp: FC<AppProps> = (props) => {
-  const { Component, pageProps } = props
+const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+  const apolloClient = useApollo(pageProps)
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ApolloProvider client={apolloClient}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ApolloProvider>
   )
 }
 
