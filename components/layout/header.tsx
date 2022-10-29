@@ -1,11 +1,9 @@
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
-import BurgerMenus from './burger-menus'
-import ShoppingCart from './shopping-cart'
 
 const Header: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [shopOpen, setShopOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', sticky)
@@ -88,57 +86,26 @@ const Header: FC = () => {
                     </ul>
                   </nav>
                 </div>
-                <div className='header__search p-relative ml-50 d-none d-md-block'>
-                  <form action='#'>
-                    <input type='text' placeholder='Search...' />
-                    <button type='submit'>
-                      <i className='fas fa-search'></i>
-                    </button>
-                  </form>
+                <div className='header__search p-relative ml-80 mb-55 pb-1 d-none d-md-block'>
                   <div className='header__cart'>
                     <span
                       className='cart-toggle-btn'
                       onClick={() => {
-                        setShopOpen(!shopOpen)
+                        setSearchOpen(true)
+                        setMenuOpen(false)
                       }}
                     >
                       <div className='header__cart-icon'>
-                        <svg viewBox='0 0 24 24'>
-                          <circle className='st0' cx='9' cy='21' r='1' />
-                          <circle className='st0' cx='20' cy='21' r='1' />
-                          <path
-                            className='st0'
-                            d='M1,1h4l2.7,13.4c0.2,1,1,1.6,2,1.6h9.7c1,0,1.8-0.7,2-1.6L23,6H6'
-                          />
+                        <svg fill='#0e1133' viewBox='0 0 50 50' width='50px' height='50px'>
+                          <path d='M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z' />
                         </svg>
                       </div>
-                      <span className='cart-item'>2</span>
                     </span>
                   </div>
                 </div>
-                <div className='header__cart header__cart--responsive'>
-                  <span
-                    className='cart-toggle-btn'
-                    onClick={() => {
-                      setShopOpen(!shopOpen)
-                    }}
-                  >
-                    <div className='header__cart-icon'>
-                      <svg viewBox='0 0 24 24'>
-                        <circle className='st0' cx='9' cy='21' r='1' />
-                        <circle className='st0' cx='20' cy='21' r='1' />
-                        <path
-                          className='st0'
-                          d='M1,1h4l2.7,13.4c0.2,1,1,1.6,2,1.6h9.7c1,0,1.8-0.7,2-1.6L23,6H6'
-                        />
-                      </svg>
-                    </div>
-                    <span className='cart-item'>2</span>
-                  </span>
-                </div>
-                <div className='header__btn ml-20 d-none d-sm-block'>
+                <div className='header__btn ml-20 mb-1 d-none d-sm-block'>
                   <Link href='/contact' className='e-btn'>
-                    Try for free
+                    Sign In
                   </Link>
                 </div>
                 <div className='sidebar__menu d-xl-none'>
@@ -160,17 +127,128 @@ const Header: FC = () => {
         </div>
       </div>
 
-      <BurgerMenus menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      {/* Header Menu */}
+      <div className={menuOpen ? 'sidebar__area open' : 'sidebar__area'}>
+        <div className='sidebar__wrapper'>
+          <div className='sidebar__close'>
+            <button
+              className='sidebar__close-btn'
+              id='sidebar__close-btn'
+              onClick={() => setMenuOpen(false)}
+            >
+              <span>
+                <i className='fas fa-times'></i>
+              </span>
+              <span>close</span>
+            </button>
+          </div>
+          <div className='sidebar__content'>
+            <div className='logo mb-40'>
+              <Link href='/'>
+                <img src='/img/logo/logo.png' alt='logo' />
+              </Link>
+            </div>
+            <div className='mm-menu'>
+              <ul>
+                <li>
+                  <Link href='/'>Home</Link>
+                </li>
+                <li>
+                  <Link href='/courses'>Courses</Link>
+                </li>
+                <li>
+                  <Link href='/blogs'>Blogs</Link>
+                </li>
+                <li>
+                  <Link href='/contact'>Contact</Link>
+                </li>
+                <li>
+                  <Link href='/about'>About</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className='header__search p-relative ml-80 mb-55 pb-1'>
+              <div className='header__cart'>
+                <span
+                  className='cart-toggle-btn'
+                  onClick={() => {
+                    setSearchOpen(true)
+                    setMenuOpen(false)
+                  }}
+                >
+                  <div className='header__cart-icon'>
+                    <svg fill='#0e1133' viewBox='0 0 50 50' width='50px' height='50px'>
+                      <path d='M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z' />
+                    </svg>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
-        onClick={() => setMenuOpen(false)}
-        className={menuOpen ? 'body-overlay show' : 'body-overlay'}
+        onClick={() => {
+          setMenuOpen(false)
+          setSearchOpen(false)
+        }}
+        className={menuOpen || searchOpen ? 'body-overlay show' : 'body-overlay'}
       ></div>
 
-      <ShoppingCart shopOpen={shopOpen} setShopOpen={setShopOpen} />
-      <div
-        onClick={() => setShopOpen(false)}
-        className={shopOpen ? 'body-overlay show' : 'body-overlay'}
-      ></div>
+      {/* Header Search */}
+      <div className={searchOpen ? 'header__search-3 search-opened' : 'header__search-3'}>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-xl-12'>
+              <div className='header__search-3-inner text-center'>
+                <form action='#'>
+                  <div className='header__search-3-btn'>
+                    <a
+                      href='#!'
+                      className='header__search-3-btn-close'
+                      onClick={() => setSearchOpen(false)}
+                    >
+                      <i className='fas fa-times'></i>
+                    </a>
+                  </div>
+                  <div className='header__search-3-header'>
+                    <h3>Search</h3>
+                  </div>
+                  <div className='header__search-3-categories'>
+                    <ul className='search-category'>
+                      <li>
+                        <Link href='/course-grid'>All Courses</Link>
+                      </li>
+                      <li>
+                        <Link href='/instructor'>Instructor</Link>
+                      </li>
+                      <li>
+                        <Link href='/event-details'>Event</Link>
+                      </li>
+                      <li>
+                        <Link href='/cart'>My Cart</Link>
+                      </li>
+                      <li>
+                        <Link href='/blog'>Blog</Link>
+                      </li>
+                      <li>
+                        <Link href='/contact'>Contact</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className='header__search-3-input p-relative'>
+                    <input type='text' placeholder='Search for products... ' />
+                    <button type='submit'>
+                      <i className='fas fa-search'></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   )
 }
