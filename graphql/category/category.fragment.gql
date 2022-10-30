@@ -1,0 +1,8 @@
+fragment Category on Category {
+  title
+  sub_title
+  desc
+  icon {
+    ...Icon
+  }
+}

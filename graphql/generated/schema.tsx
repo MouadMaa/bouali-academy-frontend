@@ -45,8 +45,11 @@ export type BooleanFilterInput = {
 export type Category = {
   __typename?: 'Category';
   createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
+  desc?: Maybe<Scalars['String']>;
+  icon?: Maybe<UploadFileEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  sub_title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -70,17 +73,22 @@ export type CategoryEntityResponseCollection = {
 export type CategoryFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  desc?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  sub_title?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type CategoryInput = {
-  name?: InputMaybe<Scalars['String']>;
+  desc?: InputMaybe<Scalars['String']>;
+  icon?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  sub_title?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type CategoryRelationResponseCollection = {
@@ -1035,21 +1043,44 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', name?: string | null } | null }> } | null };
+export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> } | null };
 
+export type CategoryFragment = { __typename?: 'Category', title: string, sub_title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null };
 
+export type IconFragment = { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null };
+
+export const IconFragmentDoc = gql`
+    fragment Icon on UploadFileEntityResponse {
+  data {
+    attributes {
+      name
+      url
+    }
+  }
+}
+    `;
+export const CategoryFragmentDoc = gql`
+    fragment Category on Category {
+  title
+  sub_title
+  desc
+  icon {
+    ...Icon
+  }
+}
+    ${IconFragmentDoc}`;
 export const CategoriesDocument = gql`
     query Categories {
   categories {
     data {
       id
       attributes {
-        name
+        ...Category
       }
     }
   }
 }
-    `;
+    ${CategoryFragmentDoc}`;
 
 /**
  * __useCategoriesQuery__

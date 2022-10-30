@@ -5,6 +5,24 @@
 @import '~bootstrap/scss/bootstrap';
 @import '../public/scss/main.scss';
 
+// My changes
+header .header__btn .e-btn {
+  height: 40px;
+  line-height: 42px;
+  padding: 0 20px;
+}
+
+#category__more {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.category__icon img {
+  width: 40px;
+  height: 40px;
+}
+
 .footer__social ul li a.ins {
   background: #bc2a8d;
   border-color: #bc2a8d;
@@ -23,16 +41,4 @@
     color: $white;
     background: #bc2a8d;
   }
-}
-
-#category__more {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-header .header__btn .e-btn {
-  height: 40px;
-  line-height: 42px;
-  padding: 0 20px;
 }
