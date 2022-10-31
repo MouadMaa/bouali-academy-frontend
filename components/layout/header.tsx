@@ -1,7 +1,10 @@
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
+import { useCategoriesQuery } from '../../graphql/generated/schema'
 
 const Header: FC = () => {
+  const { data } = useCategoriesQuery()
+
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
 
@@ -41,21 +44,11 @@ const Header: FC = () => {
                           <span>Category</span>
                         </Link>
                         <ul className='cat-submenu'>
-                          <li>
-                            <Link href='/courses'>English Learning</Link>
-                          </li>
-                          <li>
-                            <Link href='/courses'>Web Development</Link>
-                          </li>
-                          <li>
-                            <Link href='/courses'>Logo Design</Link>
-                          </li>
-                          <li>
-                            <Link href='/courses'>Motion Graphics</Link>
-                          </li>
-                          <li>
-                            <Link href='/courses'>Video Edition</Link>
-                          </li>
+                          {data?.categories?.data.map(({ id, attributes }) => (
+                            <li key={id}>
+                              <Link href='/courses'>{attributes?.title}</Link>
+                            </li>
+                          ))}
                         </ul>
                       </li>
                     </ul>

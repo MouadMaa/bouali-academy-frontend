@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
-import { Category, useCategoriesQuery } from '../../graphql/generated/schema'
+import { CategoriesSection, useCategoriesQuery } from '../../graphql/generated/schema'
 import CategoryCard from '../category/category-card'
 
-const Category: FC = () => {
+const CategoriesSection: FC = () => {
   const { data } = useCategoriesQuery()
 
   return (
@@ -33,8 +33,8 @@ const Category: FC = () => {
           </div>
         </div>
         <div className='row'>
-          {data?.categories?.data?.map(({ id, attributes }) => (
-            <CategoryCard key={id} category={attributes as Category} />
+          {data?.categories?.data?.map(({ id, attributes }, index) => (
+            <CategoryCard key={id} index={index} category={attributes as CategoriesSection} />
           ))}
         </div>
       </div>
@@ -42,4 +42,4 @@ const Category: FC = () => {
   )
 }
 
-export default Category
+export default CategoriesSection
