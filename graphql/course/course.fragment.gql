@@ -1,0 +1,39 @@
+fragment Course on CourseEntityResponse {
+  data {
+    id
+    attributes {
+      name
+      description
+      Instructor
+      price
+      duration
+      lessons
+      cover {
+        ...File
+      }
+      category {
+        ...Category
+      }
+    }
+  }
+}
+
+fragment Courses on CourseEntityResponseCollection {
+  data {
+    id
+    attributes {
+      name
+      description
+      Instructor
+      price
+      duration
+      lessons
+      cover {
+        ...File
+      }
+      category {
+        ...Category
+      }
+    }
+  }
+}

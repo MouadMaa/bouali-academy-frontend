@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { CategoriesSection } from '../../graphql/generated/schema'
+import { Category } from '../../graphql/generated/schema'
 
 interface CategoryCardProps {
   index: number
-  category: CategoriesSection
+  category: Category
 }
 
 const CategoryCard: FC<CategoryCardProps> = (props) => {

@@ -1,5 +1,6 @@
-fragment Icon on UploadFileEntityResponse {
+fragment File on UploadFileEntityResponse {
   data {
+    id
     attributes {
       name
       url

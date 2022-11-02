@@ -1,0 +1,69 @@
+import Link from 'next/link'
+import { FC } from 'react'
+import { Course } from '../../graphql/generated/schema'
+
+interface CourseCardProps {
+  course: Course
+}
+
+const CourseCard: FC<CourseCardProps> = (props) => {
+  const { course } = props
+
+  return (
+    <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
+      <div className='course__item white-bg mb-30 fix'>
+        <div className='course__thumb w-img p-relative fix'>
+          <Link href='/courses'>
+            <img src={course.cover?.data?.attributes?.url} alt={course.name} />
+          </Link>
+          <div className='course__tag'>
+            <Link href='/courses' className='pink'>
+              {course.category?.data?.attributes?.title}
+            </Link>
+          </div>
+        </div>
+        <div className='course__content'>
+          <div className='course__meta d-flex align-items-center justify-content-between'>
+            <div className='course__lesson'>
+              <span>
+                <i className='fas fa-book'></i>
+                {course.lessons} Lesson
+              </span>
+            </div>
+            <div className='course__rating'>
+              <span>
+                <i className='fas fa-star'></i>4.5 (72)
+              </span>
+            </div>
+          </div>
+          <h3 className='course__title'>
+            <Link href='/courses'>{course.name}</Link>
+          </h3>
+          <div className='course__teacher d-flex align-items-center'>
+            <div className='course__teacher-thumb mr-15'>
+              <img src={course.cover?.data?.attributes?.url} alt={course.Instructor} />
+            </div>
+            <h6>
+              <Link href='/'>{course.Instructor}</Link>
+            </h6>
+          </div>
+        </div>
+        <div className='course__more d-flex justify-content-between align-items-center'>
+          <div className='course__status d-flex align-items-center'>
+            <span className='pink'>{course.price} DH</span>
+            <span className='old-price'>{Number(course.price) + 100} DH</span>
+          </div>
+          <div className='course__btn'>
+            <Link href='/courses' className='link-btn'>
+              Know Details
+              <i className='fas fa-arrow-right'></i>
+              <i className='fas fa-arrow-right'></i>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default CourseCard

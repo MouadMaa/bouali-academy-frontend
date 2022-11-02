@@ -1,8 +1,27 @@
-fragment Category on Category {
-  title
-  sub_title
-  desc
-  icon {
-    ...Icon
+fragment Category on CategoryEntityResponse {
+  data {
+    id
+    attributes {
+      title
+      sub_title
+      description
+      icon {
+        ...File
+      }
+    }
+  }
+}
+
+fragment Categories on CategoryEntityResponseCollection {
+  data {
+    id
+    attributes {
+      title
+      sub_title
+      description
+      icon {
+        ...File
+      }
+    }
   }
 }
