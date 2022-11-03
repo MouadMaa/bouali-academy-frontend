@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
-import { Category, useCategoriesQuery } from '../../graphql/generated/schema'
+import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql/generated/schema'
 import CategoryCard from '../category/category-card'
 
 const CategoriesSection: FC = () => {
@@ -45,3 +45,7 @@ const CategoriesSection: FC = () => {
 }
 
 export default CategoriesSection
+
+export const CategoriesQueryVars: QueryCategoriesArgs = {
+  pagination: { page: 1, pageSize: 6 },
+}

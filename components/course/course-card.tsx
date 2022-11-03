@@ -17,7 +17,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             <img src={course.cover?.data?.attributes?.url} alt={course.name} />
           </Link>
           <div className='course__tag'>
-            <Link href='/courses' className='pink'>
+            <Link href='/courses' className='blue'>
               {course.category?.data?.attributes?.title}
             </Link>
           </div>
@@ -50,8 +50,10 @@ const CourseCard: FC<CourseCardProps> = (props) => {
         </div>
         <div className='course__more d-flex justify-content-between align-items-center'>
           <div className='course__status d-flex align-items-center'>
-            <span className='pink'>{course.price} DH</span>
-            <span className='old-price'>{Number(course.price) + 100} DH</span>
+            <span className='blue'>{course.price ? `${course.price.toFixed(2)} DH` : 'Free'}</span>
+            <span className='old-price'>
+              {course.price ? `${(course.price + 100).toFixed(2)} DH` : ''}
+            </span>
           </div>
           <div className='course__btn'>
             <Link href='/courses' className='link-btn'>

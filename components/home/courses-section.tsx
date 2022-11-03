@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { Course, useCoursesQuery } from '../../graphql/generated/schema'
+import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
 import CourseCard from '../course/course-card'
 
 const CoursesSection: FC = () => {
@@ -60,3 +60,7 @@ const CoursesSection: FC = () => {
 }
 
 export default CoursesSection
+
+export const CoursesQueryVars: QueryCoursesArgs = {
+  pagination: { page: 1, pageSize: 6 },
+}
