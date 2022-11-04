@@ -1,9 +1,10 @@
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
 import { useCategoriesQuery } from '../../graphql/generated/schema'
+import { QueryCategoriesVars } from '../home/categories-section'
 
 const Header: FC = () => {
-  const { data } = useCategoriesQuery()
+  const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)

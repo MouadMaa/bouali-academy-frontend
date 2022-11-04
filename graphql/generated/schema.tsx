@@ -1091,7 +1091,9 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+export type CategoriesQueryVariables = Exact<{
+  pagination?: InputMaybe<PaginationArg>;
+}>;
 
 
 export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> } | null };
@@ -1104,7 +1106,9 @@ export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __t
 
 export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name?: string | null, description?: string | null, Instructor?: string | null, price?: number | null, duration?: number | null, lessons?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null } | null }> };
 
-export type CoursesQueryVariables = Exact<{ [key: string]: never; }>;
+export type CoursesQueryVariables = Exact<{
+  pagination?: InputMaybe<PaginationArg>;
+}>;
 
 
 export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name?: string | null, description?: string | null, Instructor?: string | null, price?: number | null, duration?: number | null, lessons?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
@@ -1197,8 +1201,8 @@ export const CoursesFragmentDoc = gql`
     ${FileFragmentDoc}
 ${CategoryFragmentDoc}`;
 export const CategoriesDocument = gql`
-    query Categories {
-  categories {
+    query Categories($pagination: PaginationArg) {
+  categories(pagination: $pagination) {
     ...Categories
   }
 }
@@ -1216,6 +1220,7 @@ export const CategoriesDocument = gql`
  * @example
  * const { data, loading, error } = useCategoriesQuery({
  *   variables: {
+ *      pagination: // value for 'pagination'
  *   },
  * });
  */
@@ -1231,8 +1236,8 @@ export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
 export const CoursesDocument = gql`
-    query Courses {
-  courses {
+    query Courses($pagination: PaginationArg) {
+  courses(pagination: $pagination) {
     ...Courses
   }
 }
@@ -1250,6 +1255,7 @@ export const CoursesDocument = gql`
  * @example
  * const { data, loading, error } = useCoursesQuery({
  *   variables: {
+ *      pagination: // value for 'pagination'
  *   },
  * });
  */

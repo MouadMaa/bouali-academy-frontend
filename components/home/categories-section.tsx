@@ -4,7 +4,7 @@ import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql
 import CategoryCard from '../category/category-card'
 
 const CategoriesSection: FC = () => {
-  const { data } = useCategoriesQuery()
+  const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
 
   const categories = data?.categories?.data
 
@@ -46,6 +46,6 @@ const CategoriesSection: FC = () => {
 
 export default CategoriesSection
 
-export const CategoriesQueryVars: QueryCategoriesArgs = {
+export const QueryCategoriesVars: QueryCategoriesArgs = {
   pagination: { page: 1, pageSize: 6 },
 }

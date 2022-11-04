@@ -1,9 +1,9 @@
 import { NextPage } from 'next'
 import { Fragment } from 'react'
 import AboutSection from '../components/home/about-section'
-import CategoriesSection, { CategoriesQueryVars } from '../components/home/categories-section'
+import CategoriesSection, { QueryCategoriesVars } from '../components/home/categories-section'
+import CoursesSection, { QueryCoursesVars } from '../components/home/courses-section'
 import ContactSection from '../components/home/contact-section'
-import CoursesSection, { CoursesQueryVars } from '../components/home/courses-section'
 import CtaSection from '../components/home/cta-section'
 import HeroSection from '../components/home/hero-section'
 import TestimonialSection from '../components/home/testimonial-section'
@@ -29,12 +29,12 @@ export async function getStaticProps() {
 
   await apolloClient.query({
     query: CategoriesDocument,
-    variables: CategoriesQueryVars,
+    variables: QueryCategoriesVars,
   })
 
   await apolloClient.query({
     query: CoursesDocument,
-    variables: CoursesQueryVars,
+    variables: QueryCoursesVars,
   })
 
   return addApolloState(apolloClient, {

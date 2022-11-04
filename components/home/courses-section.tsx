@@ -4,7 +4,7 @@ import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generat
 import CourseCard from '../course/course-card'
 
 const CoursesSection: FC = () => {
-  const { data } = useCoursesQuery()
+  const { data } = useCoursesQuery({ variables: QueryCoursesVars })
 
   const courses = data?.courses?.data
 
@@ -61,6 +61,6 @@ const CoursesSection: FC = () => {
 
 export default CoursesSection
 
-export const CoursesQueryVars: QueryCoursesArgs = {
+export const QueryCoursesVars: QueryCoursesArgs = {
   pagination: { page: 1, pageSize: 6 },
 }
