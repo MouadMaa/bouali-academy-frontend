@@ -3,7 +3,6 @@ fragment Category on CategoryEntityResponse {
     id
     attributes {
       title
-      sub_title
       description
       icon {
         ...File
@@ -17,7 +16,6 @@ fragment Categories on CategoryEntityResponseCollection {
     id
     attributes {
       title
-      sub_title
       description
       icon {
         ...File

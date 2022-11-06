@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Course } from '../../graphql/generated/schema'
@@ -14,7 +15,12 @@ const CourseCard: FC<CourseCardProps> = (props) => {
       <div className='course__item white-bg mb-30 fix'>
         <div className='course__thumb w-img p-relative fix'>
           <Link href='/courses'>
-            <img src={course.cover?.data?.attributes?.url} alt={course.name} />
+            <Image
+              src={course.cover?.data?.attributes?.url as string}
+              alt={course.cover?.data?.attributes?.name as string}
+              width={400}
+              height={300}
+            />
           </Link>
           <div className='course__tag'>
             <Link href='/courses' className='blue'>
@@ -27,7 +33,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             <div className='course__lesson'>
               <span>
                 <i className='fas fa-book'></i>
-                {course.lessons} Lesson
+                {course.lessons?.length} Lesson
               </span>
             </div>
             <div className='course__rating'>
@@ -41,10 +47,15 @@ const CourseCard: FC<CourseCardProps> = (props) => {
           </h3>
           <div className='course__teacher d-flex align-items-center'>
             <div className='course__teacher-thumb mr-15'>
-              <img src={course.cover?.data?.attributes?.url} alt={course.Instructor} />
+              <Image
+                src={course.instructor_image.data?.attributes?.url as string}
+                alt={course.instructor}
+                width={50}
+                height={50}
+              />
             </div>
             <h6>
-              <Link href='/'>{course.Instructor}</Link>
+              <Link href='/'>{course.instructor}</Link>
             </h6>
           </div>
         </div>

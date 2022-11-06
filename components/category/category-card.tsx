@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FC } from 'react'
 import { Category } from '../../graphql/generated/schema'
 
@@ -21,9 +22,11 @@ const CategoryCard: FC<CategoryCardProps> = (props) => {
     >
       <div className='category__item mb-30 transition-3 d-flex align-items-center'>
         <div className='category__icon mr-30'>
-          {/* <img
-            src={category.icon?.data?.attributes?.url}
-            alt={category.icon?.data?.attributes?.name}
+          {/* <Image
+            src={category.icon?.data?.attributes?.url as string}
+            alt={category.icon?.data?.attributes?.name as string}
+            width={40}
+            height={40}
           /> */}
           {icons[index]}
         </div>
@@ -31,7 +34,7 @@ const CategoryCard: FC<CategoryCardProps> = (props) => {
           <h4 className='category__title'>
             <a>{category.title}</a>
           </h4>
-          <p>{category.sub_title}</p>
+          {/* <p>{category.description?.substring(0, 20) + `...`}</p> */}
         </div>
       </div>
     </div>

@@ -13,7 +13,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  CourseContentDynamicZoneInput: any;
   DateTime: any;
   JSON: any;
   Upload: any;
@@ -49,7 +48,6 @@ export type Category = {
   description?: Maybe<Scalars['String']>;
   icon?: Maybe<UploadFileEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
-  sub_title?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -79,7 +77,6 @@ export type CategoryFiltersInput = {
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  sub_title?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -88,63 +85,59 @@ export type CategoryInput = {
   description?: InputMaybe<Scalars['String']>;
   icon?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-  sub_title?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
 
-export type ComponentCourseContentLecture = {
-  __typename?: 'ComponentCourseContentLecture';
+export type ComponentCourseLessonsLecture = {
+  __typename?: 'ComponentCourseLessonsLecture';
   files?: Maybe<UploadFileRelationResponseCollection>;
   id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  video?: Maybe<UploadFileEntityResponse>;
+  name: Scalars['String'];
+  video: UploadFileEntityResponse;
 };
 
 
-export type ComponentCourseContentLectureFilesArgs = {
+export type ComponentCourseLessonsLectureFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type ComponentCourseContentLectureFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentCourseContentLectureFiltersInput>>>;
+export type ComponentCourseLessonsLectureFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentCourseLessonsLectureFiltersInput>>>;
   name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentCourseContentLectureFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentCourseContentLectureFiltersInput>>>;
+  not?: InputMaybe<ComponentCourseLessonsLectureFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentCourseLessonsLectureFiltersInput>>>;
 };
 
-export type ComponentCourseContentSection = {
-  __typename?: 'ComponentCourseContentSection';
-  Lecture?: Maybe<Array<Maybe<ComponentCourseContentLecture>>>;
-  id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-};
-
-
-export type ComponentCourseContentSectionLectureArgs = {
-  filters?: InputMaybe<ComponentCourseContentLectureFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+export type ComponentCourseLessonsLectureInput = {
+  files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  video?: InputMaybe<Scalars['ID']>;
 };
 
 export type Course = {
   __typename?: 'Course';
-  Instructor?: Maybe<Scalars['String']>;
   category?: Maybe<CategoryEntityResponse>;
-  content?: Maybe<Array<Maybe<CourseContentDynamicZone>>>;
   cover?: Maybe<UploadFileEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  description?: Maybe<Scalars['String']>;
-  duration?: Maybe<Scalars['Int']>;
-  lessons?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  instructor: Scalars['String'];
+  instructor_image: UploadFileEntityResponse;
+  lessons?: Maybe<Array<Maybe<ComponentCourseLessonsLecture>>>;
+  name: Scalars['String'];
   price?: Maybe<Scalars['Float']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type CourseContentDynamicZone = ComponentCourseContentLecture | ComponentCourseContentSection | Error;
+
+export type CourseLessonsArgs = {
+  filters?: InputMaybe<ComponentCourseLessonsLectureFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
 
 export type CourseEntity = {
   __typename?: 'CourseEntity';
@@ -164,14 +157,13 @@ export type CourseEntityResponseCollection = {
 };
 
 export type CourseFiltersInput = {
-  Instructor?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
   category?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
-  duration?: InputMaybe<IntFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  lessons?: InputMaybe<IntFilterInput>;
+  instructor?: InputMaybe<StringFilterInput>;
+  lessons?: InputMaybe<ComponentCourseLessonsLectureFiltersInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CourseFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
@@ -181,13 +173,12 @@ export type CourseFiltersInput = {
 };
 
 export type CourseInput = {
-  Instructor?: InputMaybe<Scalars['String']>;
   category?: InputMaybe<Scalars['ID']>;
-  content?: InputMaybe<Array<Scalars['CourseContentDynamicZoneInput']>>;
   cover?: InputMaybe<Scalars['ID']>;
   description?: InputMaybe<Scalars['String']>;
-  duration?: InputMaybe<Scalars['Int']>;
-  lessons?: InputMaybe<Scalars['Int']>;
+  instructor?: InputMaybe<Scalars['String']>;
+  instructor_image?: InputMaybe<Scalars['ID']>;
+  lessons?: InputMaybe<Array<InputMaybe<ComponentCourseLessonsLectureInput>>>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
@@ -215,12 +206,6 @@ export type DateTimeFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type Error = {
-  __typename?: 'Error';
-  code: Scalars['String'];
-  message?: Maybe<Scalars['String']>;
 };
 
 export type FileInfoInput = {
@@ -253,7 +238,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Category | ComponentCourseContentLecture | ComponentCourseContentSection | Course | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | ComponentCourseLessonsLecture | Course | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -1096,22 +1081,22 @@ export type CategoriesQueryVariables = Exact<{
 }>;
 
 
-export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> } | null };
+export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> } | null };
 
-export type CategoryFragment = { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null };
+export type CategoryFragment = { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null };
 
-export type CategoriesFragment = { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> };
+export type CategoriesFragment = { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null }> };
 
-export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name?: string | null, description?: string | null, Instructor?: string | null, price?: number | null, duration?: number | null, lessons?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null } | null } | null };
+export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, instructor: string, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null, lessons?: Array<{ __typename?: 'ComponentCourseLessonsLecture', id: string } | null> | null } | null } | null };
 
-export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name?: string | null, description?: string | null, Instructor?: string | null, price?: number | null, duration?: number | null, lessons?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null } | null }> };
+export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, instructor: string, price?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null, lessons?: Array<{ __typename?: 'ComponentCourseLessonsLecture', id: string } | null> | null } | null }> };
 
 export type CoursesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
 }>;
 
 
-export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name?: string | null, description?: string | null, Instructor?: string | null, price?: number | null, duration?: number | null, lessons?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, sub_title?: string | null, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
+export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, instructor: string, price?: number | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null, lessons?: Array<{ __typename?: 'ComponentCourseLessonsLecture', id: string } | null> | null } | null }> } | null };
 
 export type FileFragment = { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null };
 
@@ -1132,7 +1117,6 @@ export const CategoriesFragmentDoc = gql`
     id
     attributes {
       title
-      sub_title
       description
       icon {
         ...File
@@ -1147,7 +1131,6 @@ export const CategoryFragmentDoc = gql`
     id
     attributes {
       title
-      sub_title
       description
       icon {
         ...File
@@ -1163,15 +1146,19 @@ export const CourseFragmentDoc = gql`
     attributes {
       name
       description
-      Instructor
       price
-      duration
-      lessons
+      instructor
       cover {
+        ...File
+      }
+      instructor_image {
         ...File
       }
       category {
         ...Category
+      }
+      lessons {
+        id
       }
     }
   }
@@ -1185,15 +1172,19 @@ export const CoursesFragmentDoc = gql`
     attributes {
       name
       description
-      Instructor
+      instructor
       price
-      duration
-      lessons
       cover {
+        ...File
+      }
+      instructor_image {
         ...File
       }
       category {
         ...Category
+      }
+      lessons {
+        id
       }
     }
   }

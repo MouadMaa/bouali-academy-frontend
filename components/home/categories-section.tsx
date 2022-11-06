@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
-import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql/generated/schema'
+import Image from 'next/image'
 import CategoryCard from '../category/category-card'
+import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql/generated/schema'
 
 const CategoriesSection: FC = () => {
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
@@ -18,7 +19,13 @@ const CategoriesSection: FC = () => {
                 Explore <br />
                 Our{' '}
                 <span className='yellow-bg'>
-                  Popular <img src='/img/shape/yellow-bg-2.png' alt='img not found' />{' '}
+                  Popular
+                  <Image
+                    src='/img/shape/yellow-bg-2.png'
+                    alt='yellow bg shape'
+                    width={150}
+                    height={16}
+                  />{' '}
                 </span>
                 Courses
               </h2>
@@ -47,5 +54,5 @@ const CategoriesSection: FC = () => {
 export default CategoriesSection
 
 export const QueryCategoriesVars: QueryCategoriesArgs = {
-  pagination: { page: 1, pageSize: 6 },
+  pagination: { limit: 6 },
 }

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
+import Image from 'next/image'
 import CourseCard from '../course/course-card'
+import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
 
 const CoursesSection: FC = () => {
   const { data } = useCoursesQuery({ variables: QueryCoursesVars })
@@ -20,7 +21,12 @@ const CoursesSection: FC = () => {
                 Online{' '}
                 <span className='yellow-bg yellow-bg-big'>
                   Course
-                  <img src='/img/shape/yellow-bg.png' alt='img not found' />
+                  <Image
+                    src='/img/shape/yellow-bg.png'
+                    alt='yellow bg shape'
+                    width={150}
+                    height={16}
+                  />
                 </span>{' '}
                 for you
               </h2>
@@ -62,5 +68,5 @@ const CoursesSection: FC = () => {
 export default CoursesSection
 
 export const QueryCoursesVars: QueryCoursesArgs = {
-  pagination: { page: 1, pageSize: 6 },
+  pagination: { limit: 6 },
 }

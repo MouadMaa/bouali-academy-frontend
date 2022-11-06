@@ -4,15 +4,19 @@ fragment Course on CourseEntityResponse {
     attributes {
       name
       description
-      Instructor
       price
-      duration
-      lessons
+      instructor
       cover {
+        ...File
+      }
+      instructor_image {
         ...File
       }
       category {
         ...Category
+      }
+      lessons {
+        id
       }
     }
   }
@@ -24,15 +28,19 @@ fragment Courses on CourseEntityResponseCollection {
     attributes {
       name
       description
-      Instructor
+      instructor
       price
-      duration
-      lessons
       cover {
+        ...File
+      }
+      instructor_image {
         ...File
       }
       category {
         ...Category
+      }
+      lessons {
+        id
       }
     }
   }
