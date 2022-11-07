@@ -7,11 +7,17 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import TestimonialCard from '../testimonial/testimonial-card'
+import { useTestimonialsQuery } from '../../graphql/generated/schema'
 
 const TestimonialSection: FC = () => {
+  const { data } = useTestimonialsQuery()
+
+  const testimonials = data?.testimonial?.data?.attributes?.testimonials
+
   return (
     <section
-      className='testimonial__area testimonial__overlay pt-175 pb-170'
+      className='testimonial__area testimonial__overlay pt-120 pb-120'
       style={{ backgroundImage: `url(${'/img/testimonial/testimonial-bg.jpg'})` }}
     >
       <div className='container'>
@@ -41,57 +47,11 @@ const TestimonialSection: FC = () => {
                 // onSwiper={(swiper) => console.log(swiper)}
                 // onSlideChange={() => console.log('slide change')}
               >
-                <SwiperSlide>
-                  <div className='testimonial__item text-center swiper-slide'>
-                    <div className='testimonial__thumb'>
-                      <img src='/img/testimonial/testi-1.jpg' alt='img not found' />
-                    </div>
-                    <div className='testimonial__content'>
-                      <p>
-                        “ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”
-                      </p>
-
-                      <div className='testimonial__info'>
-                        <h4>Jason Response</h4>
-                        <span>UX Designer</span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className='testimonial__item text-center swiper-slide'>
-                    <div className='testimonial__thumb'>
-                      <img src='/img/testimonial/testi-1.jpg' alt='img not found' />
-                    </div>
-                    <div className='testimonial__content'>
-                      <p>
-                        “ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”
-                      </p>
-
-                      <div className='testimonial__info'>
-                        <h4>Jason Response</h4>
-                        <span>UX Designer</span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className='testimonial__item text-center swiper-slide'>
-                    <div className='testimonial__thumb'>
-                      <img src='/img/testimonial/testi-1.jpg' alt='img not found' />
-                    </div>
-                    <div className='testimonial__content'>
-                      <p>
-                        “ Barmy loo sloshed porkiesdo with me down the pub say bubble and squeak. ”
-                      </p>
-
-                      <div className='testimonial__info'>
-                        <h4>Jason Response</h4>
-                        <span>UX Designer</span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
+                {testimonials?.map((testimonial) => (
+                  <SwiperSlide key={testimonial?.id}>
+                    <TestimonialCard testimonial={testimonial as any} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>

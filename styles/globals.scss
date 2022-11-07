@@ -31,6 +31,30 @@ header .header__btn .e-btn {
   }
 }
 
+.testimonial__thumb {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #2b4eff;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    line-height: 85px;
+  }
+}
+
+.testimonial__content > p {
+  font-size: 25px;
+  line-height: 30px;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0 260px;
+}
+
 .footer__social ul li a.ins {
   background: #bc2a8d;
   border-color: #bc2a8d;

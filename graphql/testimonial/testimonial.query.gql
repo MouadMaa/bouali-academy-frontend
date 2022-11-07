@@ -1,0 +1,18 @@
+query Testimonials {
+  testimonial {
+    data {
+      id
+      attributes {
+        testimonials {
+          id
+          name
+          function
+          content
+          image {
+            ...File
+          }
+        }
+      }
+    }
+  }
+}
