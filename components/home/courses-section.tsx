@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import CourseCard from '../course/course-card'
 import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
 
@@ -21,12 +20,7 @@ const CoursesSection: FC = () => {
                 Online{' '}
                 <span className='yellow-bg yellow-bg-big'>
                   Course
-                  <Image
-                    src='/img/shape/yellow-bg.png'
-                    alt='yellow bg shape'
-                    width={150}
-                    height={16}
-                  />
+                  <img src='/img/shape/yellow-bg.png' alt='yellow bg shape' />
                 </span>{' '}
                 for you
               </h2>

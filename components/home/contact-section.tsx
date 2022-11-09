@@ -1,6 +1,29 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+
+type FormInputs = {
+  name: string
+  email: string
+  subject?: string
+  message: string
+}
 
 const ContactSection: FC = () => {
+  const { register, handleSubmit, reset } = useForm()
+  const [loading, setLoading] = useState(false)
+
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    setLoading(true)
+    const res = await axios.post(`/api/contact`, data)
+    if (res.statusText === 'OK') {
+      toast.success('Message sent successfully.', { theme: 'colored' })
+      reset()
+    }
+    setLoading(false)
+  }
+
   return (
     <section className='contact__area pt-115 pb-150'>
       <div className='container'>
@@ -18,32 +41,46 @@ const ContactSection: FC = () => {
                 <p>Have a question or just want to say hi? We'd love to hear from you.</p>
               </div>
               <div className='contact__form'>
-                <form action='#'>
+                <form onSubmit={handleSubmit(onSubmit as any)}>
                   <div className='row'>
                     <div className='col-xxl-6 col-xl-6 col-md-6'>
                       <div className='contact__form-input'>
-                        <input type='text' placeholder='Your Name' name='name' />
+                        <input
+                          type='text'
+                          placeholder='Your Name'
+                          {...register('name', { required: true })}
+                        />
                       </div>
                     </div>
                     <div className='col-xxl-6 col-xl-6 col-md-6'>
                       <div className='contact__form-input'>
-                        <input type='email' placeholder='Your Email' name='email' />
+                        <input
+                          type='email'
+                          placeholder='Your Email'
+                          {...register('email', { required: true })}
+                        />
                       </div>
                     </div>
                     <div className='col-xxl-12'>
                       <div className='contact__form-input'>
-                        <input type='text' placeholder='Subject' name='subject' />
+                        <input type='text' placeholder='Subject' {...register('subject')} />
                       </div>
                     </div>
                     <div className='col-xxl-12'>
                       <div className='contact__form-input'>
-                        <textarea placeholder='Enter Your Message' name='message'></textarea>
+                        <textarea
+                          placeholder='Enter Your Message'
+                          {...register('message', {
+                            required: true,
+                            minLength: 5,
+                          })}
+                        ></textarea>
                       </div>
                     </div>
                     <div className='col-xxl-12'>
                       <div className='contact__btn'>
-                        <button type='submit' className='e-btn'>
-                          Send your message
+                        <button type='submit' className='e-btn' disabled={loading}>
+                          {loading ? 'Sending...' : 'Send Your Message'}
                         </button>
                       </div>
                     </div>

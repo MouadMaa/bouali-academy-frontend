@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import Link from 'next/link'
 
 const AboutSection: FC = () => {
   return (
@@ -17,20 +16,6 @@ const AboutSection: FC = () => {
               <div className='about__thumb ml-100'>
                 <img src='/img/about/about.jpg' alt='img not found' />
               </div>
-              {/* <div className='about__banner mt--210'>
-                <img src='/img/about/about-banner.jpg' alt='img not found' />
-              </div> */}
-              {/* <div className='about__student ml-270 mt--80'>
-                <Link href='/courses'>
-                    <img src='/img/about/student-1.jpg' alt='img not found' />
-                    <img src='/img/about/student-1.jpg' alt='img not found' />
-                    <img src='/img/about/student-1.jpg' alt='img not found' />
-                    <img src='/img/about/student-1.jpg' alt='img not found' />
-                </Link>
-                <p>
-                  Join over <span>4,000+</span> students
-                </p>
-              </div> */}
             </div>
           </div>
           <div className='col-xxl-6 col-xl-6 col-lg-6'>
@@ -61,9 +46,31 @@ const AboutSection: FC = () => {
                   </li>
                 </ul>
               </div>
-              <Link href='/contact' className='e-btn e-btn-border'>
-                Apply now
-              </Link>
+              <div className='contact__social'>
+                <h4>Follow Me</h4>
+                <ul>
+                  <li>
+                    <a href='#' className='pin'>
+                      <i className='fab fa-youtube'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='fb'>
+                      <i className='fab fa-facebook-f'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='tw'>
+                      <i className='fab fa-twitter'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='ins'>
+                      <i className='fab fa-instagram'></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
