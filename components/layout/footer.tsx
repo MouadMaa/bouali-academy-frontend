@@ -1,11 +1,33 @@
 import { FC } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useCategoriesQuery } from '../../graphql/generated/schema'
+import { QueryCategoriesVars } from '../home/categories-section'
+
+type FormInputs = {
+  email: string
+}
 
 const Footer: FC = () => {
+  const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
+  const { register, handleSubmit } = useForm()
+  const router = useRouter()
+
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    console.log(
+      '🚀 ~ file: footer.tsx ~ line 16 ~ constonSubmit:SubmitHandler<FormInputs>= ~ data',
+      data,
+    )
+    router.push('/')
+  }
+
+  const categories = data?.categories?.data
+
   return (
     <footer>
       <div className='footer__area footer-bg'>
-        <div className='footer__top pt-190 pb-40'>
+        <div className='footer__top pt-190 pb-20'>
           <div className='container'>
             <div className='row'>
               <div className='col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6'>
@@ -58,21 +80,11 @@ const Footer: FC = () => {
                   <div className='footer__widget-body'>
                     <div className='footer__link'>
                       <ul>
-                        <li>
-                          <Link href='/courses'>English Learning</Link>
-                        </li>
-                        <li>
-                          <Link href='/courses'>Web Development</Link>
-                        </li>
-                        <li>
-                          <Link href='/courses'>Logo Design</Link>
-                        </li>
-                        <li>
-                          <Link href='/courses'>Motion Graphics</Link>
-                        </li>
-                        <li>
-                          <Link href='/courses'>Video Edition</Link>
-                        </li>
+                        {categories?.map((category) => (
+                          <li key={category.id}>
+                            <Link href='/courses'>{category.attributes?.title}</Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -113,9 +125,13 @@ const Footer: FC = () => {
                   </div>
                   <div className='footer__widget-body'>
                     <div className='footer__subscribe'>
-                      <form action='#'>
+                      <form onSubmit={handleSubmit(onSubmit as any)}>
                         <div className='footer__subscribe-input mb-15'>
-                          <input type='email' placeholder='Your email address' />
+                          <input
+                            type='email'
+                            placeholder='Your email address'
+                            {...register('email', { required: true })}
+                          />
                           <button type='submit'>
                             <i className='fas fa-arrow-right'></i>
                             <i className='fas fa-arrow-right'></i>

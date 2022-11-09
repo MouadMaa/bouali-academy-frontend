@@ -22,6 +22,8 @@ const Header: FC = () => {
     scrollTop >= 1 ? header?.classList.add('sticky') : header?.classList.remove('sticky')
   }
 
+  const categories = data?.categories?.data
+
   return (
     <header>
       <div id='header-sticky' className='header__area header__transparent header__padding'>
@@ -45,7 +47,7 @@ const Header: FC = () => {
                           <span>Category</span>
                         </Link>
                         <ul className='cat-submenu'>
-                          {data?.categories?.data.map(({ id, attributes }) => (
+                          {categories?.map(({ id, attributes }) => (
                             <li key={id}>
                               <Link href='/courses'>{attributes?.title}</Link>
                             </li>
