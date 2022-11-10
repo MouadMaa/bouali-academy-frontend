@@ -1,10 +1,12 @@
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useCategoriesQuery } from '../../graphql/generated/schema'
 import { QueryCategoriesVars } from '../home/categories-section'
 
 const Header: FC = () => {
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
+  const router = useRouter()
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -26,7 +28,12 @@ const Header: FC = () => {
 
   return (
     <header>
-      <div id='header-sticky' className='header__area header__transparent header__padding'>
+      <div
+        id='header-sticky'
+        className={`header__area header__transparent header__padding ${
+          router.pathname !== '/' && 'header__white'
+        }`}
+      >
         <div className='container-fluid'>
           <div className='row align-items-center'>
             <div className='col-xxl-3 col-xl-3 col-lg-4 col-md-2 col-sm-4 col-6'>

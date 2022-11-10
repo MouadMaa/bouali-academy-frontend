@@ -12,6 +12,18 @@ header .header__btn .e-btn {
   padding: 0 20px;
 }
 
+header .header__area.sticky .main-menu ul li a {
+  color: #0e1133;
+}
+
+header .header__white .header__cart-icon svg {
+  fill: #fff;
+}
+
+header .header__area.sticky .header__cart-icon svg {
+  fill: #0e1133;
+}
+
 #category__more {
   margin-top: 2rem;
   display: flex;
