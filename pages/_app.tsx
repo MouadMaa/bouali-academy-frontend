@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { AppProps } from 'next/app'
+import { ApolloProvider } from '@apollo/client'
+import { SessionProvider } from 'next-auth/react'
+import { ToastContainer } from 'react-toastify'
 import Layout from '../components/layout/layout'
 import { useApollo } from '../lib/apolloClient'
-import { ApolloProvider } from '@apollo/client'
-import { ToastContainer } from 'react-toastify'
 
 import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
@@ -13,9 +14,11 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <SessionProvider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
       <ToastContainer />
     </ApolloProvider>
   )

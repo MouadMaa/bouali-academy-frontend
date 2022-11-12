@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
 import AboutSection from '../components/home/about-section'
 import CategoriesSection, { QueryCategoriesVars } from '../components/home/categories-section'
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({

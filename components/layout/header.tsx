@@ -3,9 +3,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCategoriesQuery } from '../../graphql/generated/schema'
 import { QueryCategoriesVars } from '../home/categories-section'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Header: FC = () => {
+  const { data: session, status } = useSession()
+  // console.log(session, status)
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
+
   const router = useRouter()
 
   const [menuOpen, setMenuOpen] = useState(false)
@@ -25,13 +29,15 @@ const Header: FC = () => {
   }
 
   const categories = data?.categories?.data
+  const isHeaderWhite =
+    router.pathname !== '/' && router.pathname !== '/sign-in' && router.pathname !== '/sign-up'
 
   return (
     <header>
       <div
         id='header-sticky'
         className={`header__area header__transparent header__padding ${
-          router.pathname !== '/' && 'header__white'
+          isHeaderWhite && 'header__white'
         }`}
       >
         <div className='container-fluid'>
@@ -107,9 +113,18 @@ const Header: FC = () => {
                   </div>
                 </div>
                 <div className='header__btn ml-20 mb-1 d-none d-sm-block'>
-                  <Link href='/contact' className='e-btn'>
+                  {/* <Link href='/sign-in' className='e-btn'>
                     Sign In
-                  </Link>
+                  </Link> */}
+                  {status !== 'authenticated' ? (
+                    <button className='e-btn' onClick={() => signIn('google')}>
+                      Sign In
+                    </button>
+                  ) : (
+                    <button className='e-btn' onClick={() => signOut()}>
+                      Sign Out
+                    </button>
+                  )}
                 </div>
                 <div className='sidebar__menu d-xl-none'>
                   <div
