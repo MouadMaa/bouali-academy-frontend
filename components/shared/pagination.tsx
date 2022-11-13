@@ -9,7 +9,9 @@ interface PaginationProps {
 
 const Pagination: FC<PaginationProps> = (props) => {
   const { pagination, handlePageClicked, handleNavigationClicked } = props
-  const { page, pageCount } = pagination
+  const { page, pageCount, total } = pagination
+
+  if (!total) return null
 
   return (
     <section className='row'>

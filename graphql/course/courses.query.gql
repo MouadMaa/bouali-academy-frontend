@@ -1,5 +1,5 @@
-query Courses($pagination: PaginationArg) {
-  courses(pagination: $pagination) {
+query Courses($pagination: PaginationArg, $filters: CourseFiltersInput) {
+  courses(pagination: $pagination, filters: $filters) {
     ...Courses
   }
 }

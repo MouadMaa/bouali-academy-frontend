@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import { GetStaticProps, NextPage } from 'next'
+import { useRouter } from 'next/router'
 import Breadcrumb from '../components/layout/breadcrumb'
 import {
   CategoriesDocument,
@@ -11,11 +12,12 @@ import {
 import CourseCard from '../components/course/course-card'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
 import Pagination from '../components/shared/pagination'
-import { useRouter } from 'next/router'
+import CourseTab from '../components/course/course-tab'
+import Loader from '../components/shared/loader'
 
 const Courses: NextPage = () => {
-  const { data: initialData } = useCoursesQuery({ variables: CoursesVars })
-  const [getCourses, { data: newData }] = useCoursesLazyQuery()
+  const { data: initialData } = useCoursesQuery({ variables: QueryCoursesVars })
+  const [getCourses, { data: newData, loading }] = useCoursesLazyQuery()
 
   const router = useRouter()
   const [courses, setCourses] = useState(initialData?.courses?.data)
@@ -26,7 +28,30 @@ const Courses: NextPage = () => {
       setCourses(newData.courses.data)
       setPagination(newData.courses.meta.pagination)
     }
-  }, [newData, pagination])
+  }, [newData])
+
+  const filterCoursesByCategory = (categoryId: string) => {
+    if (categoryId === 'all') {
+      setCourses(initialData?.courses?.data)
+      setPagination(initialData?.courses?.meta.pagination)
+    } else {
+      const newCourses = initialData?.courses?.data?.filter(
+        (course) => course.attributes?.category?.data?.id === categoryId,
+      )
+      setCourses(newCourses)
+      const variables = {
+        ...QueryCoursesVars,
+        filters: {
+          category: {
+            id: {
+              eq: categoryId,
+            },
+          },
+        },
+      }
+      getCourses({ variables })
+    }
+  }
 
   const handlePageClicked = (page: number) => {
     if (page !== pagination?.page) {
@@ -62,11 +87,21 @@ const Courses: NextPage = () => {
       <Breadcrumb title='Courses' />
       <section className='course__area pt-120 pb-120'>
         <div className='container'>
+          <CourseTab
+            pagination={pagination as any}
+            filterCoursesByCategory={filterCoursesByCategory}
+          />
           <section className='row'>
             {courses?.map((course) => (
               <CourseCard key={course.id} course={course.attributes as any} />
             ))}
+            <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>{loading && <Loader />}</div>
           </section>
+          {courses?.length === 0 && (
+            <div className='text-center mt-40 mb-40'>
+              <h4>There is no course yet with this category 😥</h4>
+            </div>
+          )}
           <Pagination
             pagination={pagination as any}
             handlePageClicked={handlePageClicked}
@@ -80,10 +115,15 @@ const Courses: NextPage = () => {
 
 export default Courses
 
-export const CoursesVars: QueryCoursesArgs = {
+export const QueryCoursesVars: QueryCoursesArgs = {
   pagination: {
     page: 1,
     pageSize: 9,
+  },
+  filters: {
+    category: {
+      id: {},
+    },
   },
 }
 
@@ -96,7 +136,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   await apolloClient.query({
     query: CoursesDocument,
-    variables: CoursesVars,
+    variables: QueryCoursesVars,
   })
 
   return addApolloState(apolloClient, {
