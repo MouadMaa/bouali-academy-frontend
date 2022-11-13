@@ -44,4 +44,12 @@ fragment Courses on CourseEntityResponseCollection {
       }
     }
   }
+  meta {
+    pagination {
+      total
+      page
+      pageSize
+      pageCount
+    }
+  }
 }

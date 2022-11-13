@@ -117,8 +117,12 @@ const Header: FC = () => {
                     Sign In
                   </Link> */}
                   {status !== 'authenticated' ? (
-                    <button className='e-btn' onClick={() => signIn('google')}>
-                      Sign In
+                    <button
+                      className='e-btn'
+                      style={{ textTransform: 'capitalize' }}
+                      onClick={() => signIn('google')}
+                    >
+                      <i className='fab fa-google mr-10'></i>Sign In With Google
                     </button>
                   ) : (
                     <button className='e-btn' onClick={() => signOut()}>
