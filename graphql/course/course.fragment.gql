@@ -7,6 +7,7 @@ fragment Course on CourseEntityResponse {
       price
       instructor
       slug
+      updatedAt
       cover {
         ...File
       }
@@ -32,6 +33,7 @@ fragment Courses on CourseEntityResponseCollection {
       price
       instructor
       slug
+      updatedAt
       cover {
         ...File
       }
