@@ -3,12 +3,11 @@ import { Pagination } from '../../graphql/generated/schema'
 
 interface PaginationProps {
   pagination: Pagination
-  handlePageClicked: (page: number) => void
-  handleNavigationClicked: (navigation: string) => void
+  handlePaginationClicked: (navigation: string) => void
 }
 
 const Pagination: FC<PaginationProps> = (props) => {
-  const { pagination, handlePageClicked, handleNavigationClicked } = props
+  const { pagination, handlePaginationClicked } = props
   const { page, pageCount, total } = pagination
 
   if (!total) return null
@@ -19,7 +18,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         <div className='basic-pagination wow fadeInUp mt-30' data-wow-delay='.2s'>
           <ul className='d-flex align-items-center'>
             <li className='prev'>
-              <a className='link-btn link-prev' onClick={() => handleNavigationClicked('prev')}>
+              <a className='link-btn link-prev' onClick={() => handlePaginationClicked('prev')}>
                 Prev
                 <i className='fas fa-arrow-left'></i>
                 <i className='fas fa-arrow-left'></i>
@@ -27,13 +26,16 @@ const Pagination: FC<PaginationProps> = (props) => {
             </li>
             {Array.from({ length: pageCount }).map((_, index) => (
               <li key={index} className={`${page === index + 1 ? 'active' : ''}`}>
-                <a className='link-btn-page' onClick={() => handlePageClicked(index + 1)}>
+                <a
+                  className='link-btn-page'
+                  onClick={() => handlePaginationClicked((index + 1).toString())}
+                >
                   <span>{index + 1}</span>
                 </a>
               </li>
             ))}
             <li className='next'>
-              <a className='link-btn link-next' onClick={() => handleNavigationClicked('next')}>
+              <a className='link-btn link-next' onClick={() => handlePaginationClicked('next')}>
                 Next
                 <i className='fas fa-arrow-right'></i>
                 <i className='fas fa-arrow-right'></i>

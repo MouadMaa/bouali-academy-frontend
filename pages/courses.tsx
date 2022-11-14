@@ -17,11 +17,12 @@ import Loader from '../components/shared/loader'
 
 const Courses: NextPage = () => {
   const { data: initialData } = useCoursesQuery({ variables: QueryCoursesVars })
-  const [getCourses, { data: newData, loading }] = useCoursesLazyQuery()
+  const [getCourses, { data: newData, loading: loadingNewData }] = useCoursesLazyQuery()
 
   const router = useRouter()
   const [courses, setCourses] = useState(initialData?.courses?.data)
   const [pagination, setPagination] = useState(initialData?.courses?.meta.pagination)
+  const [selectedCategoryId, setSelectedCategory] = useState('all')
 
   useEffect(() => {
     if (newData?.courses?.data) {
@@ -31,6 +32,7 @@ const Courses: NextPage = () => {
   }, [newData])
 
   const filterCoursesByCategory = (categoryId: string) => {
+    setSelectedCategory(categoryId)
     if (categoryId === 'all') {
       setCourses(initialData?.courses?.data)
       setPagination(initialData?.courses?.meta.pagination)
@@ -39,47 +41,42 @@ const Courses: NextPage = () => {
         (course) => course.attributes?.category?.data?.id === categoryId,
       )
       setCourses(newCourses)
+
       const variables = {
         ...QueryCoursesVars,
-        filters: {
-          category: {
-            id: {
-              eq: categoryId,
-            },
-          },
-        },
+        filters: { category: { id: { eq: categoryId } } },
       }
       getCourses({ variables })
     }
   }
 
-  const handlePageClicked = (page: number) => {
-    if (page !== pagination?.page) {
-      getCourses({ variables: { pagination: { pageSize: pagination?.pageSize, page } } })
-      router.push({ pathname: '/courses' })
-    }
-  }
-
-  const handleNavigationClicked = (navigation: string) => {
+  const handlePaginationClicked = (navigation: string) => {
     if (navigation === 'next') {
       if ((pagination?.page as number) < (pagination?.pageCount as number)) {
-        getCourses({
-          variables: {
-            pagination: { pageSize: pagination?.pageSize, page: (pagination?.page as number) + 1 },
-          },
-        })
-        router.push({ pathname: '/courses' })
+        const variables = {
+          pagination: { pageSize: pagination?.pageSize, page: (pagination?.page as number) + 1 },
+        }
+        getCourses({ variables })
       }
     } else if (navigation === 'prev') {
       if ((pagination?.page as number) > 1) {
-        getCourses({
-          variables: {
-            pagination: { pageSize: pagination?.pageSize, page: (pagination?.page as number) - 1 },
-          },
-        })
-        router.push({ pathname: '/courses' })
+        const variables = {
+          pagination: { pageSize: pagination?.pageSize, page: (pagination?.page as number) - 1 },
+        }
+        getCourses({ variables })
+      }
+    } else {
+      const page = parseInt(navigation)
+      if (page !== pagination?.page) {
+        console.log('page', page)
+        const variables: QueryCoursesArgs = { pagination: { pageSize: pagination?.pageSize, page } }
+        if (selectedCategoryId !== 'all') {
+          variables.filters = { category: { id: { eq: selectedCategoryId } } }
+        }
+        getCourses({ variables })
       }
     }
+    router.push({ pathname: '/courses' })
   }
 
   return (
@@ -95,7 +92,9 @@ const Courses: NextPage = () => {
             {courses?.map((course) => (
               <CourseCard key={course.id} course={course.attributes as any} />
             ))}
-            <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>{loading && <Loader />}</div>
+            <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
+              {loadingNewData && <Loader />}
+            </div>
           </section>
           {courses?.length === 0 && (
             <div className='text-center mt-40 mb-40'>
@@ -104,8 +103,7 @@ const Courses: NextPage = () => {
           )}
           <Pagination
             pagination={pagination as any}
-            handlePageClicked={handlePageClicked}
-            handleNavigationClicked={handleNavigationClicked}
+            handlePaginationClicked={handlePaginationClicked}
           />
         </div>
       </section>
@@ -119,11 +117,6 @@ export const QueryCoursesVars: QueryCoursesArgs = {
   pagination: {
     page: 1,
     pageSize: 9,
-  },
-  filters: {
-    category: {
-      id: {},
-    },
   },
 }
 
