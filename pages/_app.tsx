@@ -8,6 +8,7 @@ import { useApollo } from '../lib/apolloClient'
 
 import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
+import 'react-responsive-modal/styles.css'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps)

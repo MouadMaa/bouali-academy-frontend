@@ -23,7 +23,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             />
           </Link>
           <div className='course__tag'>
-            <Link href={`/courses/${course.category?.data?.attributes?.slug}`} className='blue'>
+            <Link href={`/categories/${course.category?.data?.attributes?.slug}`} className='blue'>
               {course.category?.data?.attributes?.title}
             </Link>
           </div>

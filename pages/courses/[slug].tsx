@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import CourseSidebar from '../../components/course/course-sidebar'
 import {
   CoursesBySlugDocument,
   CoursesDocument,
@@ -134,6 +135,7 @@ const Course: NextPage = () => {
                   alt='img not found'
                   width={750}
                   height={450}
+                  priority
                 />
               </div>
               <div className='course__tab-content mb-95'>
@@ -165,7 +167,7 @@ const Course: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className='col-xxl-4 col-xl-4 col-lg-4'>{/* <CourseSidebar /> */}</div>
+          <CourseSidebar course={course?.attributes as any} />
         </div>
       </div>
     </section>
