@@ -14,7 +14,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
     <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
       <div className='course__item white-bg mb-30 fix'>
         <div className='course__thumb w-img p-relative fix'>
-          <Link href='/courses'>
+          <Link href={`/courses/${course.slug}`}>
             <Image
               src={course.cover?.data?.attributes?.url as string}
               alt={course.cover?.data?.attributes?.name as string}
@@ -23,7 +23,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             />
           </Link>
           <div className='course__tag'>
-            <Link href='/courses' className='blue'>
+            <Link href={`/courses/${course.category?.data?.attributes?.slug}`} className='blue'>
               {course.category?.data?.attributes?.title}
             </Link>
           </div>
@@ -43,7 +43,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             </div>
           </div>
           <h3 className='course__title'>
-            <Link href='/courses'>{course.name}</Link>
+            <Link href={`/courses/${course.slug}`}>{course.name}</Link>
           </h3>
           <div className='course__teacher d-flex align-items-center'>
             <div className='course__teacher-thumb mr-15'>
@@ -55,7 +55,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
               />
             </div>
             <h6>
-              <Link href='/'>{course.instructor}</Link>
+              <Link href='/about'>{course.instructor}</Link>
             </h6>
           </div>
         </div>
@@ -67,7 +67,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
             </span>
           </div>
           <div className='course__btn'>
-            <Link href='/courses' className='link-btn'>
+            <Link href={`/courses/${course.slug}`} className='link-btn'>
               Know Details
               <i className='fas fa-arrow-right'></i>
               <i className='fas fa-arrow-right'></i>

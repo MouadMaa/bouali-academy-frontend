@@ -3,3 +3,9 @@ query Courses($pagination: PaginationArg, $filters: CourseFiltersInput) {
     ...Courses
   }
 }
+
+query CoursesBySlug($filters: CourseFiltersInput) {
+  courses(filters: $filters) {
+    ...Courses
+  }
+}

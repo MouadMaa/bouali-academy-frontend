@@ -4,6 +4,7 @@ fragment Category on CategoryEntityResponse {
     attributes {
       title
       description
+      slug
       icon {
         ...File
       }
@@ -17,6 +18,7 @@ fragment Categories on CategoryEntityResponseCollection {
     attributes {
       title
       description
+      slug
       icon {
         ...File
       }

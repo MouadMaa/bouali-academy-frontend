@@ -6,6 +6,7 @@ fragment Course on CourseEntityResponse {
       description
       price
       instructor
+      slug
       cover {
         ...File
       }
@@ -28,8 +29,9 @@ fragment Courses on CourseEntityResponseCollection {
     attributes {
       name
       description
-      instructor
       price
+      instructor
+      slug
       cover {
         ...File
       }

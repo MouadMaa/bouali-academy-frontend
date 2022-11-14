@@ -1,19 +1,19 @@
 import { Fragment, useEffect, useState } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import Breadcrumb from '../components/layout/breadcrumb'
+import Breadcrumb from '../../components/layout/breadcrumb'
 import {
   CategoriesDocument,
   CoursesDocument,
   QueryCoursesArgs,
   useCoursesLazyQuery,
   useCoursesQuery,
-} from '../graphql/generated/schema'
-import CourseCard from '../components/course/course-card'
-import { addApolloState, initializeApollo } from '../lib/apolloClient'
-import Pagination from '../components/shared/pagination'
-import CourseTab from '../components/course/course-tab'
-import Loader from '../components/shared/loader'
+} from '../../graphql/generated/schema'
+import CourseCard from '../../components/course/course-card'
+import { addApolloState, initializeApollo } from '../../lib/apolloClient'
+import Pagination from '../../components/shared/pagination'
+import CourseTab from '../../components/course/course-tab'
+import Loader from '../../components/shared/loader'
 
 const Courses: NextPage = () => {
   const { data: initialData } = useCoursesQuery({ variables: QueryCoursesVars })
