@@ -90,7 +90,9 @@ const Courses: NextPage = () => {
           />
           <section className='row'>
             {courses?.map((course) => (
-              <CourseCard key={course.id} course={course.attributes as any} />
+              <div key={course.id} className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
+                <CourseCard course={course.attributes as any} />
+              </div>
             ))}
             <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
               {loadingNewData && <Loader />}

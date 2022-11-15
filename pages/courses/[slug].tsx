@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import CourseSidebar from '../../components/course/course-sidebar'
+import CourseSlider from '../../components/course/course-slider'
 import {
   CoursesBySlugDocument,
   CoursesDocument,
@@ -162,7 +163,9 @@ const Course: NextPage = () => {
                   </div>
                 </div>
                 <div className='row'>
-                  <div className='col-xxl-12'>{/* <CourseSliderWithNoSSR /> */}</div>
+                  <div className='col-xxl-12'>
+                    <CourseSlider course={course?.attributes as any} />
+                  </div>
                 </div>
               </div>
             </div>
