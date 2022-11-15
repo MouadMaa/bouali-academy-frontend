@@ -46,7 +46,7 @@ const CourseSlider: FC<CourseSliderProps> = (props) => {
             <SwiperSlide key={course.id}>
               <CourseCard
                 course={course.attributes as any}
-                classNames='course__item-3 swiper-slide mb-80'
+                className='course__item-3 swiper-slide mb-80'
               />
             </SwiperSlide>
           ))}

@@ -24,8 +24,13 @@ const Header: FC = () => {
 
   const sticky = () => {
     const header = document.querySelector<HTMLHeadElement>('.header__area')
-    const scrollTop = window.scrollY
-    scrollTop >= 1 ? header?.classList.add('sticky') : header?.classList.remove('sticky')
+    if (router.pathname === '/courses/[slug]') {
+      console.log(router)
+      header?.classList.add('sticky')
+    } else {
+      const scrollTop = window.scrollY
+      scrollTop >= 1 ? header?.classList.add('sticky') : header?.classList.remove('sticky')
+    }
   }
 
   const categories = data?.categories?.data
@@ -38,7 +43,7 @@ const Header: FC = () => {
         id='header-sticky'
         className={`header__area header__transparent header__padding ${
           isHeaderWhite && 'header__white'
-        }`}
+        } ${router.pathname === '/courses/[slug]' && 'sticky'}`}
       >
         <div className='container-fluid'>
           <div className='row align-items-center'>

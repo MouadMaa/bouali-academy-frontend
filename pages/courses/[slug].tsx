@@ -33,7 +33,7 @@ const Course: NextPage = () => {
   const dateUpdate = `${dateString[1]} ${dateString[2]}, ${dateString[3]}`
 
   return (
-    <section className='page__title-area pt-120 pb-90'>
+    <section className='page__title-area pt-120 pb-90 mt-50'>
       <div className='page__title-shape'>
         <img
           className='page-title-shape-5 d-none d-sm-block'

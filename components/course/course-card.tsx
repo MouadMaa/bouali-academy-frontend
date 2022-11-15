@@ -5,14 +5,14 @@ import { Course } from '../../graphql/generated/schema'
 
 interface CourseCardProps {
   course: Course
-  classNames?: string
+  className?: string
 }
 
 const CourseCard: FC<CourseCardProps> = (props) => {
-  const { course, classNames = '' } = props
+  const { course, className = '' } = props
 
   return (
-    <section className={`course__item white-bg mb-30 fix ${classNames}`}>
+    <section className={`course__item white-bg mb-30 fix ${className}`}>
       <div className='course__thumb w-img p-relative fix'>
         <Link href={`/courses/${course.slug}`}>
           <Image
