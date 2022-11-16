@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
 import { SessionProvider } from 'next-auth/react'
 import { ToastContainer } from 'react-toastify'
-import Layout from '../components/layout/layout'
+import Layout from '../layouts/layout'
 import { useApollo } from '../lib/apolloClient'
 
 import '../styles/globals.scss'

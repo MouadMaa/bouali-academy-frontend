@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { Fragment } from 'react'
 import ContactSection from '../components/home/contact-section'
-import Breadcrumb from '../components/layout/breadcrumb'
+import Breadcrumb from '../layouts/breadcrumb'
 
 const Contact: NextPage = () => {
   return (

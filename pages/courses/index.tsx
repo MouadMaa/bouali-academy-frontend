@@ -1,7 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import Breadcrumb from '../../components/layout/breadcrumb'
+import Breadcrumb from '../../layouts/breadcrumb'
 import {
   CategoriesDocument,
   CoursesDocument,

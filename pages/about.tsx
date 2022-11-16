@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
 import AboutSection from '../components/home/about-section'
 import TestimonialSection from '../components/home/testimonial-section'
-import Breadcrumb from '../components/layout/breadcrumb'
+import Breadcrumb from '../layouts/breadcrumb'
 import { TestimonialsDocument } from '../graphql/generated/schema'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
 

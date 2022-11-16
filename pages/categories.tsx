@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
 import CategoryCard from '../components/category/category-card'
-import Breadcrumb from '../components/layout/breadcrumb'
+import Breadcrumb from '../layouts/breadcrumb'
 import { CategoriesDocument, useCategoriesQuery } from '../graphql/generated/schema'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
 

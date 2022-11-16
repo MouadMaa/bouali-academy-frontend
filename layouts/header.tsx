@@ -1,8 +1,8 @@
 import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useCategoriesQuery } from '../../graphql/generated/schema'
-import { QueryCategoriesVars } from '../home/categories-section'
+import { useCategoriesQuery } from '../graphql/generated/schema'
+import { QueryCategoriesVars } from '../components/home/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Header: FC = () => {

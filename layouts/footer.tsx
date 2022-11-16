@@ -2,8 +2,8 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useCategoriesQuery } from '../../graphql/generated/schema'
-import { QueryCategoriesVars } from '../home/categories-section'
+import { useCategoriesQuery } from '../graphql/generated/schema'
+import { QueryCategoriesVars } from '../components/home/categories-section'
 
 type FormInputs = {
   email: string
