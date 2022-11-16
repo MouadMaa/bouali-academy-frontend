@@ -36,6 +36,41 @@ const Header: FC = () => {
   const isHeaderWhite =
     router.pathname !== '/' && router.pathname !== '/sign-in' && router.pathname !== '/sign-up'
 
+  const Profile = (
+    <div className='header__category'>
+      <ul>
+        <li>
+          <button className='e-btn'>
+            <svg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M7 8a5 5 0 1 1 10 0A5 5 0 0 1 7 8Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6.343 16.343A8 8 0 0 0 4 22h2a6 6 0 1 1 12 0h2a8 8 0 0 0-13.657-5.657Z'
+                fill='#fff'
+              />
+            </svg>
+            <span>Profile</span>
+          </button>
+          <ul className='cat-submenu'>
+            <li>
+              <a
+                onClick={() => {
+                  console.log('My Account')
+                }}
+              >
+                My Account
+              </a>
+            </li>
+            <li>
+              <Link href='my-courses'>My Courses</Link>
+            </li>
+            <li>
+              <a onClick={() => signOut()}>Sign Out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  )
+
   return (
     <header>
       <div
@@ -114,9 +149,6 @@ const Header: FC = () => {
                   </div>
                 </div>
                 <div className='header__btn ml-20 mb-1 d-none d-sm-block'>
-                  {/* <Link href='/sign-in' className='e-btn'>
-                    Sign In
-                  </Link> */}
                   {status !== 'authenticated' ? (
                     <button
                       className='e-btn'
@@ -126,9 +158,7 @@ const Header: FC = () => {
                       <i className='fab fa-google mr-10'></i>Sign In With Google
                     </button>
                   ) : (
-                    <button className='e-btn' onClick={() => signOut()}>
-                      Sign Out
-                    </button>
+                    Profile
                   )}
                 </div>
                 <div className='sidebar__menu d-xl-none'>
@@ -187,6 +217,8 @@ const Header: FC = () => {
                 </li>
               </ul>
             </div>
+
+            <div className='header__btn mt-40'>{Profile}</div>
 
             <div className='header__search p-relative ml-80 mb-55 pb-1'>
               <div className='header__cart'>

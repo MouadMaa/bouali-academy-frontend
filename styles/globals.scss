@@ -114,3 +114,44 @@ span.page__title-pre {
     font-size: large;
   }
 }
+
+.header__btn .header__category {
+  padding: 0;
+  margin: 0;
+
+  &::after {
+    width: 0;
+  }
+
+  button {
+    padding: 0 15px;
+
+    svg {
+      margin-bottom: 4px;
+    }
+    span {
+      margin-left: 10px;
+      text-transform: capitalize;
+      margin-top: 2px;
+    }
+  }
+
+  .cat-submenu {
+    min-width: 140px;
+    width: 100%;
+    padding: 15px;
+
+    li a {
+      padding: 0 10px;
+      cursor: pointer;
+      clear: both;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
+
+.sidebar__content .header__cart {
+  top: -30px;
+}
