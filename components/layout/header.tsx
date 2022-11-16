@@ -25,7 +25,6 @@ const Header: FC = () => {
   const sticky = () => {
     const header = document.querySelector<HTMLHeadElement>('.header__area')
     if (router.pathname === '/courses/[slug]') {
-      console.log(router)
       header?.classList.add('sticky')
     } else {
       const scrollTop = window.scrollY
