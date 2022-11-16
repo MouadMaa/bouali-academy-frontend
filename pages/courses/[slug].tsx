@@ -72,7 +72,9 @@ const Course: NextPage = () => {
                     </ol>
                   </nav>
                 </div>
-                <span className='page__title-pre'>{`${course?.attributes?.category?.data?.attributes?.title}`}</span>
+                <Link href={`/courses?categoryId=${course?.attributes?.category?.data?.id}`}>
+                  <span className='page__title-pre'>{`${course?.attributes?.category?.data?.attributes?.title}`}</span>
+                </Link>
                 <h5 className='page__title-3'>{`${course?.attributes?.name}`}</h5>
               </div>
               <div className='course__meta-2 d-sm-flex mb-30'>

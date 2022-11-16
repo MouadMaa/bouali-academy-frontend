@@ -3,11 +3,12 @@ import { Pagination, useCategoriesQuery } from '../../graphql/generated/schema'
 
 interface CourseTabProps {
   pagination: Pagination
+  selectedCategoryId: string
   filterCoursesByCategory: (categoryId: string) => void
 }
 
 const CourseTab: FC<CourseTabProps> = (props) => {
-  const { pagination, filterCoursesByCategory } = props
+  const { pagination, selectedCategoryId, filterCoursesByCategory } = props
   const { pageSize, total } = pagination
 
   const { data } = useCategoriesQuery()
@@ -27,9 +28,17 @@ const CourseTab: FC<CourseTabProps> = (props) => {
           </div>
         </div>
         <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6'>
-          <div className='course__sort d-flex justify-content-sm-end'>
+          <div className='course__sort d-flex justify-content-sm-end align-items-center'>
+            {selectedCategoryId !== 'all' && (
+              <div className='course_show_all'>
+                <button onClick={() => filterCoursesByCategory('all')}>Show all courses</button>
+              </div>
+            )}
             <div className='course__sort-inner'>
-              <select onChange={(e) => filterCoursesByCategory(e.target.value)}>
+              <select
+                value={selectedCategoryId}
+                onChange={(e) => filterCoursesByCategory(e.target.value)}
+              >
                 <option value={'all'}>All Categories</option>
                 {categories?.map((category) => (
                   <option key={category.id} value={category.id as string}>

@@ -1,17 +1,21 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { Category } from '../../graphql/generated/schema'
 
 interface CategoryCardProps {
   index: number
+  categoryId: string
   category: Category
 }
 
 const CategoryCard: FC<CategoryCardProps> = (props) => {
-  const { index, category } = props
+  const { index, categoryId, category } = props
+
+  const router = useRouter()
 
   const handleClick = () => {
-    console.log('Category card clicked', category)
+    router.push(`courses?categoryId=${categoryId}`)
   }
 
   return (
@@ -34,7 +38,7 @@ const CategoryCard: FC<CategoryCardProps> = (props) => {
           <h4 className='category__title'>
             <a>{category.title}</a>
           </h4>
-          {/* <p>{category.description?.substring(0, 20) + `...`}</p> */}
+          <p>{category.description?.substring(0, 20) + `...`}</p>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ const CategoriesSection: FC = () => {
           </div>
           <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-4'>
             <div className='category__more mb-50 float-md-end fix'>
-              <Link href='/courses' className='link-btn'>
+              <Link href='/categories' className='link-btn'>
                 View all Category
                 <i className='fas fa-arrow-right'></i>
                 <i className='fas fa-arrow-right'></i>
@@ -37,7 +37,12 @@ const CategoriesSection: FC = () => {
         </div>
         <div className='row'>
           {categories?.map(({ id, attributes }, index) => (
-            <CategoryCard key={id} index={index} category={attributes as Category} />
+            <CategoryCard
+              key={id}
+              index={index}
+              categoryId={id as string}
+              category={attributes as Category}
+            />
           ))}
         </div>
       </div>

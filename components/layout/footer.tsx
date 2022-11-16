@@ -82,7 +82,9 @@ const Footer: FC = () => {
                       <ul>
                         {categories?.map((category) => (
                           <li key={category.id}>
-                            <Link href='/courses'>{category.attributes?.title}</Link>
+                            <Link href={`courses/?categoryId=${category.id}`}>
+                              {category.attributes?.title}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -103,9 +105,6 @@ const Footer: FC = () => {
                         </li>
                         <li>
                           <Link href='/courses'>Courses</Link>
-                        </li>
-                        <li>
-                          <Link href='/blogs'>Blogs</Link>
                         </li>
                         <li>
                           <Link href='/contact'>Contact</Link>

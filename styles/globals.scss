@@ -91,7 +91,6 @@ header .header__area.sticky .header__cart-icon svg {
 a.link-btn,
 a.link-btn-page {
   cursor: pointer;
-  color: #fff;
 }
 
 a.play-btn {
@@ -104,4 +103,14 @@ span.page__title-pre {
 
 .course__img img {
   border-radius: 6px;
+}
+
+.course_show_all {
+  margin-right: 30px;
+
+  button {
+    color: #2b4eff;
+    font-weight: 400;
+    font-size: large;
+  }
 }

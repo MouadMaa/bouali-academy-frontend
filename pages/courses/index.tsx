@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Breadcrumb from '../../components/layout/breadcrumb'
@@ -31,24 +31,34 @@ const Courses: NextPage = () => {
     }
   }, [newData])
 
-  const filterCoursesByCategory = (categoryId: string) => {
-    setSelectedCategory(categoryId)
-    if (categoryId === 'all') {
-      setCourses(initialData?.courses?.data)
-      setPagination(initialData?.courses?.meta.pagination)
-    } else {
-      const newCourses = initialData?.courses?.data?.filter(
-        (course) => course.attributes?.category?.data?.id === categoryId,
-      )
-      setCourses(newCourses)
+  const filterCoursesByCategory = useCallback(
+    (categoryId: string) => {
+      setSelectedCategory(categoryId)
+      if (categoryId === 'all') {
+        setCourses(initialData?.courses?.data)
+        setPagination(initialData?.courses?.meta.pagination)
+      } else {
+        const newCourses = initialData?.courses?.data?.filter(
+          (course) => course.attributes?.category?.data?.id === categoryId,
+        )
+        setCourses(newCourses)
 
-      const variables = {
-        ...QueryCoursesVars,
-        filters: { category: { id: { eq: categoryId } } },
+        const variables = {
+          ...QueryCoursesVars,
+          filters: { category: { id: { eq: categoryId } } },
+        }
+        getCourses({ variables })
       }
-      getCourses({ variables })
+    },
+    [getCourses, initialData],
+  )
+
+  useEffect(() => {
+    const categoryId = router.query.categoryId
+    if (categoryId) {
+      filterCoursesByCategory(categoryId as string)
     }
-  }
+  }, [filterCoursesByCategory, router])
 
   const handlePaginationClicked = (navigation: string) => {
     if (navigation === 'next') {
@@ -86,6 +96,7 @@ const Courses: NextPage = () => {
         <div className='container'>
           <CourseTab
             pagination={pagination as any}
+            selectedCategoryId={selectedCategoryId}
             filterCoursesByCategory={filterCoursesByCategory}
           />
           <section className='row'>
@@ -101,6 +112,11 @@ const Courses: NextPage = () => {
           {courses?.length === 0 && (
             <div className='text-center mt-40 mb-40'>
               <h4>There is no course yet with this category 😥</h4>
+              <div className='mt-30'>
+                <button className='e-btn' onClick={() => filterCoursesByCategory('all')}>
+                  Show all courses
+                </button>
+              </div>
             </div>
           )}
           <Pagination

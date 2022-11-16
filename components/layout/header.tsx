@@ -57,16 +57,16 @@ const Header: FC = () => {
                   <nav>
                     <ul>
                       <li>
-                        <Link href='/courses' className='cat-menu d-flex align-items-center'>
+                        <Link href='/categories' className='cat-menu d-flex align-items-center'>
                           <div className='cat-dot-icon d-inline-block'>
                             <CategorySvg />
                           </div>
-                          <span>Category</span>
+                          <span>Categories</span>
                         </Link>
                         <ul className='cat-submenu'>
                           {categories?.map(({ id, attributes }) => (
                             <li key={id}>
-                              <Link href='/courses'>{attributes?.title}</Link>
+                              <Link href={`courses/?categoryId=${id}`}>{attributes?.title}</Link>
                             </li>
                           ))}
                         </ul>
@@ -86,9 +86,6 @@ const Header: FC = () => {
                       </li>
                       <li>
                         <Link href='/courses'>Courses</Link>
-                      </li>
-                      <li>
-                        <Link href='/blogs'>Blogs</Link>
                       </li>
                       <li>
                         <Link href='/contact'>Contact</Link>
@@ -181,9 +178,6 @@ const Header: FC = () => {
                 </li>
                 <li>
                   <Link href='/courses'>Courses</Link>
-                </li>
-                <li>
-                  <Link href='/blogs'>Blogs</Link>
                 </li>
                 <li>
                   <Link href='/contact'>Contact</Link>
