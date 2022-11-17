@@ -10,7 +10,7 @@ const Layout: FC<PropsWithChildren> = (props) => {
   return (
     <Fragment>
       <HtmlHead />
-      <TopProgressBar />
+      <ProgressBar />
       <Header />
       <main>{children}</main>
       <Footer />
@@ -29,9 +29,9 @@ const HtmlHead = () => (
   </Head>
 )
 
-const TopProgressBar = dynamic(
+const ProgressBar = dynamic(
   () => {
-    return import('./top-progress-bar')
+    return import('./progress-bar')
   },
   { ssr: false },
 )
