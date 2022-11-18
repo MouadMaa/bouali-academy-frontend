@@ -6,8 +6,7 @@ import { QueryCategoriesVars } from '../components/home/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Header: FC = () => {
-  const { data: session, status } = useSession()
-  // console.log(session, status)
+  const { status } = useSession()
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
 
   const router = useRouter()
@@ -60,7 +59,7 @@ const Header: FC = () => {
               </a>
             </li>
             <li>
-              <Link href='my-courses'>My Courses</Link>
+              <Link href='/my-learning'>My Learning</Link>
             </li>
             <li>
               <a onClick={() => signOut()}>Sign Out</a>
@@ -119,6 +118,11 @@ const Header: FC = () => {
                       <li>
                         <Link href='/'>Home</Link>
                       </li>
+                      {status === 'authenticated' && (
+                        <li>
+                          <Link href='/my-learning'>My Learning</Link>
+                        </li>
+                      )}
                       <li>
                         <Link href='/courses'>Courses</Link>
                       </li>

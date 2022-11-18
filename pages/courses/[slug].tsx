@@ -172,7 +172,7 @@ const Course: NextPage = () => {
               </div>
             </div>
           </div>
-          <CourseSidebar course={course?.attributes as any} />
+          <CourseSidebar courseId={course?.id as any} course={course?.attributes as any} />
         </div>
       </div>
     </section>

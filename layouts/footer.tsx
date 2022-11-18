@@ -4,21 +4,21 @@ import { useRouter } from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useCategoriesQuery } from '../graphql/generated/schema'
 import { QueryCategoriesVars } from '../components/home/categories-section'
+import { useSession } from 'next-auth/react'
 
 type FormInputs = {
   email: string
 }
 
 const Footer: FC = () => {
+  const { status } = useSession()
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
-  const { register, handleSubmit } = useForm()
+
   const router = useRouter()
+  const { register, handleSubmit } = useForm()
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
-    console.log(
-      '🚀 ~ file: footer.tsx ~ line 16 ~ constonSubmit:SubmitHandler<FormInputs>= ~ data',
-      data,
-    )
+    console.log(data)
     router.push('/')
   }
 
@@ -103,6 +103,11 @@ const Footer: FC = () => {
                         <li>
                           <Link href='/'>Home</Link>
                         </li>
+                        {status === 'authenticated' && (
+                          <li>
+                            <Link href='/my-learning'>My Learning</Link>
+                          </li>
+                        )}
                         <li>
                           <Link href='/courses'>Courses</Link>
                         </li>

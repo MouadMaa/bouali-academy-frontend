@@ -4,13 +4,15 @@ import Modal from 'react-responsive-modal'
 import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
 import Link from 'next/link'
 import Loader from '../shared/loader'
+import axios from 'axios'
 
 interface CourseSidebarProps {
+  courseId: string
   course: Course
 }
 
 const CourseSidebar: FC<CourseSidebarProps> = (props) => {
-  const { course } = props
+  const { courseId, course } = props
 
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
 
@@ -24,7 +26,12 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
     getRelatedCourses({ variables })
   }, [course, getRelatedCourses])
 
-  const handleEnrollClick = () => {}
+  const handleEnrollClick = async () => {
+    const res = await axios.post(`/api/payment`, { courseId })
+    if (res.data?.message === 'success') {
+      location.href = res.data.sessionUrl
+    }
+  }
 
   const relatedCourses = data?.courses?.data.filter((c) => c.attributes?.slug !== course.slug)
 
