@@ -1,7 +1,6 @@
-import { GetServerSideProps, NextPage } from 'next'
 import { Fragment } from 'react'
+import { GetServerSideProps, NextPage } from 'next'
 import Breadcrumb from '../layouts/breadcrumb'
-import { addApolloState, initializeApollo } from '../lib/apolloClient'
 
 const MyLearning: NextPage = () => {
   return (
@@ -15,16 +14,10 @@ const MyLearning: NextPage = () => {
 export default MyLearning
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const apolloClient = initializeApollo()
+  // const { data } = await axios.get('http://localhost:4000/api/orders')
+  // console.log(data)
 
-  const variables = {}
-
-  // await apolloClient.query({
-  //   query: CoursesDocument,
-  //   variables,
-  // })
-
-  return addApolloState(apolloClient, {
+  return {
     props: {},
-  })
+  }
 }

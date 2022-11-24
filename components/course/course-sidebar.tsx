@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import Modal from 'react-responsive-modal'
-import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
-import Link from 'next/link'
-import Loader from '../shared/loader'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
+import Loader from '../shared/loader'
 
 interface CourseSidebarProps {
   courseId: string
@@ -17,6 +18,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
 
   const [showModel, setShowModel] = useState(false)
+  const [loadingBuyCourse, setLoadingBuyCourse] = useState(false)
 
   useEffect(() => {
     const categoryId = course.category?.data?.id
@@ -26,11 +28,19 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
     getRelatedCourses({ variables })
   }, [course, getRelatedCourses])
 
-  const handleEnrollClick = async () => {
-    const res = await axios.post(`/api/payment`, { courseId })
-    if (res.data?.message === 'success') {
-      location.href = res.data.sessionUrl
+  const handleBuyCourse = async () => {
+    setLoadingBuyCourse(true)
+    try {
+      const { data } = await axios.post(`/api/payments`, { courseId })
+      if (data?.message === 'success' && Boolean(data?.paymentUrl)) {
+        location.href = data.paymentUrl
+      } else if (data?.message === 'success') {
+        // push to lessons page
+      }
+    } catch (error: any) {
+      toast.error(error.response.data.message)
     }
+    setLoadingBuyCourse(false)
   }
 
   const relatedCourses = data?.courses?.data.filter((c) => c.attributes?.slug !== course.slug)
@@ -146,8 +156,26 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
               </a>
             </div>
             <div className='course__enroll-btn'>
-              <button className='e-btn e-btn-7 w-100' onClick={handleEnrollClick}>
-                Enroll Now <i className='fas fa-arrow-right'></i>
+              <button
+                className='e-btn e-btn-7 w-100'
+                onClick={handleBuyCourse}
+                disabled={loadingBuyCourse}
+              >
+                {loadingBuyCourse ? (
+                  <span>Loading...</span>
+                ) : (
+                  <div>
+                    {course.price ? (
+                      <span>
+                        Buy now <i className='fas fa-arrow-right'></i>
+                      </span>
+                    ) : (
+                      <span>
+                        Go to course <i className='fas fa-arrow-right'></i>
+                      </span>
+                    )}
+                  </div>
+                )}
               </button>
             </div>
           </div>

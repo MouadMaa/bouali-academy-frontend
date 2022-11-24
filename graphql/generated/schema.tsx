@@ -156,6 +156,7 @@ export type Course = {
   instructor_image: UploadFileEntityResponse;
   lessons?: Maybe<Array<Maybe<ComponentCourseLecture>>>;
   name: Scalars['String'];
+  orders?: Maybe<OrderRelationResponseCollection>;
   price?: Maybe<Scalars['Float']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   slug: Scalars['String'];
@@ -166,6 +167,14 @@ export type Course = {
 export type CourseLessonsArgs = {
   filters?: InputMaybe<ComponentCourseLectureFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CourseOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -197,6 +206,7 @@ export type CourseFiltersInput = {
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CourseFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
+  orders?: InputMaybe<OrderFiltersInput>;
   price?: InputMaybe<FloatFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
@@ -211,6 +221,7 @@ export type CourseInput = {
   instructor_image?: InputMaybe<Scalars['ID']>;
   lessons?: InputMaybe<Array<InputMaybe<ComponentCourseLectureInput>>>;
   name?: InputMaybe<Scalars['String']>;
+  orders?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   price?: InputMaybe<Scalars['Float']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   slug?: InputMaybe<Scalars['String']>;
@@ -270,7 +281,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Category | ComponentCourseLecture | ComponentHomeTestimonial | Course | I18NLocale | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | ComponentCourseLecture | ComponentHomeTestimonial | Course | I18NLocale | Order | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -386,6 +397,7 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createCategory?: Maybe<CategoryEntityResponse>;
   createCourse?: Maybe<CourseEntityResponse>;
+  createOrder?: Maybe<OrderEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -394,6 +406,7 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
+  deleteOrder?: Maybe<OrderEntityResponse>;
   deleteTestimonial?: Maybe<TestimonialEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -415,6 +428,7 @@ export type Mutation = {
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateOrder?: Maybe<OrderEntityResponse>;
   updateTestimonial?: Maybe<TestimonialEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -440,6 +454,11 @@ export type MutationCreateCategoryArgs = {
 
 export type MutationCreateCourseArgs = {
   data: CourseInput;
+};
+
+
+export type MutationCreateOrderArgs = {
+  data: OrderInput;
 };
 
 
@@ -469,6 +488,11 @@ export type MutationDeleteCategoryArgs = {
 
 
 export type MutationDeleteCourseArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteOrderArgs = {
   id: Scalars['ID'];
 };
 
@@ -551,6 +575,12 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
+export type MutationUpdateOrderArgs = {
+  data: OrderInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateTestimonialArgs = {
   data: TestimonialInput;
 };
@@ -588,6 +618,58 @@ export type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
+export type Order = {
+  __typename?: 'Order';
+  course?: Maybe<CourseEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  price?: Maybe<Scalars['Float']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  users_permissions_user?: Maybe<UsersPermissionsUserEntityResponse>;
+};
+
+export type OrderEntity = {
+  __typename?: 'OrderEntity';
+  attributes?: Maybe<Order>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type OrderEntityResponse = {
+  __typename?: 'OrderEntityResponse';
+  data?: Maybe<OrderEntity>;
+};
+
+export type OrderEntityResponseCollection = {
+  __typename?: 'OrderEntityResponseCollection';
+  data: Array<OrderEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type OrderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  course?: InputMaybe<CourseFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<OrderFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  price?: InputMaybe<FloatFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  users_permissions_user?: InputMaybe<UsersPermissionsUserFiltersInput>;
+};
+
+export type OrderInput = {
+  course?: InputMaybe<Scalars['ID']>;
+  price?: InputMaybe<Scalars['Float']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  users_permissions_user?: InputMaybe<Scalars['ID']>;
+};
+
+export type OrderRelationResponseCollection = {
+  __typename?: 'OrderRelationResponseCollection';
+  data: Array<OrderEntity>;
+};
+
 export type Pagination = {
   __typename?: 'Pagination';
   page: Scalars['Int'];
@@ -617,6 +699,8 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  order?: Maybe<OrderEntityResponse>;
+  orders?: Maybe<OrderEntityResponseCollection>;
   testimonial?: Maybe<TestimonialEntityResponse>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
@@ -663,6 +747,19 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryOrderArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1094,10 +1191,19 @@ export type UsersPermissionsUser = {
   confirmed?: Maybe<Scalars['Boolean']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
+  orders?: Maybe<OrderRelationResponseCollection>;
   provider?: Maybe<Scalars['String']>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   username: Scalars['String'];
+};
+
+
+export type UsersPermissionsUserOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type UsersPermissionsUserEntity = {
@@ -1127,6 +1233,7 @@ export type UsersPermissionsUserFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<UsersPermissionsUserFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
+  orders?: InputMaybe<OrderFiltersInput>;
   password?: InputMaybe<StringFilterInput>;
   provider?: InputMaybe<StringFilterInput>;
   resetPasswordToken?: InputMaybe<StringFilterInput>;
@@ -1140,6 +1247,7 @@ export type UsersPermissionsUserInput = {
   confirmationToken?: InputMaybe<Scalars['String']>;
   confirmed?: InputMaybe<Scalars['Boolean']>;
   email?: InputMaybe<Scalars['String']>;
+  orders?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   password?: InputMaybe<Scalars['String']>;
   provider?: InputMaybe<Scalars['String']>;
   resetPasswordToken?: InputMaybe<Scalars['String']>;

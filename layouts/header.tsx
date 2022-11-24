@@ -6,8 +6,9 @@ import { QueryCategoriesVars } from '../components/home/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Header: FC = () => {
-  const { status } = useSession()
-  const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
+  const { status, data: session } = useSession()
+  // console.log('🚀 ~ file: header.tsx ~ line 10 ~ session', session)
+  const { data: categoriesData } = useCategoriesQuery({ variables: QueryCategoriesVars })
 
   const router = useRouter()
 
@@ -31,7 +32,7 @@ const Header: FC = () => {
     }
   }
 
-  const categories = data?.categories?.data
+  const categories = categoriesData?.categories?.data
   const isHeaderWhite =
     router.pathname !== '/' && router.pathname !== '/sign-in' && router.pathname !== '/sign-up'
 

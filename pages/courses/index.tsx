@@ -78,7 +78,6 @@ const Courses: NextPage = () => {
     } else {
       const page = parseInt(navigation)
       if (page !== pagination?.page) {
-        console.log('page', page)
         const variables: QueryCoursesArgs = { pagination: { pageSize: pagination?.pageSize, page } }
         if (selectedCategoryId !== 'all') {
           variables.filters = { category: { id: { eq: selectedCategoryId } } }
