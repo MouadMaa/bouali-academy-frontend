@@ -1,19 +1,21 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useState, useEffect, FC, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCategoriesQuery } from '../graphql/generated/schema'
 import { QueryCategoriesVars } from '../components/home/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Modal from 'react-responsive-modal'
+import Image from 'next/image'
 
 const Header: FC = () => {
   const { status, data: session } = useSession()
-  // console.log('🚀 ~ file: header.tsx ~ line 10 ~ session', session)
   const { data: categoriesData } = useCategoriesQuery({ variables: QueryCategoriesVars })
 
   const router = useRouter()
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [showModel, setShowModel] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', sticky)
@@ -21,6 +23,10 @@ const Header: FC = () => {
       window.removeEventListener('scroll', sticky)
     }
   })
+
+  useEffect(() => {
+    setSearchOpen(false)
+  }, [router])
 
   const sticky = () => {
     const header = document.querySelector<HTMLHeadElement>('.header__area')
@@ -51,13 +57,7 @@ const Header: FC = () => {
           </button>
           <ul className='cat-submenu'>
             <li>
-              <a
-                onClick={() => {
-                  console.log('My Account')
-                }}
-              >
-                My Account
-              </a>
+              <a onClick={() => setShowModel(true)}>My Account</a>
             </li>
             <li>
               <Link href='/my-learning'>My Learning</Link>
@@ -223,7 +223,7 @@ const Header: FC = () => {
               </ul>
             </div>
 
-            <div className='header__btn mt-40'>{Profile}</div>
+            <div className='header__btn mt-40'>{status === 'authenticated' && Profile}</div>
 
             <div className='header__search p-relative ml-80 mb-55 pb-1'>
               <div className='header__cart'>
@@ -275,22 +275,24 @@ const Header: FC = () => {
                   <div className='header__search-3-categories'>
                     <ul className='search-category'>
                       <li>
-                        <Link href='/course-grid'>All Courses</Link>
+                        <Link href='/'>Home</Link>
+                      </li>
+                      {status === 'authenticated' && (
+                        <li>
+                          <Link href='/my-learning'>My Learning</Link>
+                        </li>
+                      )}
+                      <li>
+                        <Link href='/courses'>Courses</Link>
                       </li>
                       <li>
-                        <Link href='/instructor'>Instructor</Link>
-                      </li>
-                      <li>
-                        <Link href='/event-details'>Event</Link>
-                      </li>
-                      <li>
-                        <Link href='/cart'>My Cart</Link>
-                      </li>
-                      <li>
-                        <Link href='/blog'>Blog</Link>
+                        <Link href='/categories'>Categories</Link>
                       </li>
                       <li>
                         <Link href='/contact'>Contact</Link>
+                      </li>
+                      <li>
+                        <Link href='/about'>About</Link>
                       </li>
                     </ul>
                   </div>
@@ -306,6 +308,41 @@ const Header: FC = () => {
           </div>
         </div>
       </div>
+
+      {showModel && (
+        <Modal
+          open={showModel}
+          onClose={() => setShowModel(false)}
+          styles={{
+            modal: {
+              width: '500px',
+              borderRadius: '10px',
+              padding: '20px',
+            },
+            overlay: {
+              background: 'rgba(0, 0, 0, 0.7)',
+            },
+          }}
+          center
+        >
+          <div className='my_account'>
+            {session?.user?.image && (
+              <div>
+                <Image
+                  src={session?.user.image}
+                  alt={session?.user.name as string}
+                  width={120}
+                  height={120}
+                />
+              </div>
+            )}
+            <div>
+              <h4>{session?.user?.name}</h4>
+              <p>{session?.user?.email}</p>
+            </div>
+          </div>
+        </Modal>
+      )}
     </header>
   )
 }

@@ -155,3 +155,25 @@ span.page__title-pre {
 .sidebar__content .header__cart {
   top: -30px;
 }
+
+.my_account {
+  display: flex;
+  // justify-content: start;
+  align-items: center;
+
+  > div:first-of-type {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  > div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+
+    h4 {
+      margin-top: 15px;
+    }
+  }
+}
