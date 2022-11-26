@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCategoriesQuery } from '../graphql/generated/schema'
-import { QueryCategoriesVars } from '../components/home/categories-section'
+import { QueryCategoriesVars } from '../components/category/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Modal from 'react-responsive-modal'
 import Image from 'next/image'
@@ -39,8 +39,6 @@ const Header: FC = () => {
   }
 
   const categories = categoriesData?.categories?.data
-  const isHeaderWhite =
-    router.pathname !== '/' && router.pathname !== '/sign-in' && router.pathname !== '/sign-up'
 
   const Profile = (
     <div className='header__category'>
@@ -76,16 +74,21 @@ const Header: FC = () => {
       <div
         id='header-sticky'
         className={`header__area header__transparent header__padding ${
-          isHeaderWhite && 'header__white'
+          router.pathname !== '/' && 'header__white'
         } ${router.pathname === '/courses/[slug]' && 'sticky'}`}
       >
         <div className='container-fluid'>
           <div className='row align-items-center'>
             <div className='col-xxl-3 col-xl-3 col-lg-4 col-md-2 col-sm-4 col-6'>
-              <div className='header__left d-flex'>
+              <div className='header__left d-flex align-items-center'>
                 <div className='logo'>
                   <Link href='/'>
-                    <img src='/img/logo/logo.png' alt='logo' />
+                    <Image
+                      src={`/img/logo/logo-${router.pathname === '/' ? '2' : '3'}.png`}
+                      alt='img not found'
+                      width={160}
+                      height={80}
+                    />
                   </Link>
                 </div>
                 <div className='header__category d-none d-lg-block'>
@@ -203,7 +206,7 @@ const Header: FC = () => {
           <div className='sidebar__content'>
             <div className='logo mb-40'>
               <Link href='/'>
-                <img src='/img/logo/logo.png' alt='logo' />
+                <Image src='/img/logo/logo-2.png' alt='logo' width={120} height={70} />
               </Link>
             </div>
             <div className='mm-menu'>

@@ -91,7 +91,7 @@ const Courses: NextPage = () => {
   return (
     <Fragment>
       <Breadcrumb title='Courses' />
-      <section className='course__area pt-120 pb-120'>
+      <section className='course__area pt-60 pb-80'>
         <div className='container'>
           <CourseTab
             pagination={pagination as any}

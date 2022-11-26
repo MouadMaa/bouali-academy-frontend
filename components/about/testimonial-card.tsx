@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Markup } from 'interweave'
-import { ComponentHomeTestimonial } from '../../graphql/generated/schema'
+import { ComponentAboutTestimonial } from '../../graphql/generated/schema'
 
 interface TestimonialCardProps {
-  testimonial: ComponentHomeTestimonial
+  testimonial: ComponentAboutTestimonial
 }
 
 const TestimonialCard: FC<TestimonialCardProps> = (props) => {
@@ -20,18 +20,20 @@ const TestimonialCard: FC<TestimonialCardProps> = (props) => {
 
   return (
     <div className='testimonial__item text-center swiper-slide'>
-      <div className='testimonial__thumb'>
-        {imageUrl && <Image src={imageUrl} alt={testimonial.name} width={80} height={80} />}
-        {!imageUrl && (
-          <div>{testimonial.name.split(' ').map((word) => word.charAt(0).toUpperCase())}</div>
-        )}
+      <div className='testimonial__head'>
+        <div className='testimonial__thumb'>
+          {imageUrl && <Image src={imageUrl} alt={testimonial.name} width={60} height={60} />}
+          {!imageUrl && (
+            <div>{testimonial.name.split(' ').map((word) => word.charAt(0).toUpperCase())}</div>
+          )}
+        </div>
+        <div className='testimonial__info'>
+          <h5>{testimonial.name}</h5>
+          <span>{testimonial.function}</span>
+        </div>
       </div>
       <div className='testimonial__content'>
         <Markup content={content} />
-        <div className='testimonial__info'>
-          <h4>{testimonial.name}</h4>
-          <span>{testimonial.function}</span>
-        </div>
       </div>
     </div>
   )

@@ -1,11 +1,11 @@
 import { GetStaticProps, NextPage } from 'next'
 import { Fragment } from 'react'
-import AboutSection from '../components/home/about-section'
-import CategoriesSection, { QueryCategoriesVars } from '../components/home/categories-section'
-import CoursesSection, { QueryCoursesVars } from '../components/home/courses-section'
-import ContactSection from '../components/home/contact-section'
+import AboutSection from '../components/about/about-section'
+import CategoriesSection, { QueryCategoriesVars } from '../components/category/categories-section'
+import CoursesSection, { QueryCoursesVars } from '../components/course/courses-section'
+import ContactSection from '../components/contact/contact-section'
 import HeroSection from '../components/home/hero-section'
-import TestimonialSection from '../components/home/testimonial-section'
+import TestimonialSection from '../components/about/testimonial-section'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
 import {
   CategoriesDocument,

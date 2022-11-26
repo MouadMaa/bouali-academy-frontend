@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import CourseCard from '../course/course-card'
+import CourseCard from './course-card'
 import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
 
 const CoursesSection: FC = () => {

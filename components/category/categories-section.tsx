@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
-import CategoryCard from '../category/category-card'
+import CategoryCard from './category-card'
 import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql/generated/schema'
 
 const CategoriesSection: FC = () => {
@@ -28,7 +28,7 @@ const CategoriesSection: FC = () => {
           <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-4'>
             <div className='category__more mb-50 float-md-end fix'>
               <Link href='/categories' className='link-btn'>
-                View all Category
+                View all Categories
                 <i className='fas fa-arrow-right'></i>
                 <i className='fas fa-arrow-right'></i>
               </Link>
