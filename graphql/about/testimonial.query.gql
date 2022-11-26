@@ -1,5 +1,5 @@
 query Testimonials {
-  testimonial {
+  about {
     data {
       id
       attributes {

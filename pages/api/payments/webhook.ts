@@ -6,6 +6,7 @@ type ResponseData = {
   message?: string
 }
 
+// stripe listen --forward-to localhost:3000/api/payments/webhook
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
   // if (req.method !== 'POST') {
   //   return res.status(405).json({ message: 'Method not allowed' })

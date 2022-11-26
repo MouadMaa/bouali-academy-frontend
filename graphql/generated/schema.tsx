@@ -18,6 +18,37 @@ export type Scalars = {
   Upload: any;
 };
 
+export type About = {
+  __typename?: 'About';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  testimonials?: Maybe<Array<Maybe<ComponentAboutTestimonial>>>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type AboutTestimonialsArgs = {
+  filters?: InputMaybe<ComponentAboutTestimonialFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type AboutEntity = {
+  __typename?: 'AboutEntity';
+  attributes?: Maybe<About>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type AboutEntityResponse = {
+  __typename?: 'AboutEntityResponse';
+  data?: Maybe<AboutEntity>;
+};
+
+export type AboutInput = {
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  testimonials?: InputMaybe<Array<InputMaybe<ComponentAboutTestimonialInput>>>;
+};
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -91,6 +122,32 @@ export type CategoryInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type ComponentAboutTestimonial = {
+  __typename?: 'ComponentAboutTestimonial';
+  content: Scalars['String'];
+  function?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  image?: Maybe<UploadFileEntityResponse>;
+  name: Scalars['String'];
+};
+
+export type ComponentAboutTestimonialFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentAboutTestimonialFiltersInput>>>;
+  content?: InputMaybe<StringFilterInput>;
+  function?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentAboutTestimonialFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentAboutTestimonialFiltersInput>>>;
+};
+
+export type ComponentAboutTestimonialInput = {
+  content?: InputMaybe<Scalars['String']>;
+  function?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type ComponentCourseLecture = {
   __typename?: 'ComponentCourseLecture';
   files?: Maybe<UploadFileRelationResponseCollection>;
@@ -118,32 +175,6 @@ export type ComponentCourseLectureInput = {
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
   video?: InputMaybe<Scalars['ID']>;
-};
-
-export type ComponentHomeTestimonial = {
-  __typename?: 'ComponentHomeTestimonial';
-  content: Scalars['String'];
-  function?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  image?: Maybe<UploadFileEntityResponse>;
-  name: Scalars['String'];
-};
-
-export type ComponentHomeTestimonialFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentHomeTestimonialFiltersInput>>>;
-  content?: InputMaybe<StringFilterInput>;
-  function?: InputMaybe<StringFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentHomeTestimonialFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentHomeTestimonialFiltersInput>>>;
-};
-
-export type ComponentHomeTestimonialInput = {
-  content?: InputMaybe<Scalars['String']>;
-  function?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  image?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
 };
 
 export type Course = {
@@ -281,7 +312,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Category | ComponentCourseLecture | ComponentHomeTestimonial | Course | I18NLocale | Order | Testimonial | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Category | ComponentAboutTestimonial | ComponentCourseLecture | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -404,10 +435,10 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteAbout?: Maybe<AboutEntityResponse>;
   deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
   deleteOrder?: Maybe<OrderEntityResponse>;
-  deleteTestimonial?: Maybe<TestimonialEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -425,11 +456,11 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateAbout?: Maybe<AboutEntityResponse>;
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateOrder?: Maybe<OrderEntityResponse>;
-  updateTestimonial?: Maybe<TestimonialEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -557,6 +588,11 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateAboutArgs = {
+  data: AboutInput;
+};
+
+
 export type MutationUpdateCategoryArgs = {
   data: CategoryInput;
   id: Scalars['ID'];
@@ -578,11 +614,6 @@ export type MutationUpdateFileInfoArgs = {
 export type MutationUpdateOrderArgs = {
   data: OrderInput;
   id: Scalars['ID'];
-};
-
-
-export type MutationUpdateTestimonialArgs = {
-  data: TestimonialInput;
 };
 
 
@@ -692,6 +723,7 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  about?: Maybe<AboutEntityResponse>;
   categories?: Maybe<CategoryEntityResponseCollection>;
   category?: Maybe<CategoryEntityResponse>;
   course?: Maybe<CourseEntityResponse>;
@@ -701,7 +733,6 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   order?: Maybe<OrderEntityResponse>;
   orders?: Maybe<OrderEntityResponseCollection>;
-  testimonial?: Maybe<TestimonialEntityResponse>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -710,6 +741,11 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryAboutArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -761,11 +797,6 @@ export type QueryOrdersArgs = {
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QueryTestimonialArgs = {
-  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -843,37 +874,6 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   startsWith?: InputMaybe<Scalars['String']>;
-};
-
-export type Testimonial = {
-  __typename?: 'Testimonial';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  testimonials?: Maybe<Array<Maybe<ComponentHomeTestimonial>>>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type TestimonialTestimonialsArgs = {
-  filters?: InputMaybe<ComponentHomeTestimonialFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type TestimonialEntity = {
-  __typename?: 'TestimonialEntity';
-  attributes?: Maybe<Testimonial>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type TestimonialEntityResponse = {
-  __typename?: 'TestimonialEntityResponse';
-  data?: Maybe<TestimonialEntity>;
-};
-
-export type TestimonialInput = {
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  testimonials?: InputMaybe<Array<InputMaybe<ComponentHomeTestimonialInput>>>;
 };
 
 export type UploadFile = {
@@ -1260,6 +1260,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type TestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TestimonialsQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', testimonials?: Array<{ __typename?: 'ComponentAboutTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null> | null } | null } | null } | null };
+
 export type CategoriesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
 }>;
@@ -1291,11 +1296,6 @@ export type CoursesBySlugQueryVariables = Exact<{
 export type CoursesBySlugQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, instructor: string, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null } | null } | null, lessons?: Array<{ __typename?: 'ComponentCourseLecture', id: string } | null> | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
 export type FileFragment = { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null };
-
-export type TestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type TestimonialsQuery = { __typename?: 'Query', testimonial?: { __typename?: 'TestimonialEntityResponse', data?: { __typename?: 'TestimonialEntity', id?: string | null, attributes?: { __typename?: 'Testimonial', testimonials?: Array<{ __typename?: 'ComponentHomeTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null> | null } | null } | null } | null };
 
 export const FileFragmentDoc = gql`
     fragment File on UploadFileEntityResponse {
@@ -1402,6 +1402,53 @@ export const CoursesFragmentDoc = gql`
 }
     ${FileFragmentDoc}
 ${CategoryFragmentDoc}`;
+export const TestimonialsDocument = gql`
+    query Testimonials {
+  about {
+    data {
+      id
+      attributes {
+        testimonials {
+          id
+          name
+          function
+          content
+          image {
+            ...File
+          }
+        }
+      }
+    }
+  }
+}
+    ${FileFragmentDoc}`;
+
+/**
+ * __useTestimonialsQuery__
+ *
+ * To run a query within a React component, call `useTestimonialsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTestimonialsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTestimonialsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTestimonialsQuery(baseOptions?: Apollo.QueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
+      }
+export function useTestimonialsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
+        }
+export type TestimonialsQueryHookResult = ReturnType<typeof useTestimonialsQuery>;
+export type TestimonialsLazyQueryHookResult = ReturnType<typeof useTestimonialsLazyQuery>;
+export type TestimonialsQueryResult = Apollo.QueryResult<TestimonialsQuery, TestimonialsQueryVariables>;
 export const CategoriesDocument = gql`
     query Categories($pagination: PaginationArg) {
   categories(pagination: $pagination) {
@@ -1508,50 +1555,3 @@ export function useCoursesBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type CoursesBySlugQueryHookResult = ReturnType<typeof useCoursesBySlugQuery>;
 export type CoursesBySlugLazyQueryHookResult = ReturnType<typeof useCoursesBySlugLazyQuery>;
 export type CoursesBySlugQueryResult = Apollo.QueryResult<CoursesBySlugQuery, CoursesBySlugQueryVariables>;
-export const TestimonialsDocument = gql`
-    query Testimonials {
-  testimonial {
-    data {
-      id
-      attributes {
-        testimonials {
-          id
-          name
-          function
-          content
-          image {
-            ...File
-          }
-        }
-      }
-    }
-  }
-}
-    ${FileFragmentDoc}`;
-
-/**
- * __useTestimonialsQuery__
- *
- * To run a query within a React component, call `useTestimonialsQuery` and pass it any options that fit your needs.
- * When your component renders, `useTestimonialsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTestimonialsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useTestimonialsQuery(baseOptions?: Apollo.QueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
-      }
-export function useTestimonialsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
-        }
-export type TestimonialsQueryHookResult = ReturnType<typeof useTestimonialsQuery>;
-export type TestimonialsLazyQueryHookResult = ReturnType<typeof useTestimonialsLazyQuery>;
-export type TestimonialsQueryResult = Apollo.QueryResult<TestimonialsQuery, TestimonialsQueryVariables>;

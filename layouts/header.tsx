@@ -160,7 +160,7 @@ const Header: FC = () => {
                       style={{ textTransform: 'capitalize' }}
                       onClick={() => signIn('google')}
                     >
-                      <i className='fab fa-google mr-10'></i>Sign In With Google
+                      Sign In
                     </button>
                   ) : (
                     Profile

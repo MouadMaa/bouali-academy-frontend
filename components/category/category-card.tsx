@@ -38,7 +38,7 @@ const CategoryCard: FC<CategoryCardProps> = (props) => {
           <h4 className='category__title'>
             <a>{category.title}</a>
           </h4>
-          <p>{category.description?.substring(0, 20) + `...`}</p>
+          {category.description && <p>{category.description.substring(0, 20) + `...`}</p>}
         </div>
       </div>
     </div>
