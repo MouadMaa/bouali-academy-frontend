@@ -1,17 +1,17 @@
 import { FC } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import TestimonialCard from './testimonial-card'
+import { useAboutQuery } from '../../graphql/generated/schema'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import TestimonialCard from './testimonial-card'
-import { useTestimonialsQuery } from '../../graphql/generated/schema'
 
 const TestimonialSection: FC = () => {
-  const { data } = useTestimonialsQuery()
+  const { data } = useAboutQuery()
 
   const testimonials = data?.about?.data?.attributes?.testimonials
 

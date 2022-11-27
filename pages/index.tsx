@@ -7,11 +7,7 @@ import ContactSection from '../components/contact/contact-section'
 import HeroSection from '../components/home/hero-section'
 import TestimonialSection from '../components/about/testimonial-section'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
-import {
-  CategoriesDocument,
-  CoursesDocument,
-  TestimonialsDocument,
-} from '../graphql/generated/schema'
+import { AboutDocument, CategoriesDocument, CoursesDocument } from '../graphql/generated/schema'
 
 const Home: NextPage = () => {
   return (
@@ -40,7 +36,7 @@ export const getStaticProps: GetStaticProps = async () => {
   })
 
   await apolloClient.query({
-    query: TestimonialsDocument,
+    query: AboutDocument,
   })
 
   return addApolloState(apolloClient, {

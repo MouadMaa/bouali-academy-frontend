@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import AboutSection from '../components/about/about-section'
 import TestimonialSection from '../components/about/testimonial-section'
 import Breadcrumb from '../layouts/breadcrumb'
-import { TestimonialsDocument } from '../graphql/generated/schema'
+import { AboutDocument } from '../graphql/generated/schema'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
 
 const About: NextPage = () => {
@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
-    query: TestimonialsDocument,
+    query: AboutDocument,
   })
 
   return addApolloState(apolloClient, {

@@ -1,4 +1,4 @@
-query Testimonials {
+query About {
   about {
     data {
       id
@@ -11,6 +11,10 @@ query Testimonials {
           image {
             ...File
           }
+        }
+        bio {
+          id
+          content
         }
       }
     }

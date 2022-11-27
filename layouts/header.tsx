@@ -16,6 +16,7 @@ const Header: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [showModel, setShowModel] = useState(false)
+  const [isBlackLogo, setIsBlackLogo] = useState(true)
 
   useEffect(() => {
     window.addEventListener('scroll', sticky)
@@ -26,6 +27,7 @@ const Header: FC = () => {
 
   useEffect(() => {
     setSearchOpen(false)
+    setIsBlackLogo(router.pathname === '/' || router.pathname === '/courses/[slug]')
   }, [router])
 
   const sticky = () => {
@@ -34,7 +36,17 @@ const Header: FC = () => {
       header?.classList.add('sticky')
     } else {
       const scrollTop = window.scrollY
-      scrollTop >= 1 ? header?.classList.add('sticky') : header?.classList.remove('sticky')
+      if (scrollTop >= 1) {
+        header?.classList.add('sticky')
+        if (router.pathname !== '/' && router.pathname !== '/courses/[slug]') {
+          setIsBlackLogo(true)
+        }
+      } else {
+        if (router.pathname !== '/' && router.pathname !== '/courses/[slug]') {
+          setIsBlackLogo(false)
+        }
+        header?.classList.remove('sticky')
+      }
     }
   }
 
@@ -84,7 +96,7 @@ const Header: FC = () => {
                 <div className='logo'>
                   <Link href='/'>
                     <Image
-                      src={`/img/logo/logo-${router.pathname === '/' ? '2' : '3'}.png`}
+                      src={`/img/logo/logo-${isBlackLogo ? '2' : '3'}.png`}
                       alt='img not found'
                       width={160}
                       height={80}

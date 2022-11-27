@@ -12,11 +12,11 @@ const TestimonialCard: FC<TestimonialCardProps> = (props) => {
 
   const [content, setContent] = useState('')
 
-  const imageUrl = testimonial.image?.data?.attributes?.url
-
   useEffect(() => {
     setContent(testimonial.content)
-  }, [testimonial.content])
+  }, [testimonial])
+
+  const imageUrl = testimonial.image?.data?.attributes?.url
 
   return (
     <div className='testimonial__item text-center swiper-slide'>

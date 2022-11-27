@@ -20,6 +20,7 @@ export type Scalars = {
 
 export type About = {
   __typename?: 'About';
+  bio?: Maybe<ComponentAboutBio>;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   testimonials?: Maybe<Array<Maybe<ComponentAboutTestimonial>>>;
@@ -45,6 +46,7 @@ export type AboutEntityResponse = {
 };
 
 export type AboutInput = {
+  bio?: InputMaybe<ComponentAboutBioInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   testimonials?: InputMaybe<Array<InputMaybe<ComponentAboutTestimonialInput>>>;
 };
@@ -120,6 +122,17 @@ export type CategoryInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentAboutBio = {
+  __typename?: 'ComponentAboutBio';
+  content?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+};
+
+export type ComponentAboutBioInput = {
+  content?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 export type ComponentAboutTestimonial = {
@@ -312,7 +325,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = About | Category | ComponentAboutTestimonial | ComponentCourseLecture | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Category | ComponentAboutBio | ComponentAboutTestimonial | ComponentCourseLecture | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -1260,10 +1273,10 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type TestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
+export type AboutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TestimonialsQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', testimonials?: Array<{ __typename?: 'ComponentAboutTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null> | null } | null } | null } | null };
+export type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', testimonials?: Array<{ __typename?: 'ComponentAboutTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null } | null> | null, bio?: { __typename?: 'ComponentAboutBio', id: string, content?: string | null } | null } | null } | null } | null };
 
 export type CategoriesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
@@ -1402,8 +1415,8 @@ export const CoursesFragmentDoc = gql`
 }
     ${FileFragmentDoc}
 ${CategoryFragmentDoc}`;
-export const TestimonialsDocument = gql`
-    query Testimonials {
+export const AboutDocument = gql`
+    query About {
   about {
     data {
       id
@@ -1417,6 +1430,10 @@ export const TestimonialsDocument = gql`
             ...File
           }
         }
+        bio {
+          id
+          content
+        }
       }
     }
   }
@@ -1424,31 +1441,31 @@ export const TestimonialsDocument = gql`
     ${FileFragmentDoc}`;
 
 /**
- * __useTestimonialsQuery__
+ * __useAboutQuery__
  *
- * To run a query within a React component, call `useTestimonialsQuery` and pass it any options that fit your needs.
- * When your component renders, `useTestimonialsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useAboutQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTestimonialsQuery({
+ * const { data, loading, error } = useAboutQuery({
  *   variables: {
  *   },
  * });
  */
-export function useTestimonialsQuery(baseOptions?: Apollo.QueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
+export function useAboutQuery(baseOptions?: Apollo.QueryHookOptions<AboutQuery, AboutQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
+        return Apollo.useQuery<AboutQuery, AboutQueryVariables>(AboutDocument, options);
       }
-export function useTestimonialsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestimonialsQuery, TestimonialsQueryVariables>) {
+export function useAboutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AboutQuery, AboutQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TestimonialsQuery, TestimonialsQueryVariables>(TestimonialsDocument, options);
+          return Apollo.useLazyQuery<AboutQuery, AboutQueryVariables>(AboutDocument, options);
         }
-export type TestimonialsQueryHookResult = ReturnType<typeof useTestimonialsQuery>;
-export type TestimonialsLazyQueryHookResult = ReturnType<typeof useTestimonialsLazyQuery>;
-export type TestimonialsQueryResult = Apollo.QueryResult<TestimonialsQuery, TestimonialsQueryVariables>;
+export type AboutQueryHookResult = ReturnType<typeof useAboutQuery>;
+export type AboutLazyQueryHookResult = ReturnType<typeof useAboutLazyQuery>;
+export type AboutQueryResult = Apollo.QueryResult<AboutQuery, AboutQueryVariables>;
 export const CategoriesDocument = gql`
     query Categories($pagination: PaginationArg) {
   categories(pagination: $pagination) {
