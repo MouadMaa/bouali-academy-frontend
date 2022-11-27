@@ -18,7 +18,7 @@ const TestimonialSection: FC = () => {
   return (
     <section
       className='testimonial__area testimonial__overlay pt-100 pb-100'
-      style={{ backgroundImage: `url(${'/img/testimonial/testimonial-bg.jpg'})` }}
+      style={{ backgroundImage: `url(${'/img/about/testimonial-bg.jpg'})` }}
     >
       <div className='container'>
         <div className='col-xxl-12'>

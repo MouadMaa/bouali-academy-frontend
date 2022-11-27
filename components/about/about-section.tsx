@@ -19,7 +19,7 @@ const AboutSection = () => {
         <div className='row'>
           <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
             <div className='teacher__details-thumb p-relative w-img pr-30'>
-              <img src='/img/teacher/teacher.jpg' alt='img not found' />
+              <img src='/img/about/teacher.jpg' alt='img not found' />
               <div className='teacher__details-shape'>
                 <img
                   className='teacher-details-shape-1'

@@ -11,7 +11,7 @@ const Breadcrumb: FC<BreadcrumbProps> = (props) => {
   return (
     <section
       className='page__title-area page__title-height page__title-overlay d-flex align-items-center'
-      style={{ backgroundImage: `url(${'/img/testimonial/testimonial-bg.jpg'})` }}
+      style={{ backgroundImage: `url(${'/img/about/testimonial-bg.jpg'})` }}
     >
       <div className='container'>
         <div className='row'>

@@ -37,19 +37,11 @@ const Course: NextPage = () => {
       <div className='page__title-shape'>
         <img
           className='page-title-shape-5 d-none d-sm-block'
-          src='/img/page-title/page-title-shape-1.png'
+          src='/img/course/shape-1.png'
           alt='img not found'
         />
-        <img
-          className='page-title-shape-6'
-          src='/img/page-title/page-title-shape-6.png'
-          alt='img not found'
-        />
-        <img
-          className='page-title-shape-7'
-          src='/img/page-title/page-title-shape-4.png'
-          alt='img not found'
-        />
+        <img className='page-title-shape-6' src='/img/course/shape-6.png' alt='img not found' />
+        <img className='page-title-shape-7' src='/img/course/shape-4.png' alt='img not found' />
       </div>
 
       <div className='container'>
@@ -81,7 +73,10 @@ const Course: NextPage = () => {
                 <div className='course__teacher-3 d-flex align-items-center mr-70 mb-30'>
                   <div className='course__teacher-thumb-3 mr-15'>
                     <Image
-                      src={course?.attributes?.instructor_image.data?.attributes?.url as string}
+                      src={
+                        course?.attributes?.instructor_image.data?.attributes?.formats.thumbnail
+                          .url as string
+                      }
                       alt='img not found'
                       width={50}
                       height={50}

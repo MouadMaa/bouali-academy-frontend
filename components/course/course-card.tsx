@@ -16,7 +16,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
       <div className='course__thumb w-img p-relative fix'>
         <Link href={`/courses/${course.slug}`}>
           <Image
-            src={course.cover?.data?.attributes?.url as string}
+            src={course.cover?.data?.attributes?.formats.medium.url as string}
             alt={course.cover?.data?.attributes?.name as string}
             width={400}
             height={300}
@@ -48,7 +48,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
         <div className='course__teacher d-flex align-items-center'>
           <div className='course__teacher-thumb mr-15'>
             <Image
-              src={course.instructor_image.data?.attributes?.url as string}
+              src={course.instructor_image.data?.attributes?.formats.thumbnail.url as string}
               alt={course.instructor}
               width={50}
               height={50}

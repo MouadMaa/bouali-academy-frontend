@@ -16,7 +16,7 @@ const MyLearningCard: FC<CourseCardProps> = (props) => {
       <div className='course__thumb w-img p-relative fix'>
         <Link href={`/courses/${course.slug}`}>
           <Image
-            src={course.cover?.data?.attributes?.url as string}
+            src={course.cover?.data?.attributes?.formats.medium.url as string}
             alt={course.cover?.data?.attributes?.name as string}
             width={400}
             height={300}

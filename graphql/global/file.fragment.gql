@@ -4,6 +4,7 @@ fragment File on UploadFileEntityResponse {
     attributes {
       name
       url
+      formats
     }
   }
 }
