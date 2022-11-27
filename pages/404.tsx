@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
@@ -26,7 +27,12 @@ const NotFound: NextPage = () => {
           <div className='col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2 col-lg-10 offset-lg-1'>
             <div className='error__item text-center'>
               <div className='error__thumb mb-45'>
-                <img src='/img/error/error.png' alt='img not found' />
+                <Image
+                  src='/img/error/error.png'
+                  alt='404 img not found'
+                  width={620}
+                  height={340}
+                />
               </div>
               <div className='error__content'>
                 <h3 className='error__title'>Page Not Found!</h3>

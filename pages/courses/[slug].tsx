@@ -35,13 +35,27 @@ const Course: NextPage = () => {
   return (
     <section className='page__title-area pt-120 pb-90 mt-50'>
       <div className='page__title-shape'>
-        <img
+        <Image
           className='page-title-shape-5 d-none d-sm-block'
           src='/img/course/shape-1.png'
           alt='img not found'
+          width={55}
+          height={190}
         />
-        <img className='page-title-shape-6' src='/img/course/shape-6.png' alt='img not found' />
-        <img className='page-title-shape-7' src='/img/course/shape-4.png' alt='img not found' />
+        <Image
+          className='page-title-shape-6'
+          src='/img/course/shape-6.png'
+          alt='img not found'
+          width={60}
+          height={60}
+        />
+        <Image
+          className='page-title-shape-7'
+          src='/img/course/shape-4.png'
+          alt='img not found'
+          width={50}
+          height={170}
+        />
       </div>
 
       <div className='container'>
@@ -152,10 +166,15 @@ const Course: NextPage = () => {
                         Related{' '}
                         <span className='yellow-bg yellow-bg-big'>
                           Course
-                          <img src='/img/shape/yellow-bg.png' alt='img not found' />
+                          <Image
+                            src='/img/shape/yellow-bg.png'
+                            alt='yellow bg shape'
+                            width={150}
+                            height={16}
+                          />
                         </span>
                       </h2>
-                      <p>You don't have to struggle alone, you've got our assistance and help.</p>
+                      <p>You don`t have to struggle alone, you`ve got our assistance and help.</p>
                     </div>
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import CategoryCard from './category-card'
 import { Category, QueryCategoriesArgs, useCategoriesQuery } from '../../graphql/generated/schema'
+import Image from 'next/image'
 
 const CategoriesSection: FC = () => {
   const { data } = useCategoriesQuery({ variables: QueryCategoriesVars })
@@ -19,7 +20,12 @@ const CategoriesSection: FC = () => {
                 Our{' '}
                 <span className='yellow-bg'>
                   Popular
-                  <img src='/img/shape/yellow-bg-2.png' alt='yellow bg shape' />{' '}
+                  <Image
+                    src='/img/shape/yellow-bg-2.png'
+                    alt='yellow bg shape'
+                    width={150}
+                    height={16}
+                  />{' '}
                 </span>
                 Courses
               </h2>

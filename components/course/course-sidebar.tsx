@@ -73,7 +73,13 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
 
       <div className='course__sidebar pl-70 p-relative'>
         <div className='course__shape'>
-          <img className='course-dot' src='/img/course/course-dot.png' alt='img not found' />
+          <Image
+            className='course-dot'
+            src='/img/course/course-dot.png'
+            alt='img not found'
+            width={70}
+            height={110}
+          />
         </div>
         <div className='course__sidebar-widget-2 white-bg mb-20'>
           <div className='course__video'>
@@ -161,7 +167,12 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                 <div className='course__payment mb-35'>
                   <h3>Payment:</h3>
                   <a>
-                    <img src='/img/course/payment-1.png' alt='img not found' />
+                    <Image
+                      src='/img/course/payment-1.png'
+                      alt='img not found'
+                      width={160}
+                      height={24}
+                    />
                   </a>
                 </div>
               )

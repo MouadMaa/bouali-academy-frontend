@@ -1,4 +1,5 @@
 import { Markup } from 'interweave'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAboutQuery } from '../../graphql/generated/schema'
 
@@ -19,17 +20,21 @@ const AboutSection = () => {
         <div className='row'>
           <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
             <div className='teacher__details-thumb p-relative w-img pr-30'>
-              <img src='/img/about/teacher.jpg' alt='img not found' />
+              <Image src='/img/about/teacher.jpg' alt='img not found' width={340} height={400} />
               <div className='teacher__details-shape'>
-                <img
+                <Image
                   className='teacher-details-shape-1'
                   src='/img/shape/shape-1.png'
                   alt='img not found'
+                  width={170}
+                  height={170}
                 />
-                <img
+                <Image
                   className='teacher-details-shape-2'
                   src='/img/shape/shape-2.png'
                   alt='img not found'
+                  width={70}
+                  height={110}
                 />
               </div>
             </div>

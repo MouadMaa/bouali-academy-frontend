@@ -4,6 +4,7 @@ import CategoryCard from '../components/category/category-card'
 import Breadcrumb from '../layouts/breadcrumb'
 import { CategoriesDocument, useCategoriesQuery } from '../graphql/generated/schema'
 import { addApolloState, initializeApollo } from '../lib/apolloClient'
+import Image from 'next/image'
 
 const Categories: NextPage = () => {
   const { data } = useCategoriesQuery()
@@ -20,7 +21,12 @@ const Categories: NextPage = () => {
               Explore Our{' '}
               <span className='yellow-bg'>
                 Popular
-                <img src='/img/shape/yellow-bg-2.png' alt='yellow bg shape' />{' '}
+                <Image
+                  src='/img/shape/yellow-bg-2.png'
+                  alt='yellow bg shape'
+                  width={150}
+                  height={16}
+                />{' '}
               </span>
               Courses
             </h2>

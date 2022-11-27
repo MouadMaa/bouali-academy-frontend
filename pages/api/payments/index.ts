@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
         },
         {
           headers: {
-            Authorization: `Bearer ${process.env.ORDER_API_TOKEN}`,
+            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
           },
         },
       )

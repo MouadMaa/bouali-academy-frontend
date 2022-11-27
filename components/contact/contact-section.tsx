@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import Image from 'next/image'
 
 type FormInputs = {
   name: string
@@ -35,10 +36,15 @@ const ContactSection: FC = () => {
                   Get in
                   <span className='yellow-bg yellow-bg-big'>
                     touch
-                    <img src='/img/shape/yellow-bg.png' alt='img not found' />
+                    <Image
+                      src='/img/shape/yellow-bg.png'
+                      alt='yellow bg shape'
+                      width={150}
+                      height={16}
+                    />
                   </span>
                 </h2>
-                <p>Have a question or just want to say hi? We'd love to hear from you.</p>
+                <p>Have a question or just want to say hi? We`d love to hear from you.</p>
               </div>
               <div className='contact__form'>
                 <form onSubmit={handleSubmit(onSubmit as any)}>
@@ -92,20 +98,26 @@ const ContactSection: FC = () => {
           <div className='col-xxl-4 offset-xxl-1 col-xl-4 offset-xl-1 col-lg-5 offset-lg-1'>
             <div className='contact__info white-bg p-relative z-index-1'>
               <div className='contact__shape'>
-                <img
+                <Image
                   className='contact-shape-1'
                   src='/img/contact/contact-shape-1.png'
                   alt='img not found'
+                  width={90}
+                  height={90}
                 />
-                <img
+                <Image
                   className='contact-shape-2'
                   src='/img/contact/contact-shape-2.png'
                   alt='img not found'
+                  width={70}
+                  height={110}
                 />
-                <img
+                <Image
                   className='contact-shape-3'
                   src='/img/contact/contact-shape-3.png'
                   alt='img not found'
+                  width={60}
+                  height={60}
                 />
               </div>
               <div className='contact__info-inner white-bg'>

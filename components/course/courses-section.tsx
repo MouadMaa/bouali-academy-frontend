@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import CourseCard from './course-card'
 import { Course, QueryCoursesArgs, useCoursesQuery } from '../../graphql/generated/schema'
+import Image from 'next/image'
 
 const CoursesSection: FC = () => {
   const { data } = useCoursesQuery({ variables: QueryCoursesVars })
@@ -20,11 +21,16 @@ const CoursesSection: FC = () => {
                 Online{' '}
                 <span className='yellow-bg yellow-bg-big'>
                   Course
-                  <img src='/img/shape/yellow-bg.png' alt='yellow bg shape' />
+                  <Image
+                    src='/img/shape/yellow-bg.png'
+                    alt='yellow bg shape'
+                    width={150}
+                    height={16}
+                  />
                 </span>{' '}
                 for you
               </h2>
-              <p>You don't have to struggle alone, you've got our assistance and help.</p>
+              <p>You don`t have to struggle alone, you`ve got our assistance and help.</p>
             </div>
           </div>
           <div className='col-xxl-7 col-xl-6 col-lg-6'>
