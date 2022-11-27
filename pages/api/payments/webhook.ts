@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
           },
           {
             headers: {
-              Authorization: `Bearer ${session.metadata?.jwt}`,
+              Authorization: `Bearer ${process.env.ORDER_API_TOKEN}`,
             },
           },
         )

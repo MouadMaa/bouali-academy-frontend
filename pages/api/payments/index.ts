@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
         },
         {
           headers: {
-            Authorization: `Bearer ${session.jwt}`,
+            Authorization: `Bearer ${process.env.ORDER_API_TOKEN}`,
           },
         },
       )
@@ -80,7 +80,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
     cancel_url: `${process.env.FRONTEND_URL}/courses/${course.attributes?.slug}`,
     metadata: {
       courseId: course.id as string,
-      jwt: session.jwt,
     },
   })
 
