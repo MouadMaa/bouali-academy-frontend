@@ -6,6 +6,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
 import Loader from '../shared/loader'
+import { useMyCourses } from '../../hooks/useMyCourses'
 
 interface CourseSidebarProps {
   courseId: string
@@ -16,6 +17,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const { courseId, course } = props
 
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
+  const { coursesId } = useMyCourses()
 
   const [showModel, setShowModel] = useState(false)
   const [loadingBuyCourse, setLoadingBuyCourse] = useState(false)
@@ -44,6 +46,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   }
 
   const relatedCourses = data?.courses?.data.filter((c) => c.attributes?.slug !== course.slug)
+  const enrolled = !!coursesId.find((c) => c === courseId)
 
   return (
     <section className='col-xxl-4 col-xl-4 col-lg-4'>
@@ -149,12 +152,21 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                 </li>
               </ul>
             </div>
-            <div className='course__payment mb-35'>
-              <h3>Payment:</h3>
-              <a>
-                <img src='/img/course/payment-1.png' alt='img not found' />
-              </a>
-            </div>
+            {enrolled ? (
+              <div className='mb-20'>
+                <h6>You already enrolled in this course</h6>
+              </div>
+            ) : (
+              course.price && (
+                <div className='course__payment mb-35'>
+                  <h3>Payment:</h3>
+                  <a>
+                    <img src='/img/course/payment-1.png' alt='img not found' />
+                  </a>
+                </div>
+              )
+            )}
+
             <div className='course__enroll-btn'>
               <button
                 className='e-btn e-btn-7 w-100'
@@ -165,7 +177,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                   <span>Loading...</span>
                 ) : (
                   <div>
-                    {course.price ? (
+                    {course.price && !enrolled ? (
                       <span>
                         Buy now <i className='fas fa-arrow-right'></i>
                       </span>
