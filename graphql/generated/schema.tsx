@@ -184,6 +184,7 @@ export type Course = {
   publishedAt?: Maybe<Scalars['DateTime']>;
   slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
+  url?: Maybe<Scalars['String']>;
 };
 
 
@@ -229,6 +230,7 @@ export type CourseFiltersInput = {
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
 };
 
 export type CourseInput = {
@@ -245,6 +247,7 @@ export type CourseInput = {
   price?: InputMaybe<Scalars['Float']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   slug?: InputMaybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']>;
 };
 
 export type DateTimeFilterInput = {
@@ -1265,9 +1268,9 @@ export type CategoryFragment = { __typename?: 'CategoryEntityResponse', data?: {
 
 export type CategoriesFragment = { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null }> };
 
-export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null } | null };
+export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null } | null };
 
-export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } };
+export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } };
 
 export type CoursesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
@@ -1275,14 +1278,14 @@ export type CoursesQueryVariables = Exact<{
 }>;
 
 
-export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
 export type CoursesBySlugQueryVariables = Exact<{
   filters?: InputMaybe<CourseFiltersInput>;
 }>;
 
 
-export type CoursesBySlugQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type CoursesBySlugQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
 export type FileFragment = { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null };
 
@@ -1340,6 +1343,7 @@ export const CourseFragmentDoc = gql`
       instructor
       duration
       lessons
+      url
       slug
       updatedAt
       cover {
@@ -1368,6 +1372,7 @@ export const CoursesFragmentDoc = gql`
       instructor
       duration
       lessons
+      url
       slug
       updatedAt
       cover {

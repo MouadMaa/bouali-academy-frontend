@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
+import { useRouter } from 'next/router'
+import { FC, useEffect } from 'react'
 import { Course } from '../../graphql/generated/schema'
 
 interface CourseCardProps {
@@ -11,10 +12,16 @@ interface CourseCardProps {
 const MyLearningCard: FC<CourseCardProps> = (props) => {
   const { course, className = '' } = props
 
+  const router = useRouter()
+
+  const handleClick = () => {
+    window.open(course.url as string, '_blank')
+  }
+
   return (
-    <section className={`course__item white-bg mb-30 fix ${className}`}>
+    <section className={`course__item white-bg mb-30 fix ${className}`} onClick={handleClick}>
       <div className='course__thumb w-img p-relative fix'>
-        <Link href={`/courses/${course.slug}`}>
+        <Link href={router.pathname}>
           <Image
             src={course.cover?.data?.attributes?.formats.medium.url as string}
             alt={course.cover?.data?.attributes?.name as string}
@@ -30,7 +37,7 @@ const MyLearningCard: FC<CourseCardProps> = (props) => {
       </div>
       <div className='course__content'>
         <h3 className='course__title' style={{ margin: 0 }}>
-          <Link href={`/courses/${course.slug}`}>{course.name}</Link>
+          <Link href={router.pathname}>{course.name}</Link>
         </h3>
       </div>
     </section>

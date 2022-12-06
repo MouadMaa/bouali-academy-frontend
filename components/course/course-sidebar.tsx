@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
 import Loader from '../shared/loader'
 import { useMyCourses } from '../../hooks/useMyCourses'
+import { signIn, useSession } from 'next-auth/react'
 
 interface CourseSidebarProps {
   courseId: string
@@ -15,6 +16,8 @@ interface CourseSidebarProps {
 
 const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const { courseId, course } = props
+
+  const { status } = useSession()
 
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
   const { coursesId } = useMyCourses()
@@ -32,15 +35,21 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
 
   const handleBuyCourse = async () => {
     setLoadingBuyCourse(true)
-    try {
-      const { data } = await axios.post(`/api/payments`, { courseId })
-      if (data?.message === 'success' && Boolean(data?.paymentUrl)) {
-        location.href = data.paymentUrl
-      } else if (data?.message === 'success') {
-        // push to lessons page
+    if (enrolled) {
+      window.open(course.url as string, '_blank')
+    } else if (status === 'unauthenticated') {
+      signIn('google')
+    } else if (status === 'authenticated') {
+      try {
+        const { data } = await axios.post(`/api/payments`, { courseId })
+        if (data?.message === 'success' && Boolean(data?.paymentUrl)) {
+          location.href = data.paymentUrl
+        } else if (data?.message === 'success') {
+          window.open(course.url as string, '_blank')
+        }
+      } catch (error: any) {
+        toast.error(error.response.data.message)
       }
-    } catch (error: any) {
-      toast.error(error.response.data.message)
     }
     setLoadingBuyCourse(false)
   }
@@ -183,7 +192,8 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                   <div>
                     {course.price && !enrolled ? (
                       <span>
-                        Buy now <i className='fas fa-arrow-right'></i>
+                        {`${status === 'unauthenticated' ? 'Login to' : ''} `} Buy now{' '}
+                        <i className='fas fa-arrow-right'></i>
                       </span>
                     ) : (
                       <span>
