@@ -5,7 +5,10 @@ fragment Course on CourseEntityResponse {
       name
       description
       price
+      prev_price
       instructor
+      duration
+      lessons
       slug
       updatedAt
       cover {
@@ -16,9 +19,6 @@ fragment Course on CourseEntityResponse {
       }
       category {
         ...Category
-      }
-      lessons {
-        id
       }
     }
   }
@@ -31,7 +31,10 @@ fragment Courses on CourseEntityResponseCollection {
       name
       description
       price
+      prev_price
       instructor
+      duration
+      lessons
       slug
       updatedAt
       cover {
@@ -42,9 +45,6 @@ fragment Courses on CourseEntityResponseCollection {
       }
       category {
         ...Category
-      }
-      lessons {
-        id
       }
     }
   }

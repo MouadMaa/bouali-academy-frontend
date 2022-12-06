@@ -33,7 +33,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
           <div className='course__lesson'>
             <span>
               <i className='fas fa-book'></i>
-              {course.lessons?.length} Lesson
+              {course.lessons} Lesson
             </span>
           </div>
           <div className='course__rating'>
@@ -63,7 +63,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
         <div className='course__status d-flex align-items-center'>
           <span className='blue'>{course.price ? `${course.price.toFixed(2)} DH` : 'Free'}</span>
           <span className='old-price'>
-            {course.price ? `${(course.price + 100).toFixed(2)} DH` : ''}
+            {course.prev_price ? `${course.prev_price.toFixed(2)} DH` : ''}
           </span>
         </div>
         <div className='course__btn'>

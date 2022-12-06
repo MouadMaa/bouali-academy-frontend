@@ -20,7 +20,12 @@ const AboutSection = () => {
         <div className='row'>
           <div className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
             <div className='teacher__details-thumb p-relative w-img pr-30'>
-              <Image src='/img/about/teacher.jpg' alt='img not found' width={340} height={400} />
+              <Image
+                src={bio?.image.data?.attributes?.url as string}
+                alt='img not found'
+                width={340}
+                height={400}
+              />
               <div className='teacher__details-shape'>
                 <Image
                   className='teacher-details-shape-1'
@@ -43,8 +48,8 @@ const AboutSection = () => {
             <div className='teacher__wrapper'>
               <div className='teacher__top d-md-flex align-items-end justify-content-between'>
                 <div className='teacher__info'>
-                  <h4>Bouali Zakaria</h4>
-                  <span>Teaches Interior Markater</span>
+                  <h4>{bio?.name}</h4>
+                  <span>{bio?.function}</span>
                 </div>
                 <div>
                   <div className='teacher__social-2'>

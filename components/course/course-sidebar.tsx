@@ -100,7 +100,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
               <div className='course__video-price'>
                 <h5>{course.price ? `${course.price.toFixed(2)} DH` : 'For Free'}</h5>
                 <h5 className='old-price'>
-                  {course.price ? `${(course.price + 100).toFixed(2)} DH` : ''}
+                  {course.prev_price ? `${course.prev_price.toFixed(2)} DH` : ''}
                 </h5>
               </div>
             </div>
@@ -122,7 +122,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                   </div>
                   <div className='course__video-info'>
                     <h5>
-                      <span>Lectures :</span> {course.lessons?.length}
+                      <span>Lectures :</span> {course.lessons}
                     </h5>
                   </div>
                 </li>
@@ -132,7 +132,8 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                   </div>
                   <div className='course__video-info'>
                     <h5>
-                      <span>Duration :</span>12 Hours
+                      <span>Duration :</span>
+                      {course.duration} Hours
                     </h5>
                   </div>
                 </li>
@@ -164,16 +165,8 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
               </div>
             ) : (
               course.price && (
-                <div className='course__payment mb-35'>
-                  <h3>Payment:</h3>
-                  <a>
-                    <Image
-                      src='/img/course/payment-1.png'
-                      alt='img not found'
-                      width={160}
-                      height={24}
-                    />
-                  </a>
+                <div className='course__payment mb-20'>
+                  <h5>Payment secure 100%</h5>
                 </div>
               )
             )}
@@ -216,7 +209,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                         <Image
                           src={course.attributes?.cover?.data?.attributes?.url as string}
                           alt={course.attributes?.cover?.data?.attributes?.name as string}
-                          width={60}
+                          width={90}
                           height={60}
                         />
                       </Link>

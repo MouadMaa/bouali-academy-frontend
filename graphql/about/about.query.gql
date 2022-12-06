@@ -14,7 +14,12 @@ query About {
         }
         bio {
           id
+          name
+          function
           content
+          image {
+            ...File
+          }
         }
       }
     }
