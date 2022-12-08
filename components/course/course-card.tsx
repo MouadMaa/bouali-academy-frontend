@@ -38,7 +38,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
           </div>
           <div className='course__rating'>
             <span>
-              <i className='fas fa-star'></i>4.5 (72)
+              <i className='fas fa-star'></i>4.5
             </span>
           </div>
         </div>

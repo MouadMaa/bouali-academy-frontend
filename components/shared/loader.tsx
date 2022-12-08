@@ -36,7 +36,7 @@ const Loader: FC = () => {
           bottom: 0;
           margin: auto;
           border: 3px solid;
-          border-color: transparent transparent #2b4eff #2b4eff;
+          border-color: transparent transparent #0455bf #0455bf;
           width: 40px;
           height: 40px;
           border-radius: 50%;

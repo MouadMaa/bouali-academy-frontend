@@ -148,16 +148,6 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                 </li>
                 <li className='d-flex align-items-end'>
                   <div className='course__video-icon mr-10'>
-                    <i className='fas fa-user'></i>
-                  </div>
-                  <div className='course__video-info'>
-                    <h5>
-                      <span>Enrolled :</span>20 students
-                    </h5>
-                  </div>
-                </li>
-                <li className='d-flex align-items-end'>
-                  <div className='course__video-icon mr-10'>
                     <i className='fas fa-globe'></i>
                   </div>
                   <div className='course__video-info'>
