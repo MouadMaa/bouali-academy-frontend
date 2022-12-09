@@ -137,7 +137,7 @@ const Course: NextPage = () => {
                         </a>
                       </li>
                     </ul>
-                    <p>4.5</p>
+                    <p>{course?.attributes?.review}</p>
                   </div>
                 </div>
               </div>

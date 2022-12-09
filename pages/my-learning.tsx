@@ -30,7 +30,7 @@ const MyLearning: NextPage<MyLearningProps> = (props) => {
         <section className='row'>
           {courses?.map((course) => (
             <div key={course.id} className='col-xxl-4 col-xl-4 col-lg-4 col-md-6'>
-              <MyLearningCard course={course.attributes as any} />
+              <MyLearningCard courseId={course.id as any} course={course.attributes as any} />
             </div>
           ))}
         </section>

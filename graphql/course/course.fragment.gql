@@ -9,7 +9,7 @@ fragment Course on CourseEntityResponse {
       instructor
       duration
       lessons
-      url
+      review
       slug
       updatedAt
       cover {
@@ -36,7 +36,7 @@ fragment Courses on CourseEntityResponseCollection {
       instructor
       duration
       lessons
-      url
+      review
       slug
       updatedAt
       cover {

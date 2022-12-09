@@ -176,15 +176,17 @@ export type Course = {
   duration: Scalars['Float'];
   instructor: Scalars['String'];
   instructor_image: UploadFileEntityResponse;
+  lesson?: Maybe<LessonEntityResponse>;
   lessons: Scalars['Int'];
   name: Scalars['String'];
   orders?: Maybe<OrderRelationResponseCollection>;
+  overview_url?: Maybe<Scalars['String']>;
   prev_price?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  review?: Maybe<Scalars['Float']>;
   slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
-  url?: Maybe<Scalars['String']>;
 };
 
 
@@ -220,17 +222,19 @@ export type CourseFiltersInput = {
   duration?: InputMaybe<FloatFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   instructor?: InputMaybe<StringFilterInput>;
+  lesson?: InputMaybe<LessonFiltersInput>;
   lessons?: InputMaybe<IntFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CourseFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
   orders?: InputMaybe<OrderFiltersInput>;
+  overview_url?: InputMaybe<StringFilterInput>;
   prev_price?: InputMaybe<FloatFilterInput>;
   price?: InputMaybe<FloatFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  review?: InputMaybe<FloatFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-  url?: InputMaybe<StringFilterInput>;
 };
 
 export type CourseInput = {
@@ -240,14 +244,16 @@ export type CourseInput = {
   duration?: InputMaybe<Scalars['Float']>;
   instructor?: InputMaybe<Scalars['String']>;
   instructor_image?: InputMaybe<Scalars['ID']>;
+  lesson?: InputMaybe<Scalars['ID']>;
   lessons?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
   orders?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  overview_url?: InputMaybe<Scalars['String']>;
   prev_price?: InputMaybe<Scalars['Float']>;
   price?: InputMaybe<Scalars['Float']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  review?: InputMaybe<Scalars['Float']>;
   slug?: InputMaybe<Scalars['String']>;
-  url?: InputMaybe<Scalars['String']>;
 };
 
 export type DateTimeFilterInput = {
@@ -304,7 +310,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = About | Category | ComponentAboutBio | ComponentAboutTestimonial | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Category | ComponentAboutBio | ComponentAboutTestimonial | Course | I18NLocale | Lesson | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -414,12 +420,57 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
+export type Lesson = {
+  __typename?: 'Lesson';
+  course?: Maybe<CourseEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  url: Scalars['String'];
+};
+
+export type LessonEntity = {
+  __typename?: 'LessonEntity';
+  attributes?: Maybe<Lesson>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type LessonEntityResponse = {
+  __typename?: 'LessonEntityResponse';
+  data?: Maybe<LessonEntity>;
+};
+
+export type LessonEntityResponseCollection = {
+  __typename?: 'LessonEntityResponseCollection';
+  data: Array<LessonEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type LessonFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LessonFiltersInput>>>;
+  course?: InputMaybe<CourseFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<LessonFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<LessonFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type LessonInput = {
+  course?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  url?: InputMaybe<Scalars['String']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createCategory?: Maybe<CategoryEntityResponse>;
   createCourse?: Maybe<CourseEntityResponse>;
+  createLesson?: Maybe<LessonEntityResponse>;
   createOrder?: Maybe<OrderEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -430,6 +481,7 @@ export type Mutation = {
   deleteAbout?: Maybe<AboutEntityResponse>;
   deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
+  deleteLesson?: Maybe<LessonEntityResponse>;
   deleteOrder?: Maybe<OrderEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -452,6 +504,7 @@ export type Mutation = {
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateLesson?: Maybe<LessonEntityResponse>;
   updateOrder?: Maybe<OrderEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -477,6 +530,11 @@ export type MutationCreateCategoryArgs = {
 
 export type MutationCreateCourseArgs = {
   data: CourseInput;
+};
+
+
+export type MutationCreateLessonArgs = {
+  data: LessonInput;
 };
 
 
@@ -511,6 +569,11 @@ export type MutationDeleteCategoryArgs = {
 
 
 export type MutationDeleteCourseArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteLessonArgs = {
   id: Scalars['ID'];
 };
 
@@ -600,6 +663,12 @@ export type MutationUpdateCourseArgs = {
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateLessonArgs = {
+  data: LessonInput;
+  id: Scalars['ID'];
 };
 
 
@@ -722,6 +791,8 @@ export type Query = {
   courses?: Maybe<CourseEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  lesson?: Maybe<LessonEntityResponse>;
+  lessons?: Maybe<LessonEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   order?: Maybe<OrderEntityResponse>;
   orders?: Maybe<OrderEntityResponseCollection>;
@@ -775,6 +846,19 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryLessonArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryLessonsArgs = {
+  filters?: InputMaybe<LessonFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1268,9 +1352,9 @@ export type CategoryFragment = { __typename?: 'CategoryEntityResponse', data?: {
 
 export type CategoriesFragment = { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null }> };
 
-export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null } | null };
+export type CourseFragment = { __typename?: 'CourseEntityResponse', data?: { __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, review?: number | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null } | null };
 
-export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } };
+export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, review?: number | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } };
 
 export type CoursesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
@@ -1278,14 +1362,14 @@ export type CoursesQueryVariables = Exact<{
 }>;
 
 
-export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type CoursesQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, review?: number | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
 export type CoursesBySlugQueryVariables = Exact<{
   filters?: InputMaybe<CourseFiltersInput>;
 }>;
 
 
-export type CoursesBySlugQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, url?: string | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type CoursesBySlugQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseEntityResponseCollection', data: Array<{ __typename?: 'CourseEntity', id?: string | null, attributes?: { __typename?: 'Course', name: string, description: string, price?: number | null, prev_price?: number | null, instructor: string, duration: number, lessons: number, review?: number | null, slug: string, updatedAt?: any | null, cover?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null, instructor_image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null }, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', title: string, description?: string | null, slug: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
 export type FileFragment = { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null };
 
@@ -1343,7 +1427,7 @@ export const CourseFragmentDoc = gql`
       instructor
       duration
       lessons
-      url
+      review
       slug
       updatedAt
       cover {
@@ -1372,7 +1456,7 @@ export const CoursesFragmentDoc = gql`
       instructor
       duration
       lessons
-      url
+      review
       slug
       updatedAt
       cover {

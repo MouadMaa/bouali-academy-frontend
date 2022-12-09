@@ -1,31 +1,31 @@
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const useMyCourses = () => {
-  const { status, data: session } = useSession()
+  const { status } = useSession()
 
-  const [coursesId, setCoursesId] = useState<string[]>([])
+  const [myCourses, setMyCourses] = useState<any[]>([])
+  const [loadingMyCourses, setLoadingMyCourses] = useState(true)
 
   useEffect(() => {
     ;(async () => {
-      if (status === 'authenticated') {
-        const { data } = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/orders?populate=course`,
-          {
-            headers: {
-              Authorization: `Bearer ${(session as any).jwt}`,
-            },
-          },
-        )
-
-        const coursesId = data.data.attributes.results.map((order: any) =>
-          order.course.id.toString(),
-        )
-        setCoursesId(coursesId)
+      setLoadingMyCourses(true)
+      try {
+        if (status === 'authenticated') {
+          const { data } = await axios.get('/api/my-courses')
+          setMyCourses(data.myCourses)
+        }
+      } catch (error: any) {
+        toast.error(error.response?.data?.message)
       }
+      setLoadingMyCourses(false)
     })()
-  }, [status, session])
+  }, [status])
 
-  return { coursesId }
+  const getCourseUrl = (courseId: string) => myCourses.find((c) => c.courseId == courseId)?.url
+  const isMyCourse = (courseId: string) => Boolean(myCourses.find((c) => c.courseId == courseId))
+
+  return { myCourses, loadingMyCourses, getCourseUrl, isMyCourse }
 }

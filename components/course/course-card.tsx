@@ -38,7 +38,8 @@ const CourseCard: FC<CourseCardProps> = (props) => {
           </div>
           <div className='course__rating'>
             <span>
-              <i className='fas fa-star'></i>4.5
+              <i className='fas fa-star'></i>
+              {course?.review}
             </span>
           </div>
         </div>

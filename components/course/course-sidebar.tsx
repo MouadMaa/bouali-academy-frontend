@@ -18,9 +18,9 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const { courseId, course } = props
 
   const { status } = useSession()
+  const { loadingMyCourses, isMyCourse, getCourseUrl } = useMyCourses()
 
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
-  const { coursesId } = useMyCourses()
 
   const [showModel, setShowModel] = useState(false)
   const [loadingBuyCourse, setLoadingBuyCourse] = useState(false)
@@ -36,7 +36,8 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const handleBuyCourse = async () => {
     setLoadingBuyCourse(true)
     if (enrolled) {
-      window.open(course.url as string, '_blank')
+      const courseUrl = getCourseUrl(courseId)
+      window.open(courseUrl, '_blank')
     } else if (status === 'unauthenticated') {
       signIn('google')
     } else if (status === 'authenticated') {
@@ -45,17 +46,18 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
         if (data?.message === 'success' && Boolean(data?.paymentUrl)) {
           location.href = data.paymentUrl
         } else if (data?.message === 'success') {
-          window.open(course.url as string, '_blank')
+          const courseUrl = getCourseUrl(courseId)
+          window.open(courseUrl, '_blank')
         }
       } catch (error: any) {
-        toast.error(error.response.data.message)
+        toast.error(error.response?.data?.message)
       }
     }
     setLoadingBuyCourse(false)
   }
 
   const relatedCourses = data?.courses?.data.filter((c) => c.attributes?.slug !== course.slug)
-  const enrolled = !!coursesId.find((c) => c === courseId)
+  const enrolled = isMyCourse(courseId)
 
   return (
     <section className='col-xxl-4 col-xl-4 col-lg-4'>
@@ -174,9 +176,9 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
               <button
                 className='e-btn e-btn-7 w-100'
                 onClick={handleBuyCourse}
-                disabled={loadingBuyCourse}
+                disabled={loadingMyCourses || loadingBuyCourse}
               >
-                {loadingBuyCourse ? (
+                {loadingMyCourses || loadingBuyCourse ? (
                   <span>Loading...</span>
                 ) : (
                   <div>

@@ -1,21 +1,31 @@
+import { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, useEffect } from 'react'
 import { Course } from '../../graphql/generated/schema'
+import { useMyCourses } from '../../hooks/useMyCourses'
+import Loader from '../shared/loader'
 
 interface CourseCardProps {
+  courseId: string
   course: Course
   className?: string
 }
 
 const MyLearningCard: FC<CourseCardProps> = (props) => {
-  const { course, className = '' } = props
+  const { courseId, course, className = '' } = props
 
   const router = useRouter()
 
+  const { loadingMyCourses, getCourseUrl } = useMyCourses()
+
   const handleClick = () => {
-    window.open(course.url as string, '_blank')
+    const courseUrl = getCourseUrl(courseId)
+    window.open(courseUrl, '_blank')
+  }
+
+  if (loadingMyCourses) {
+    return <Loader />
   }
 
   return (
