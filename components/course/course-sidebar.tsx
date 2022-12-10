@@ -3,11 +3,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Modal from 'react-responsive-modal'
 import axios from 'axios'
+import Plyr from 'plyr-react'
 import { toast } from 'react-toastify'
 import { Course, useCoursesLazyQuery } from '../../graphql/generated/schema'
 import Loader from '../shared/loader'
 import { useMyCourses } from '../../hooks/useMyCourses'
 import { signIn, useSession } from 'next-auth/react'
+
+import 'plyr-react/plyr.css'
 
 interface CourseSidebarProps {
   courseId: string
@@ -65,20 +68,25 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
         <Modal
           open={showModel}
           onClose={() => setShowModel(false)}
+          center
           styles={{
             modal: {
               width: '70%',
-              minHeight: '50%',
-              borderRadius: '10px',
-              padding: '20px',
+              minHeight: '40%',
+              padding: '0',
+              borderRadius: '25px',
             },
             overlay: {
               background: 'rgba(0, 0, 0, 0.7)',
             },
           }}
-          center
         >
-          <p>No video !</p>
+          <Plyr
+            source={{
+              type: 'video',
+              sources: [{ src: course.overview_url as string, provider: 'youtube' }],
+            }}
+          />
         </Modal>
       )}
 

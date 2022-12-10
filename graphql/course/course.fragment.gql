@@ -4,14 +4,17 @@ fragment Course on CourseEntityResponse {
     attributes {
       name
       description
-      price
-      prev_price
       instructor
+      price
       duration
       lessons
+      prev_price
+      overview_url
       review
       slug
+      createdAt
       updatedAt
+      publishedAt
       cover {
         ...File
       }
@@ -31,14 +34,17 @@ fragment Courses on CourseEntityResponseCollection {
     attributes {
       name
       description
-      price
-      prev_price
       instructor
+      price
       duration
       lessons
+      prev_price
+      overview_url
       review
       slug
+      createdAt
       updatedAt
+      publishedAt
       cover {
         ...File
       }
