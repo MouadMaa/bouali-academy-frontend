@@ -101,7 +101,7 @@ const Header: FC = () => {
     <div className='header__category'>
       <ul>
         <li>
-          <button className='e-btn'>Sign in / up</button>
+          <button className='e-btn'>Sign in for free</button>
           <ul className='cat-submenu'>
             <li>
               <a onClick={() => signIn('google')}>With Google</a>
