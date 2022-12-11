@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, FormEventHandler } from 'react'
+import React, { useState, useEffect, FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -112,7 +112,7 @@ const Header: FC = () => {
                 <div className='logo'>
                   <Link href='/'>
                     <Image
-                      src={`/img/logo/logo-${isBlackLogo ? '2' : '3'}.png`}
+                      src={`/img/logo/logo-${isBlackLogo ? '3' : '4'}.png`}
                       alt='img not found'
                       width={160}
                       height={80}
@@ -234,7 +234,7 @@ const Header: FC = () => {
           <div className='sidebar__content'>
             <div className='logo mb-40'>
               <Link href='/'>
-                <Image src='/img/logo/logo-2.png' alt='logo' width={120} height={70} />
+                <Image src='/img/logo/logo-3.png' alt='logo' width={120} height={70} />
               </Link>
             </div>
             <div className='mm-menu'>

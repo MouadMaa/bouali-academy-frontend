@@ -13,7 +13,7 @@ const Footer: FC = () => {
           <div className='container footer__container'>
             <div className='footer__logo'>
               <Link href='/'>
-                <Image src='/img/logo/logo-3.png' alt='img not found' width={160} height={80} />
+                <Image src='/img/logo/logo-4.png' alt='img not found' width={160} height={80} />
               </Link>
             </div>
             <div className='footer__link'>
