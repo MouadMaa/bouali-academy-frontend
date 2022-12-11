@@ -79,17 +79,32 @@ const Header: FC = () => {
                 fill='#fff'
               />
             </svg>
-            <span>Profile</span>
+            <span>My Account</span>
           </button>
           <ul className='cat-submenu'>
             <li>
-              <a onClick={() => setShowModel(true)}>My Account</a>
+              <a onClick={() => setShowModel(true)}>My Profile</a>
             </li>
             <li>
               <Link href='/my-learning'>My Learning</Link>
             </li>
             <li>
               <a onClick={() => signOut()}>Sign Out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  )
+
+  const SignIn = (
+    <div className='header__category'>
+      <ul>
+        <li>
+          <button className='e-btn'>Sign in / up</button>
+          <ul className='cat-submenu'>
+            <li>
+              <a onClick={() => signIn('google')}>With Google</a>
             </li>
           </ul>
         </li>
@@ -185,17 +200,7 @@ const Header: FC = () => {
                   </div>
                 </div>
                 <div className='header__btn ml-20 mb-1 d-none d-sm-block'>
-                  {status !== 'authenticated' ? (
-                    <button
-                      className='e-btn'
-                      style={{ textTransform: 'capitalize' }}
-                      onClick={() => signIn('google')}
-                    >
-                      Sign In
-                    </button>
-                  ) : (
-                    Profile
-                  )}
+                  {status !== 'authenticated' ? SignIn : Profile}
                 </div>
                 <div className='sidebar__menu d-xl-none'>
                   <div
