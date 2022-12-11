@@ -70,5 +70,6 @@ const CoursesSection: FC = () => {
 export default CoursesSection
 
 export const QueryCoursesVars: QueryCoursesArgs = {
+  sort: ['updatedAt'],
   pagination: { limit: 6 },
 }

@@ -1359,6 +1359,7 @@ export type CoursesFragment = { __typename?: 'CourseEntityResponseCollection', d
 export type CoursesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
   filters?: InputMaybe<CourseFiltersInput>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
 }>;
 
 
@@ -1579,8 +1580,8 @@ export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
 export const CoursesDocument = gql`
-    query Courses($pagination: PaginationArg, $filters: CourseFiltersInput) {
-  courses(pagination: $pagination, filters: $filters) {
+    query Courses($pagination: PaginationArg, $filters: CourseFiltersInput, $sort: [String]) {
+  courses(pagination: $pagination, filters: $filters, sort: $sort) {
     ...Courses
   }
 }
@@ -1600,6 +1601,7 @@ export const CoursesDocument = gql`
  *   variables: {
  *      pagination: // value for 'pagination'
  *      filters: // value for 'filters'
+ *      sort: // value for 'sort'
  *   },
  * });
  */

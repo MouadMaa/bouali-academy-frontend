@@ -131,6 +131,7 @@ const Courses: NextPage = () => {
 export default Courses
 
 export const QueryCoursesVars: QueryCoursesArgs = {
+  sort: ["updatedAt"],
   pagination: {
     page: 1,
     pageSize: 9,

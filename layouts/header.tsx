@@ -1,18 +1,21 @@
-import React, { useState, useEffect, FC, use } from 'react'
+import React, { useState, useEffect, FC, FormEventHandler } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useCategoriesQuery } from '../graphql/generated/schema'
-import { QueryCategoriesVars } from '../components/category/categories-section'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Modal from 'react-responsive-modal'
 import Image from 'next/image'
+import { CourseEntity, useCategoriesQuery, useCoursesLazyQuery } from '../graphql/generated/schema'
+import { QueryCategoriesVars } from '../components/category/categories-section'
+import Loader from '../components/shared/loader'
 
 const Header: FC = () => {
   const { status, data: session } = useSession()
   const { data: categoriesData } = useCategoriesQuery({ variables: QueryCategoriesVars })
-
+  const [getCoursesSearch, { data: dataSearch, loading: loadingSearch }] = useCoursesLazyQuery()
   const router = useRouter()
 
+  const [searchCourses, setSearchCourses] = useState<CourseEntity[]>([])
+  const [searchValue, setSearchValue] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [showModel, setShowModel] = useState(false)
@@ -29,6 +32,19 @@ const Header: FC = () => {
     setSearchOpen(false)
     setIsBlackLogo(router.pathname === '/' || router.pathname === '/courses/[slug]')
   }, [router])
+
+  useEffect(() => {
+    setSearchCourses(dataSearch?.courses?.data.length ? (dataSearch?.courses?.data as any) : [])
+  }, [dataSearch])
+
+  useEffect(() => {
+    if (searchValue) {
+      const variables = { filters: { name: { containsi: searchValue } } }
+      getCoursesSearch({ variables })
+    } else {
+      setSearchCourses([])
+    }
+  }, [getCoursesSearch, searchValue])
 
   const sticky = () => {
     const header = document.querySelector<HTMLHeadElement>('.header__area')
@@ -274,11 +290,15 @@ const Header: FC = () => {
           <div className='row'>
             <div className='col-xl-12'>
               <div className='header__search-3-inner text-center'>
-                <form action='#'>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                  }}
+                >
                   <div className='header__search-3-btn'>
                     <a
-                      href='#!'
                       className='header__search-3-btn-close'
+                      style={{ cursor: 'pointer' }}
                       onClick={() => setSearchOpen(false)}
                     >
                       <i className='fas fa-times'></i>
@@ -312,7 +332,12 @@ const Header: FC = () => {
                     </ul>
                   </div>
                   <div className='header__search-3-input p-relative'>
-                    <input type='text' placeholder='Search for products... ' />
+                    <input
+                      type='text'
+                      placeholder='Search for courses... '
+                      required
+                      onChange={(e) => setSearchValue(e.target.value)}
+                    />
                     <button type='submit'>
                       <i className='fas fa-search'></i>
                     </button>
@@ -320,6 +345,24 @@ const Header: FC = () => {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+        <div className='container mt-50'>
+          <div className='row'>
+            {loadingSearch && (
+              <div className='text-center'>
+                <Loader />
+              </div>
+            )}
+            {searchCourses.map((course) => (
+              <div key={course.id} style={{ margin: '5px 10px' }}>
+                <h4>
+                  <Link href={`/courses/${course.attributes?.slug}`}>
+                    {`${course.attributes?.name} (${course.attributes?.category?.data?.attributes?.title})`}
+                  </Link>
+                </h4>
+              </div>
+            ))}
           </div>
         </div>
       </div>
