@@ -11,6 +11,7 @@ fragment Course on CourseEntityResponse {
       prev_price
       overview_url
       review
+      url
       slug
       createdAt
       updatedAt
@@ -41,6 +42,7 @@ fragment Courses on CourseEntityResponseCollection {
       prev_price
       overview_url
       review
+      url
       slug
       createdAt
       updatedAt

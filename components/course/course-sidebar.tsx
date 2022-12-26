@@ -21,12 +21,14 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const { courseId, course } = props
 
   const { status } = useSession()
-  const { loadingMyCourses, isMyCourse, getCourseUrl } = useMyCourses()
+  const { isMyCourse, loadingCoursesId } = useMyCourses()
 
   const [getRelatedCourses, { data, loading }] = useCoursesLazyQuery()
 
   const [showModel, setShowModel] = useState(false)
   const [loadingBuyCourse, setLoadingBuyCourse] = useState(false)
+
+  const enrolled = isMyCourse(courseId)
 
   useEffect(() => {
     const categoryId = course.category?.data?.id
@@ -39,8 +41,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   const handleBuyCourse = async () => {
     setLoadingBuyCourse(true)
     if (enrolled) {
-      const courseUrl = getCourseUrl(courseId)
-      window.open(courseUrl, '_blank')
+      window.open(course.url, '_blank')
     } else if (status === 'unauthenticated') {
       signIn('google')
     } else if (status === 'authenticated') {
@@ -49,8 +50,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
         if (data?.message === 'success' && Boolean(data?.paymentUrl)) {
           location.href = data.paymentUrl
         } else if (data?.message === 'success') {
-          const courseUrl = getCourseUrl(courseId)
-          window.open(courseUrl, '_blank')
+          window.open(course.url, '_blank')
         }
       } catch (error: any) {
         toast.error(error.response?.data?.message)
@@ -60,7 +60,6 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
   }
 
   const relatedCourses = data?.courses?.data.filter((c) => c.attributes?.slug !== course.slug)
-  const enrolled = isMyCourse(courseId)
 
   return (
     <section className='col-xxl-4 col-xl-4 col-lg-4'>
@@ -184,9 +183,9 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
               <button
                 className='e-btn e-btn-7 w-100'
                 onClick={handleBuyCourse}
-                disabled={loadingMyCourses || loadingBuyCourse}
+                disabled={loadingCoursesId || loadingBuyCourse}
               >
-                {loadingMyCourses || loadingBuyCourse ? (
+                {loadingCoursesId || loadingBuyCourse ? (
                   <span>Loading...</span>
                 ) : (
                   <div>
@@ -197,7 +196,8 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
                       </span>
                     ) : (
                       <span>
-                        Go to course <i className='fas fa-arrow-right'></i>
+                        {`${status === 'unauthenticated' ? 'Login to get' : 'Go to'} `} course{' '}
+                        <i className='fas fa-arrow-right'></i>
                       </span>
                     )}
                   </div>

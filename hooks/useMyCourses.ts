@@ -6,26 +6,25 @@ import { toast } from 'react-toastify'
 export const useMyCourses = () => {
   const { status } = useSession()
 
-  const [myCourses, setMyCourses] = useState<any[]>([])
-  const [loadingMyCourses, setLoadingMyCourses] = useState(true)
+  const [coursesId, setCoursesId] = useState<any[]>([])
+  const [loadingCoursesId, setLoadingMyCoursesId] = useState(true)
 
   useEffect(() => {
     ;(async () => {
-      setLoadingMyCourses(true)
+      setLoadingMyCoursesId(true)
       try {
         if (status === 'authenticated') {
           const { data } = await axios.get('/api/my-courses')
-          setMyCourses(data.myCourses)
+          setCoursesId(data.coursesId)
         }
       } catch (error: any) {
         toast.error(error.response?.data?.message)
       }
-      setLoadingMyCourses(false)
+      setLoadingMyCoursesId(false)
     })()
   }, [status])
 
-  const getCourseUrl = (courseId: string) => myCourses.find((c) => c.courseId == courseId)?.url
-  const isMyCourse = (courseId: string) => Boolean(myCourses.find((c) => c.courseId == courseId))
+  const isMyCourse = (id: string) => Boolean(coursesId.find((courseId) => courseId === id))
 
-  return { myCourses, loadingMyCourses, getCourseUrl, isMyCourse }
+  return { coursesId, loadingCoursesId, isMyCourse }
 }

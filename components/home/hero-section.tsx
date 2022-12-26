@@ -34,9 +34,9 @@ const HeroSection: FC = () => {
             <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-6'>
               <div className='hero__content p-relative z-index-1'>
                 <h3 className='hero__title'>
-                  <span>Access 2700+</span>
+                  <span>LE SEUL SITE AU MAROC</span>
                   <span className='yellow-shape'>
-                    Online{' '}
+                    {' '}
                     <Image
                       src='/img/shape/yellow-bg.png'
                       alt='yellow-shape'
@@ -44,11 +44,9 @@ const HeroSection: FC = () => {
                       height={16}
                     />{' '}
                   </span>
-                  Tutorial From Top Instructor.
+                  POUR MIEUX SE PRÉPARER AUX CONCOURS POST-BAC
                 </h3>
-                <p>
-                  Meet university,and cultural institutions, who&apos;ll share their experience.
-                </p>
+                <p>Regoingez nous et donnez le cap vrai à votre préparation.</p>
                 <Link href='/courses' className='e-btn'>
                   view all course
                 </Link>
@@ -82,8 +80,8 @@ const HeroSection: FC = () => {
                 <div className='hero__thumb-big mr-30'>
                   <Image src='/img/hero/hero-1.jpg' alt='img not found' width={400} height={460} />
                   <div className='hero__quote hero__quote-animation'>
-                    <span>Tomorrow is our</span>
-                    <h4>“When I Grow Up” Spirit Day!</h4>
+                    <span>BOUALI ACADEMY</span>
+                    <h4>“la pièce clé de ta réussite ” !</h4>
                   </div>
                 </div>
                 <div className='hero__thumb-sm mt-50 d-none d-lg-block'>

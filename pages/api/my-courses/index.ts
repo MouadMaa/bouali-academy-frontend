@@ -1,12 +1,11 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { unstable_getServerSession } from 'next-auth'
-import { LessonEntity } from '../../../graphql/generated/schema'
 import { authOptions } from '../auth/[...nextauth]'
 
 type ResponseData = {
   message?: string
-  myCourses?: object[]
+  coursesId?: string[]
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
@@ -33,25 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
       order.course.id.toString(),
     )
 
-    const filters = coursesId
-      .map((courseId: string) => `&filters[course][id][$eq]=${courseId}`)
-      .join('')
-
-    const { data: lessonsData } = await axios.get(
-      `${process.env.BACKEND_API_URL}/lessons?populate=course${filters}`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-        },
-      },
-    )
-
-    const myCourses = lessonsData.data.map((lesson: LessonEntity) => ({
-      courseId: lesson.attributes?.course?.data?.id,
-      url: lesson.attributes?.url,
-    }))
-
-    return res.status(200).json({ myCourses })
+    return res.status(200).json({ coursesId })
   } catch (error) {
     return res.status(404).json({ message: 'Something went wrong!' })
   }

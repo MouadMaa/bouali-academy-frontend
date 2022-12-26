@@ -147,7 +147,7 @@ const Header: FC = () => {
                         <ul className='cat-submenu'>
                           {categories?.map(({ id, attributes }) => (
                             <li key={id}>
-                              <Link href={`courses/?categoryId=${id}`}>{attributes?.title}</Link>
+                              <Link href={`/courses/?categoryId=${id}`}>{attributes?.title}</Link>
                             </li>
                           ))}
                         </ul>
