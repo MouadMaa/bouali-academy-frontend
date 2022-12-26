@@ -22,8 +22,8 @@ const ContactSection: FC = () => {
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setLoading(true)
     const res = await axios.post(`/api/contact`, data)
-    if (res.statusText === 'OK') {
-      toast.success('Message sent successfully.', { theme: 'colored' })
+    if (res.data.message === 'success') {
+      toast.success('Yor message sent successfully', { theme: 'colored' })
       reset()
     }
     setLoading(false)

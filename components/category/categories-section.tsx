@@ -27,7 +27,7 @@ const CategoriesSection: FC = () => {
                     height={16}
                   />{' '}
                 </span>
-                Courses
+                Categories
               </h2>
             </div>
           </div>

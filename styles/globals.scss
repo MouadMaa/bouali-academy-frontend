@@ -40,6 +40,27 @@ header .sidebar__content .logo {
   }
 }
 
+.hero__title {
+  margin-bottom: 20px;
+
+  span {
+    text-transform: capitalize;
+  }
+
+  .hero__title-sub {
+    font-size: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+.hero__quote span {
+  text-transform: capitalize;
+}
+
+.page__title h3 {
+  margin-bottom: 10px;
+}
+
 #category__more {
   margin-top: 2rem;
   display: flex;

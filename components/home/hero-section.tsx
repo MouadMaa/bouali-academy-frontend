@@ -34,19 +34,22 @@ const HeroSection: FC = () => {
             <div className='col-xxl-6 col-xl-6 col-lg-6 col-md-6'>
               <div className='hero__content p-relative z-index-1'>
                 <h3 className='hero__title'>
-                  <span>LE SEUL SITE AU MAROC</span>
+                  <span className='hero__title-sub'>the only site in morocco</span>
+                  <span>the best way to prepare for </span>
                   <span className='yellow-shape'>
-                    {' '}
+                    post bac{' '}
                     <Image
                       src='/img/shape/yellow-bg.png'
                       alt='yellow-shape'
                       width={150}
                       height={16}
-                    />{' '}
+                    />
                   </span>
-                  POUR MIEUX SE PRÉPARER AUX CONCOURS POST-BAC
+                  <span style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
+                    competitions
+                  </span>
                 </h3>
-                <p>Regoingez nous et donnez le cap vrai à votre préparation.</p>
+                <p>Join us and set the course for your preparation.</p>
                 <Link href='/courses' className='e-btn'>
                   view all course
                 </Link>
@@ -80,17 +83,12 @@ const HeroSection: FC = () => {
                 <div className='hero__thumb-big mr-30'>
                   <Image src='/img/hero/hero-1.jpg' alt='img not found' width={400} height={460} />
                   <div className='hero__quote hero__quote-animation'>
-                    <span>BOUALI ACADEMY</span>
-                    <h4>“la pièce clé de ta réussite ” !</h4>
+                    <span>Bouali Academy</span>
+                    <h4>“The key to your success”</h4>
                   </div>
                 </div>
                 <div className='hero__thumb-sm mt-50 d-none d-lg-block'>
-                  <Image
-                    src='/img/hero/hero-sm-1.jpg'
-                    alt='img not found'
-                    width={400}
-                    height={460}
-                  />
+                  <Image src='/img/hero/hero-2.jpg' alt='img not found' width={200} height={260} />
                 </div>
               </div>
             </div>

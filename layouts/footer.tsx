@@ -52,8 +52,10 @@ const Footer: FC = () => {
               <div className='col-xxl-12'>
                 <div className='footer__copyright text-center'>
                   <p>
-                    © 2022 Bouali Academy, All Rights Reserved. Design By{' '}
-                    <Link href='/'>Mouad Maaroufi</Link>
+                    © {new Date().getFullYear()} Bouali Academy, Created By{' '}
+                    <a href='https://github.com/mouadmaa' target='_blank' rel='noreferrer'>
+                      Mouad Maaroufi
+                    </a>
                   </p>
                 </div>
               </div>

@@ -26,17 +26,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
     await transporter.sendMail({
       to: process.env.MAIL_USER,
       from: `"Bouali Academy" <${email}>`,
-      subject: 'Bouali Academy Contact Form',
+      subject: 'Bouali Academy: Contact Form',
       html: `
         <div>
           <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
           ${subject && `<p><strong>Subject:</strong> ${subject}</p>`}
           <p><strong>Message:</strong> ${message}</p>
         </div>
       `,
     })
 
-    res.status(200).json({ message: 'Message sent successfully' })
+    res.status(200).json({ message: 'success' })
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong' })
   }
