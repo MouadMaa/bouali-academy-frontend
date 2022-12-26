@@ -2,6 +2,7 @@ import { Markup } from 'interweave'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAboutQuery } from '../../graphql/generated/schema'
+import Social from '../shared/social'
 
 const AboutSection = () => {
   const { data } = useAboutQuery()
@@ -57,29 +58,7 @@ const AboutSection = () => {
                   </div>
                   <div className='teacher__follow mt-5'>
                     <div className='contact__social'>
-                      {/* <h4>Follow Me</h4> */}
-                      <ul>
-                        <li>
-                          <a href='#' className='pin'>
-                            <i className='fab fa-youtube'></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href='#' className='fb'>
-                            <i className='fab fa-facebook-f'></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href='#' className='tw'>
-                            <i className='fab fa-twitter'></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href='#' className='ins'>
-                            <i className='fab fa-instagram'></i>
-                          </a>
-                        </li>
-                      </ul>
+                      <Social />
                     </div>
                   </div>
                 </div>

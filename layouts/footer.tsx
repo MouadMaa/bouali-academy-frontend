@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
+import Social from '../components/shared/social'
 
 const Footer: FC = () => {
   const { status } = useSession()
@@ -41,28 +42,7 @@ const Footer: FC = () => {
               </ul>
             </div>
             <div className='footer__social'>
-              <ul>
-                <li>
-                  <a href='#' className='pin'>
-                    <i className='fab fa-youtube'></i>
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <i className='fab fa-facebook-f'></i>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='tw'>
-                    <i className='fab fa-twitter'></i>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='ins'>
-                    <i className='fab fa-instagram'></i>
-                  </a>
-                </li>
-              </ul>
+              <Social />
             </div>
           </div>
         </div>

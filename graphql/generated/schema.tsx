@@ -21,8 +21,10 @@ export type Scalars = {
 export type About = {
   __typename?: 'About';
   bio?: Maybe<ComponentAboutBio>;
+  contact?: Maybe<ComponentAboutContact>;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  social?: Maybe<ComponentAboutSocial>;
   testimonials?: Maybe<Array<Maybe<ComponentAboutTestimonial>>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -47,7 +49,9 @@ export type AboutEntityResponse = {
 
 export type AboutInput = {
   bio?: InputMaybe<ComponentAboutBioInput>;
+  contact?: InputMaybe<ComponentAboutContactInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  social?: InputMaybe<ComponentAboutSocialInput>;
   testimonials?: InputMaybe<Array<InputMaybe<ComponentAboutTestimonialInput>>>;
 };
 
@@ -139,6 +143,40 @@ export type ComponentAboutBioInput = {
   id?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentAboutContact = {
+  __typename?: 'ComponentAboutContact';
+  email?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  office?: Maybe<Scalars['String']>;
+  office_map?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+};
+
+export type ComponentAboutContactInput = {
+  email?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  office?: InputMaybe<Scalars['String']>;
+  office_map?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentAboutSocial = {
+  __typename?: 'ComponentAboutSocial';
+  facebook?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  instagram?: Maybe<Scalars['String']>;
+  linkedin?: Maybe<Scalars['String']>;
+  youtube?: Maybe<Scalars['String']>;
+};
+
+export type ComponentAboutSocialInput = {
+  facebook?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  instagram?: InputMaybe<Scalars['String']>;
+  linkedin?: InputMaybe<Scalars['String']>;
+  youtube?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentAboutTestimonial = {
@@ -310,7 +348,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = About | Category | ComponentAboutBio | ComponentAboutTestimonial | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Category | ComponentAboutBio | ComponentAboutContact | ComponentAboutSocial | ComponentAboutTestimonial | Course | I18NLocale | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -1261,7 +1299,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type AboutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', testimonials?: Array<{ __typename?: 'ComponentAboutTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null } | null> | null, bio?: { __typename?: 'ComponentAboutBio', id: string, name: string, function: string, content: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null } | null } | null } | null };
+export type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', id?: string | null, attributes?: { __typename?: 'About', bio?: { __typename?: 'ComponentAboutBio', id: string, name: string, function: string, content: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } } | null, testimonials?: Array<{ __typename?: 'ComponentAboutTestimonial', id: string, name: string, function?: string | null, content: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, formats?: any | null } | null } | null } | null } | null> | null, social?: { __typename?: 'ComponentAboutSocial', youtube?: string | null, facebook?: string | null, instagram?: string | null, linkedin?: string | null } | null, contact?: { __typename?: 'ComponentAboutContact', office?: string | null, office_map?: string | null, email?: string | null, phone?: string | null } | null } | null } | null } | null };
 
 export type CategoriesQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
@@ -1418,6 +1456,15 @@ export const AboutDocument = gql`
     data {
       id
       attributes {
+        bio {
+          id
+          name
+          function
+          content
+          image {
+            ...File
+          }
+        }
         testimonials {
           id
           name
@@ -1427,14 +1474,17 @@ export const AboutDocument = gql`
             ...File
           }
         }
-        bio {
-          id
-          name
-          function
-          content
-          image {
-            ...File
-          }
+        social {
+          youtube
+          facebook
+          instagram
+          linkedin
+        }
+        contact {
+          office
+          office_map
+          email
+          phone
         }
       }
     }

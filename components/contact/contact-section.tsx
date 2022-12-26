@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Image from 'next/image'
+import Social from '../shared/social'
+import { useAboutQuery } from '../../graphql/generated/schema'
 
 type FormInputs = {
   name: string
@@ -12,7 +14,9 @@ type FormInputs = {
 }
 
 const ContactSection: FC = () => {
+  const { data } = useAboutQuery()
   const { register, handleSubmit, reset } = useForm()
+
   const [loading, setLoading] = useState(false)
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
@@ -24,6 +28,12 @@ const ContactSection: FC = () => {
     }
     setLoading(false)
   }
+
+  const contact = data?.about?.data?.attributes?.contact
+  const phone =
+    `+(${contact?.phone?.substring(0, 3)}) ${contact?.phone?.substring(3, 4)} ` +
+    `${contact?.phone?.substring(4, 6)} ${contact?.phone?.substring(6, 8)} ` +
+    `${contact?.phone?.substring(8, 10)} ${contact?.phone?.substring(10, 12)}`
 
   return (
     <section className='contact__area pt-115 pb-150'>
@@ -134,14 +144,15 @@ const ContactSection: FC = () => {
                         </svg>
                       </div>
                       <div className='contact__info-text'>
-                        <h4>New York Office</h4>
+                        <h4>My Work Office</h4>
                         <p>
                           <a
                             target='_blank'
                             rel='noreferrer'
-                            href='https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873'
+                            href={contact?.office_map as string}
+                            style={{ textTransform: 'capitalize' }}
                           >
-                            Maypole Crescent 70-80 Upper St Norwich NR2 1LT
+                            {contact?.office}
                           </a>
                         </p>
                       </div>
@@ -161,10 +172,12 @@ const ContactSection: FC = () => {
                       <div className='contact__info-text'>
                         <h4>Email us directly</h4>
                         <p>
-                          <a href='mailto:support@educal.com'>support@educal.com</a>
-                        </p>
-                        <p>
-                          <a href='mailto:info@educal.com'>info@educal.com</a>
+                          <a
+                            href={`mailto:${contact?.email}`}
+                            style={{ textTransform: 'lowercase' }}
+                          >
+                            {contact?.email}
+                          </a>
                         </p>
                       </div>
                     </div>
@@ -182,10 +195,7 @@ const ContactSection: FC = () => {
                       <div className='contact__info-text'>
                         <h4>Phone</h4>
                         <p>
-                          <a href='tel:+(426)-742-26-44'>+(426) 742 26 44</a>
-                        </p>
-                        <p>
-                          <a href='tel:+(224)-762-442-32'>+(224) 762 442 32</a>
+                          <a href={`tel:${phone.replaceAll(' ', '-')}`}>{phone}</a>
                         </p>
                       </div>
                     </div>
@@ -193,28 +203,7 @@ const ContactSection: FC = () => {
                 </ul>
                 <div className='contact__social pl-30'>
                   <h4>Follow Us</h4>
-                  <ul>
-                    <li>
-                      <a href='#' className='pin'>
-                        <i className='fab fa-youtube'></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#' className='fb'>
-                        <i className='fab fa-facebook-f'></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#' className='tw'>
-                        <i className='fab fa-twitter'></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#' className='ins'>
-                        <i className='fab fa-instagram'></i>
-                      </a>
-                    </li>
-                  </ul>
+                  <Social />
                 </div>
               </div>
             </div>

@@ -3,6 +3,15 @@ query About {
     data {
       id
       attributes {
+        bio {
+          id
+          name
+          function
+          content
+          image {
+            ...File
+          }
+        }
         testimonials {
           id
           name
@@ -12,14 +21,17 @@ query About {
             ...File
           }
         }
-        bio {
-          id
-          name
-          function
-          content
-          image {
-            ...File
-          }
+        social {
+          youtube
+          facebook
+          instagram
+          linkedin
+        }
+        contact {
+          office
+          office_map
+          email
+          phone
         }
       }
     }

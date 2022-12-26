@@ -262,6 +262,7 @@ span.page__title-pre {
     min-width: 140px;
     width: 100%;
     padding: 15px;
+    padding-bottom: 5px;
 
     li a {
       padding: 0 10px;
@@ -298,4 +299,15 @@ span.page__title-pre {
       margin-top: 15px;
     }
   }
+}
+
+.teacher__info {
+  h4,
+  span {
+    text-transform: capitalize;
+  }
+}
+
+.contact__info-inner {
+  padding: 80px 40px;
 }
