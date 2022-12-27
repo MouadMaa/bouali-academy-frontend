@@ -42,13 +42,8 @@ const CategoriesSection: FC = () => {
           </div>
         </div>
         <div className='row'>
-          {categories?.map(({ id, attributes }, index) => (
-            <CategoryCard
-              key={id}
-              index={index}
-              categoryId={id as string}
-              category={attributes as Category}
-            />
+          {categories?.map(({ id, attributes }) => (
+            <CategoryCard key={id} categoryId={id as string} category={attributes as Category} />
           ))}
         </div>
       </div>
