@@ -32,10 +32,9 @@ const Categories: NextPage = () => {
             </h2>
           </div>
           <div className='row'>
-            {categories?.map((category, index) => (
+            {categories?.map((category) => (
               <CategoryCard
                 key={category.id}
-                index={index}
                 categoryId={category.id as string}
                 category={category.attributes as any}
               />
