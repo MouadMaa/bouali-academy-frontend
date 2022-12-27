@@ -24,7 +24,11 @@ const TestimonialCard: FC<TestimonialCardProps> = (props) => {
         <div className='testimonial__thumb'>
           {imageUrl && <Image src={imageUrl} alt={testimonial.name} width={60} height={60} />}
           {!imageUrl && (
-            <div>{testimonial.name.split(' ').map((word) => word.charAt(0).toUpperCase())}</div>
+            <div>
+              {testimonial.name.split(' ').map((word, index) => (
+                <span key={index}>{word.charAt(0).toUpperCase()}</span>
+              ))}
+            </div>
           )}
         </div>
         <div className='testimonial__info'>
