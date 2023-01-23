@@ -54,7 +54,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
       return res.status(200).json({ message: 'success' })
     }
   } catch (error) {
-    return res.status(404).json({ message: 'Something went wrong!' })
+    return res.status(500).json({ message: 'Something went wrong!' })
   }
 
   const stripeSession = await stripe.checkout.sessions.create({
@@ -79,7 +79,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) 
     success_url: `${process.env.FRONTEND_URL}/my-learning/?success=true`,
     cancel_url: `${process.env.FRONTEND_URL}/courses/${course.attributes?.slug}`,
     metadata: {
+      username: session.user.name,
       courseId: course.id as string,
+      courseName: course.attributes.name,
     },
   })
 

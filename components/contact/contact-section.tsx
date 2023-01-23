@@ -23,7 +23,7 @@ const ContactSection: FC = () => {
     setLoading(true)
     const res = await axios.post(`/api/contact`, data)
     if (res.data.message === 'success') {
-      toast.success('Yor message sent successfully', { theme: 'colored' })
+      toast.success('Your message sent successfully', { theme: 'colored' })
       reset()
     }
     setLoading(false)
