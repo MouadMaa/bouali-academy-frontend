@@ -88,8 +88,7 @@ const Course: NextPage = () => {
                   <div className='course__teacher-thumb-3 mr-15'>
                     <Image
                       src={
-                        course?.attributes?.instructor_image.data?.attributes?.formats.thumbnail
-                          .url as string
+                        course?.attributes?.instructor_image.data?.attributes?.url as string
                       }
                       alt='img not found'
                       width={50}
