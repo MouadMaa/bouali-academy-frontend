@@ -49,7 +49,7 @@ const CourseCard: FC<CourseCardProps> = (props) => {
         <div className='course__teacher d-flex align-items-center'>
           <div className='course__teacher-thumb mr-15'>
             <Image
-              src={course.instructor_image.data?.attributes?.formats.thumbnail.url as string}
+              src={course.instructor_image.data?.attributes?.url as string}
               alt={course.instructor}
               width={50}
               height={50}

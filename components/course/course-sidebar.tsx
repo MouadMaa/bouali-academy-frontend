@@ -103,7 +103,7 @@ const CourseSidebar: FC<CourseSidebarProps> = (props) => {
           <div className='course__video'>
             <div className='course__video-thumb w-img mb-25'>
               <Image
-                src={course.cover?.data?.attributes?.formats.thumbnail.url as string}
+                src={course.cover?.data?.attributes?.url as string}
                 alt='img not found'
                 width={250}
                 height={140}

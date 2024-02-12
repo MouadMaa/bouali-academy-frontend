@@ -16,7 +16,7 @@ const TestimonialCard: FC<TestimonialCardProps> = (props) => {
     setContent(testimonial.content)
   }, [testimonial])
 
-  const imageUrl = testimonial.image?.data?.attributes?.formats.thumbnail.url
+  const imageUrl = testimonial.image?.data?.attributes?.url
 
   return (
     <div className='testimonial__item text-center swiper-slide'>
